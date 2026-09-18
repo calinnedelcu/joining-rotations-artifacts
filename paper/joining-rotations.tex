@@ -336,8 +336,12 @@ third is the answer.
 $a \le 100$.  Top: the $59$ squared radii at which $\Lat$ actually has points,
 decided by the form \eqref{eq:norm} rather than by a ball, and in closed form by
 Theorem~\ref{prop:shells}.  Middle: the multiples
-of $4$.  Bottom: their intersection, the sixteen candidates the law leaves---the
-nine gaps there are the multiples of $4$ whose shell is empty, $a = 8$, $24$, $32$, $40$, $56$, $68$, $72$, $88$, $96$.  The law is a kill, not a construction, so the bottom
+of $4$.  Bottom: their intersection, the sixteen multiples of $4$ with an
+\emph{occupied} shell---the candidates, in the sense Section~\ref{sec:seven}
+fixes.  The nine gaps there are the multiples of $4$ whose shell is empty,
+$a = 8$, $24$, $32$, $40$, $56$, $68$, $72$, $88$, $96$; they lie outside this
+accounting altogether, because at an empty shell Theorem~\ref{thm:law} is silent
+in both directions.  The law is a kill, not a construction, so the bottom
 row also carries what became of each candidate: filled, the four given a verified
 5-chromatic union in Section~\ref{sec:seven}; grey, the eleven the stronger
 filter of Section~\ref{sec:stronger} kills; open, $a = 64$, on which that filter
@@ -830,12 +834,29 @@ should not be expected to look it.}
 
 Assume $\Lam = \Lat + \theta_a(\Lat)$ has rank $8$, so
 $\Lam = \Lat \oplus \theta_a(\Lat)$ and a homomorphism $\varphi : \Lam \to \mathcal{A}$ is a
-pair $(\varphi_1, \varphi_2)$, one per summand. Avoiding the $30$ unit vectors of
-each summand forces each to be a geometric $4$-colouring of a copy of $\Lat$, of
-which there are two; with the six automorphisms of the Klein group that is at most
-$2 \cdot 2 \cdot 6 = 24$ candidates, whatever $a$ is. These are the Klein
-targets; the cyclic ones are not among them and are handled once and for all by
-Proposition~\ref{prop:half}, which Step 6 invokes. The question is which of
+pair $(\varphi_1, \varphi_2)$, one per summand, and each $\varphi_i$ must avoid
+the $30$ unit vectors of its own summand.
+
+Take $\mathcal{A}$ to be the Klein group first. Its exponent is $2$, so
+$2\Lat \subseteq \ker\varphi_i$ automatically---no geometric hypothesis is needed
+and none is available, since a homomorphism avoiding the unit vectors need not be
+geometric: Section~\ref{sec:arith} exhibits six cyclic ones that are not. What is
+available is the enumeration inside Theorem~\ref{thm:primes}: a subgroup of index
+$4$ containing $2\Lat$ and meeting none of the nine unit classes is $\pi_1\Lat$ or
+$\pi_2\Lat$. The image cannot be smaller than the whole Klein group either. Were
+it of order $2$, then $1 + \omega + \omega^2 = 2\omega$ would give
+$\varphi_i(1) + \varphi_i(\omega) + \varphi_i(\omega^2) = \varphi_i(2\omega) = 0$,
+while each of the three terms is the one non-zero element of an order-$2$ group
+and their sum is that element again. So each $\varphi_i$ is reduction modulo
+$\pi_1\Lat$ or $\pi_2\Lat$, and with the six automorphisms of the Klein group that
+is at most $2 \cdot 2 \cdot 6 = 24$ candidates, whatever $a$ is. (Both reductions
+happen to be geometric, by Theorem~\ref{thm:primes}, but that is a conclusion
+here and not a hypothesis.)
+
+The cyclic target $\mathcal{A} = \Z/4$ is disposed of once and for all by
+Proposition~\ref{prop:half}, which Step 5 invokes; the six cyclic colourings
+counted in Section~\ref{sec:arith} are the ones that survive on $\Lat$ alone and
+play no part here. The question is which of
 them a \emph{cross} unit vector $u = r + \theta(s)$, with $r,s \in \Lat$ both
 non-zero, destroys. Figure~\ref{fig:orbits} shows the two orbits these fall into.
 
@@ -1643,10 +1664,15 @@ $\theta_{12}$, zero monochromatic edges of $867054$; for $\theta_{20}$, zero of
 $2076192$---which tests the implementation rather than the claim.
 
 So the divisibility law is necessary but far from sufficient. For the sixteen
-\emph{integer} spindles it admits to $a = 100$ the account is now complete:
-eleven die to a test that uses every periodic colouring, four are the
-constructions of Section~\ref{sec:seven}, and $a = 64$ joins by
-Lemma~\ref{lem:chain}. Nothing here
+occupied-shell \emph{integer} spindles that Theorem~\ref{thm:law} admits to
+$a = 100$---the candidates as Section~\ref{sec:seven} defines them---the account
+is now complete: eleven die to a test that uses every periodic colouring, four
+are the constructions of Section~\ref{sec:seven}, and $a = 64$ joins by
+Lemma~\ref{lem:chain}. The empty-shell multiples of $4$ lie outside that tally,
+since the law is silent at an empty shell; $a = 8$, $32$, $40$ and $56$ carry a
+homomorphism $4$-colouring and so are dead anyway, while $a = 24$ carries none
+and $a = 68$, $72$, $88$, $96$ we have not tested. Those five are open, and are
+not counted above. Nothing here
 covers the rational candidates---three of which work---or the finer lattices, or
 rotations outside the spindle family, where Section~\ref{sec:notclaimed} reports
 both tools blind.
@@ -1707,6 +1733,30 @@ No 5-chromatic $L \cup \theta_4(S)$ has four or fewer cross edges, for any
 $L, S \subseteq \Lat$ whatever: the hitting-set instance is unsatisfiable at $4$
 and satisfiable at $5$.
 \end{theorem}
+
+\begin{proof}[Proof of Theorems \ref{thm:five}--\ref{thm:profile}]
+These three are computations, and what has to be computed is fixed by
+Proposition~\ref{prop:cross} and the count of colourings above, with no ball and
+no choices left. The objects are: the $126$ unit vectors of $\Lam_4$, of which
+$60$ meet the shared origin and $66$ do not; the $8$ homomorphism $4$-colourings
+of $\Lat$, two Klein and six cyclic; the $8^2 \cdot 6 = 384$ admissible pairings
+of one colouring per half with a colour permutation fixing $0$; and the $235$
+distinct non-empty monochromatic patterns those pairings cut out of the $66$.
+Theorem~\ref{thm:five} is then the statement that the minimum set meeting all
+$235$ has size $5$, Theorem~\ref{thm:1920} that there are $1920$ such sets, and
+Theorem~\ref{thm:profile} the profile and factorisation of those $1920$.
+
+Each step is finite and exact. \texttt{scripts/interface\_bound\_exact.py 4}
+enumerates the unit vectors from the trace form, builds the $235$ patterns and
+runs the minimum hitting set, reporting unsatisfiability at $4$ and a solution at
+$5$; \texttt{scripts/interface\_matchings.py} enumerates all optimal sets, checks
+each is a perfect matching, and computes the profile and the
+$30 \times 8 \times 8$ factorisation. Both print every intermediate count named
+above, so a reader can check them one at a time rather than trusting a single
+verdict. What the three theorems do \emph{not} say is that some 5-chromatic graph
+realises five cross edges: the $1920$ defeat every pairing of homomorphism
+colourings, which is necessary and not known to be sufficient.
+\end{proof}
 
 \begin{theorem}\label{thm:1920}
 There are exactly $1920$ such five-edge sets. None meets the shared origin---an

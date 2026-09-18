@@ -25,6 +25,10 @@
   ok  those avoiding all nine unit classes are exactly the two prime reductions [[0, 3, 4, 7], [0, 5, 9, 12]]
   ok  sqrt33 acts as the identity on R/2R                              [1, 2, 4, 8]
   ok  subspaces stable under (1+sqrt33)/2: eleven, not two                       11
+  ok  index-2 subgroups of R containing 2R (hyperplanes of F_2^4)                     15
+  ok    none of them avoids all nine unit classes                                []
+  ok    a hyperplane holds 7 non-zero classes, and only 6 non-zero ones are free                 (7, 6)
+  ok  and 1 + omega + omega^2 = 2 omega kills it again: 3x != 0 in an order-2 group                      1
 
 4. the arithmetic that turns the shell criterion into a theorem
   ok  h(F) for F = Q(sqrt33)                                                      1

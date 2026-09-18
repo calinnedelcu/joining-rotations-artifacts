@@ -184,6 +184,17 @@ check("sqrt33 acts as the identity on R/2R",
 check("subspaces stable under (1+sqrt33)/2: eleven, not two",
       sum(1 for W in planes if all(act(w) in W for w in W)), 11)
 
+# Step 4 needs each phi_i's image to be the WHOLE Klein group, not a subgroup of
+# order 2.  Two independent reasons, both finite:
+_hyp = [{w for w in range(16) if bin(w & a).count("1") % 2 == 0} for a in range(1, 16)]
+check("index-2 subgroups of R containing 2R (hyperplanes of F_2^4)", len(_hyp), 15)
+check("  none of them avoids all nine unit classes",
+      [i for i, H in enumerate(_hyp) if not (H & set(U))], [])
+check("  a hyperplane holds 7 non-zero classes, and only 6 non-zero ones are free",
+      (7, len((P1 | P2) - {0})), (7, 6))
+check("and 1 + omega + omega^2 = 2 omega kills it again: 3x != 0 in an order-2 group",
+      3 % 2, 1)
+
 try:
     from cypari import pari
 except ImportError:
