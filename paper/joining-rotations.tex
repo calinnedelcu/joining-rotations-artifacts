@@ -41,8 +41,8 @@
 
 \begin{document}
 
-\title[Which rotations join two Moser lattices?]
-      {Which rotations join two Moser lattices\\ into a 5-chromatic graph?}
+\title[A divisibility obstruction for joining two Moser lattices]
+      {A divisibility obstruction for joining\\ two Moser lattices}
 
 \author{Andrei-C\u{a}lin Nedelcu}
 % TODO before submission: amsart expects an address and AMS journals require
@@ -58,26 +58,33 @@ plane, Moser lattice, real quadratic field}
 \date{\today}
 
 \begin{abstract}
-The smallest 5-chromatic unit-distance graphs known in the plane are of Parts'
-\emph{type~M}: two subsets of the Moser lattice $\Lat$ glued at the origin by a
-single rotation. The record, $509$ vertices since 2020, uses
-$\theta_4 = \arccos(7/8)$, and Parts writes that constructions of this type with
-other rotations ``are not known yet''. Writing $\cos\theta_a = (2a-1)/(2a)$, we
-prove that a joint lattice $\Lat + \theta_a(\Lat)$ of rank eight carries a
-homomorphism $4$-colouring whenever $4 \nmid a$, and---once its shell is
-non-empty---only then, so a 5-chromatic $L \cup \theta_a(S)$ forces $4 \mid a$.
-The proof rests on one structural fact: $3\Lat$ is the maximal order of
-$\Q(\sqrt{33}, i\sqrt3)$. From it, the two integral geometric $4$-colourings of
-$\Lat$ are the reductions modulo the two primes above $2$, and shell occupancy
-becomes a norm condition in closed form; the integer candidates with an occupied
-shell have density zero. We exhibit constructions at six further rotations, three
-of them new---$\theta_{16}$, $\theta_{28}$, $\theta_{36}$---while the three
-rational ones follow from Parts' own monochromatic-pair gadgets, chaining of which
-gives the infinite family $a = 64n^2/9$ and with it $a = 64$, the one integer
-spindle our filters cannot decide. Five type-M rotations were in fact already
-known, only $\theta_4$ among them a spindle. Finally, any 5-chromatic
-$L \cup \theta_4(S)$ needs at least five cross edges, and exactly $1920$ five-edge
-sets defeat every homomorphism pairing; whether one is realised is open.
+Write $\Lat$ for the Moser lattice and $\theta_a$ for the rotation with
+$\cos\theta_a = (2a-1)/(2a)$, so that $a$ is the squared radius at which
+$\theta_a$ pairs a point with its own image. We prove a divisibility obstruction:
+if the joint lattice $\Lat + \theta_a(\Lat)$ has rank eight and $4 \nmid a$, it
+carries a $4$-colouring by a group homomorphism, so no subset of it is
+5-chromatic at any size, and no 5-chromatic union $L \cup \theta_a(S)$ exists for
+any $L, S \subseteq \Lat$. The obstruction decides \emph{every} rational $a$,
+before any graph is built.
+
+Its engine is a structural fact: $3\Lat$ is the maximal order of
+$\Q(\sqrt{33}, i\sqrt3)$. From that, $\Lat$'s two integral geometric
+$4$-colourings are the reductions modulo the two primes above $2$, and occupancy
+of the shell at radius $\sqrt a$ becomes a relative-norm condition, which Hasse's
+theorem solves in closed form: $\Lat$ has a point at squared radius $a = n/b$ in
+lowest terms if and only if $b \in \{1,3,9\}$ and $v_p(n)$ is even at every prime
+that splits in $\Q(\sqrt{33})$ and stays inert in $\Q(\sqrt{-3})$. The rotations
+surviving both conditions have natural density zero.
+
+Against that, constructions. Chaining a monochromatic-pair gadget of Parts' gives
+a $5$-chromatic join at $a = 64n^2/9$ for every $n$, an infinite family that
+includes the one integer spindle our filters cannot decide. Seven spindles are
+verified to join, three of them---$\theta_{16}$, $\theta_{28}$,
+$\theta_{36}$---by constructions for which we have found no precedent. A periodic
+refinement kills eleven further integer candidates below $100$. Finally, any
+5-chromatic $L \cup \theta_4(S)$ needs at least five cross edges, and exactly
+$1920$ five-edge sets defeat every pairing of homomorphism colourings; whether one
+is realised is open. The record of $509$ is untouched.
 \end{abstract}
 
 \maketitle
@@ -244,7 +251,39 @@ spindle is precisely a rotation of rational cosine, so the other four are not
 spindles: in the family this paper classifies, exactly one working member was
 known. No criterion, and no classification, has been given for either family.
 
-\subsection*{Results}
+\subsection*{What is proved here}
+
+In order of weight, and with the section that proves each.
+
+\begin{enumerate}\itemsep2pt
+\item \textbf{A divisibility obstruction that decides every rational $a$.} For a
+  rank-$8$ joint lattice, $4 \nmid a$ gives a homomorphism $4$-colouring and so
+  kills the rotation outright; $4 \mid a$ with an occupied shell admits none.
+  Theorem~\ref{thm:law}, Section~\ref{sec:proof}. The rank hypothesis is itself
+  arithmetic and not an assumption: Proposition~\ref{prop:rank}.
+\item \textbf{$3\Lat$ is the maximal order of $\Q(\sqrt{33}, i\sqrt3)$}
+  (Proposition~\ref{prop:order}), which is what the rest runs on. It identifies
+  $\Lat$'s two integral geometric $4$-colourings as the reductions modulo the two
+  primes above $2$ (Theorem~\ref{thm:primes}), and makes shell occupancy a
+  relative-norm question.
+\item \textbf{Shell occupancy in closed form}, for every rational radius:
+  Theorem~\ref{prop:shells}, by Hasse's norm theorem. The rotations passing both
+  it and the law have natural density zero (Corollary~\ref{cor:closed} and after).
+\item \textbf{An infinite family of joins.} Chaining a monochromatic-pair gadget
+  of Parts' gives a $5$-chromatic join at $a = 64n^2/9$ for every $n \ge 1$
+  (Lemma~\ref{lem:chain}), including $a = 64$, the one integer spindle the filters
+  of Section~\ref{sec:stronger} cannot reach.
+\item \textbf{Seven joining spindles}, three of them without precedent we could
+  find (Section~\ref{sec:seven}); and eleven further integer candidates killed by
+  a periodic refinement (Section~\ref{sec:stronger}).
+\item \textbf{Five cross edges are necessary} at $\theta_4$, and exactly $1920$
+  five-edge sets defeat every pairing of homomorphism colourings
+  (Theorems~\ref{thm:five}--\ref{thm:profile}). Whether any is realised by a
+  5-chromatic graph is open.
+\end{enumerate}
+
+\noindent The record of $509$ is untouched, and nothing here brings it closer.
+What is \emph{not} settled is listed in Section~\ref{sec:notclaimed}.
 
 \begin{theorem}[the divisibility law]\label{thm:law}
 Let $a$ be a positive rational and suppose the joint lattice
@@ -1042,7 +1081,9 @@ $144\lvert v\rvert^2 = 16 = (\pi_1\pi_2)^4$, of valuation exactly $4$.
 
 \begin{lemma}\label{lem:E}
 Let $\pi$ be a prime of $\Ok$ above $2$, and let the denominator of $a$ be
-odd---which Theorem~\ref{prop:shells} forces whenever the shell is non-empty,
+odd---which holds automatically in the only case Corollary~\ref{cor:even} uses,
+namely $a$ even, since then the denominator of $a$ in lowest terms is odd; more
+generally Theorem~\ref{prop:shells} forces it whenever the shell is non-empty,
 since it puts the denominator in $\{1,3,9\}$. If $\pi$ divides none of $v$,
 $\alpha$, $\beta$, then $a$ is odd.
 \end{lemma}
@@ -1231,7 +1272,8 @@ $\Ok_F$. For those above $3$, take
 \[
   w = \tfrac12\bigl(1 + i(2\sqrt3 + \sqrt{11})\bigr) \in \Ok_V,
 \]
-which lies in $3\Lat$ at the chart point $(6,0,12,6)$ and has
+which lies in $3\Lat$ because $w/3$ is the chart point $(2,0,4,2)$ of
+\eqref{eq:chart}---the point $(6,0,12,6)$ verifies only $w \in \Lat$---and has
 \[
   \Nm_{V/F}(w) = \lvert w \rvert^2
   = \tfrac14\bigl(1 + (2\sqrt3+\sqrt{11})^2\bigr)
@@ -1347,9 +1389,12 @@ a rotation can join without a shell of its own is not settled here, so this is n
 yet a statement that almost no spindle joins.
 
 The decay is slow, which is why the first hundred look generous at $16$: measured,
-the density runs $0.160$, $0.136$, $0.1236$, $0.1154$, $0.1089$ at
-$N = 10^2, \dots, 10^6$, against $0.10882$ for the product truncated at
-$2\cdot10^6$. A Mertens estimate over the obstructed primes would give the rate
+the density of candidates up to $N$ runs $0.160$, $0.136$, $0.1236$, $0.1154$,
+$0.1089$ at $N = 10^2, \dots, 10^6$. Those five are measurements of one thing; the
+$0.10882$ they are converging on is a measurement of another---the right-hand side
+of the bound above, with $P$ taken to be the obstructed primes below
+$2\cdot10^6$---and the two agree at $N = 10^6$ only because the bound is nearly
+tight there, not because one computes the other. A Mertens estimate over the obstructed primes would give the rate
 $(\log N)^{-1/4}$, which the measurements fit; we do not prove it, and nothing
 below uses it. Density zero is the claim, and it needs only the divergence---and
 only the \emph{necessary} half of Theorem~\ref{prop:shells}: for any finite set
@@ -1402,9 +1447,21 @@ combinatorics and metric geometry, to September 2026. That is a statement about
 our search, not a proof of priority---this literature is partly distributed
 across blog comments and data files, and we would be glad to be corrected. Each union below is verified
 \emph{not} $4$-colourable from the coordinates, with exact arithmetic and a fresh
-solver---that is $\chi \ge 5$. We do not claim $\chi = 5$ for the full unions:
+process---that is $\chi \ge 5$. We do not claim $\chi = 5$ for the full unions:
 that needs an upper bound as well, which we have only where a proper
-$5$-colouring or vertex-criticality has been checked. They are not all type M in Parts' sense:
+$5$-colouring or vertex-criticality has been checked.
+
+Two things must be attached to the rows and not left to a later section. The
+solver is CaDiCaL~1.9.5 through \texttt{python-sat} 1.9.dev15, on Python 3.11.15,
+on an Apple M5 with 32\,GB; the timings are in the archive's logs. And every one
+of the seven is \textbf{reported UNSAT, uncertified}: non-$4$-colourability is
+re-established by running the solver again, not by checking a proof. The one
+certificate this project has is for Parts' record itself, not for these: a DRAT
+proof of the $509$-vertex instance, $3\,101\,213$ lines, which
+\texttt{drat-trim} verifies in $126$\,s, reporting \texttt{s VERIFIED} over
+$67\,841\,290$ resolution steps. Theorems
+\ref{thm:five}--\ref{thm:profile} need no certificate at all, their hitting-set
+step being an exhaustive search over $235$ patterns. They are not all type M in Parts' sense:
 he asks for joining edges of two or more kinds, and counting the joining unit
 vectors of $\Lam_a$ by the radii of their two ends gives $2$, $4$, $3$ and $2$
 kinds for $\theta_4$, $\theta_{16}$, $\theta_{28}$ and $\theta_{36}$, but a single
@@ -1761,8 +1818,11 @@ Theorem~\ref{thm:profile} the profile and factorisation of those $1920$.
 
 Each step is finite and exact. \texttt{scripts/interface\_bound\_exact.py 4}
 enumerates the unit vectors from the trace form, builds the $235$ patterns and
-runs the minimum hitting set, reporting unsatisfiability at $4$ and a solution at
-$5$; \texttt{scripts/interface\_matchings.py} enumerates all optimal sets, checks
+runs the minimum hitting set. That last step is an exhaustive search over the
+$235$ patterns, not a solver call: no set of four or fewer meets them all, and a
+set of five does. The search space is small enough to redo by hand in seconds,
+and no part of Theorems~\ref{thm:five}--\ref{thm:profile} rests on an
+unsatisfiability verdict that would need a certificate; \texttt{scripts/interface\_matchings.py} enumerates all optimal sets, checks
 each is a perfect matching, and computes the profile and the
 $30 \times 8 \times 8$ factorisation. Both print every intermediate count named
 above, so a reader can check them one at a time rather than trusting a single
@@ -1849,7 +1909,10 @@ the first rotated by the argument of $(-\sqrt3,\ 4\cos\tfrac\pi7 - 1)$; that
 vector has length exactly $4\sin\tfrac{2\pi}7$, which is what makes the displayed
 quotient an algebraic number of modulus exactly $1$, and the factor
 $\zeta_3^{-1}$ aligns his indexing of the $42$ directions with $\zeta_{42}^j$. It
-reproduces the angle he reports, $0.42363201413287$, to fourteen places. So $\rho$
+reproduces the offset he reports, $0.42363201413287$, to fourteen places. That
+number is $\arg\rho \cdot 42/2\pi$, the argument measured in units of the $42$-fold
+step, not an angle: $\arg\rho$ itself is $3.63113154971030^\circ$. Read as radians
+or as degrees it would say this rotation is the wrong one. So $\rho$
 lies in $\Q(\zeta_{420})$, has modulus exactly $1$, and is not a root of unity:
 its argument is $3.6311^\circ$. Which of these lattices de Grey's question and
 Haugland's own graph concern is a matter for \cite{Thread18} and \cite{Haugland};
@@ -2153,18 +2216,24 @@ one pass. The archive contains, among the rest: the exact coordinates of all
 seven constructions, each file naming the field it was written in on its first
 line, together with the edge sets of the minimised graphs and the scripts that
 recompute every edge and re-prove non-4-colourability from the coordinates in a
-fresh process---no proof certificates are shipped, and the non-4-colourability of
-the four largest unions is re-established by re-running a solver rather than by
-checking a proof; the $66$ usable cross edges of $\theta_4$, the $235$
+fresh process. One proof certificate is shipped, and it is not for our
+constructions: \texttt{proofs/} holds a DRAT proof of the unsatisfiability of the
+$4$-colouring instance of Parts' $509$-vertex record, with the checker's log
+(\texttt{s VERIFIED}, $126$\,s). The seven unions of
+Section~\ref{sec:seven} have no certificates and are labelled so in their own
+table; the $66$ usable cross edges of $\theta_4$, the $235$
 monochromatic patterns and the hitting-set instance behind Theorems
 \ref{thm:five}--\ref{thm:profile}; the two periodic colourings certifying each of the eleven exclusions of Section
 \ref{sec:stronger}, together with the complete list of occurring residue pairs
 they are checked against---the global test, not the corroborating ball run---and
 \texttt{scripts/audit\_numbers.py}, which re-derives the paper's numbers from the
-definitions, sharing no code with the rest. One block of it is an exception and
-says so as it runs: the three lines about which empty-shell spindles admit a
-homomorphism colouring are read from the repository's own classification output,
-not recomputed, because that file \emph{is} the certificate search behind them.
+definitions, sharing no code with the rest. One block of it used to be an
+exception, reading the empty-shell colouring status from the repository's own
+classification output rather than recomputing it---and that was the one block
+deciding which of the nine empty-shell multiples of $4$ are open, so the hole sat
+exactly where it mattered. \texttt{scripts/empty\_shell\_status.py} now derives all
+nine from the definitions, running filter~1 on each joint lattice directly, and
+the audit reads nothing.
 
 The repository is
 \url{https://github.com/calinnedelcu/joining-rotations-artifacts}, and the

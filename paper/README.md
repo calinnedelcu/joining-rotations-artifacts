@@ -107,6 +107,8 @@ reproducible from this repository:
 | Theorem 4's count by enumeration: 35 subgroups, 2 survive | `scripts/two_colourings.py` |
 | the kinds of joining edge: 2/4/3/2 for the integer spindles, 1 each for the rational ones, 2 for each of the five known rotations | `scripts/cross_kinds.py` |
 | the ball behind each construction: half-size, radius and depth, measured from the shipped coordinates | `scripts/ball_params.py` |
+| the one proof certificate: Parts' 509-vertex record, DRAT, `s VERIFIED` in 126s | `scripts/check_drat.sh ./drat-trim` |
+| the nine empty-shell multiples of 4, derived from the definitions | `scripts/empty_shell_status.py` |
 | Lemma 18's chain, for a = 64n^2/9 at n = 1, 2, 3 | `scripts/gadget_chain.py n` |
 | the eleven periodic exclusions, each with its modulus | `scripts/join_filter_residues.py A [--modulus M]`, witnesses in `results/periodic/` |
 | those witnesses re-checked from the files alone, importing no project code | `scripts/check_periodic.py` |

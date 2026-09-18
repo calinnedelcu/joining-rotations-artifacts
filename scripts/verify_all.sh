@@ -44,6 +44,7 @@ run cross_kinds       900 scripts/cross_kinds.py
 run gadget_chain      600 scripts/gadget_chain.py 3
 run ball_params      3600 scripts/ball_params.py
 run check_periodic    120 scripts/check_periodic.py
+run empty_shell_st   1800 scripts/empty_shell_status.py
 run shells            300 scripts/shells.py 100
 run shell_criterion   600 scripts/shell_criterion.py 400
 run hept_rank         120 scripts/hept_rank.py

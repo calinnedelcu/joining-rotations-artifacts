@@ -154,10 +154,11 @@ check("excluded a <= 100 (4a-1 = 3k^2 or 11k^2)", [a for a in range(1,101) if ra
 check("occupied shells at integer a <= 100", sum(1 for a in range(1,101) if shell(a) > 0), 59)
 
 print("\nTheorem 1: the shell hypothesis is not decoration")
-print("  ..  the three 'dead'/'not dead' lines below are READ from")
-print("  ..  results/JOIN-CLASSIFICATION.json, not re-derived here: that file is a")
-print("  ..  complete certificate search at rank 8, and repeating it is not this")
-print("  ..  script's job.  Everything else in this audit comes from the definitions.")
+print("  ..  these lines used to be READ from results/JOIN-CLASSIFICATION.json.")
+print("  ..  That was the one block this audit did not re-derive, and it decided")
+print("  ..  which empty-shell multiples of 4 are open -- so the hole sat exactly")
+print("  ..  where it mattered.  scripts/empty_shell_status.py now derives all nine")
+print("  ..  from the definitions; this audit checks its answer against the file.")
 import json, os
 _j = os.path.join(os.path.dirname(__file__), "..", "results", "JOIN-CLASSIFICATION.json")
 rows = {r["name"]: r for r in json.load(open(_j))["rows"]}
