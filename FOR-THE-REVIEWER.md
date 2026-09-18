@@ -43,9 +43,11 @@ periodic-kill witnesses from their JSON alone, importing no project code.
   have not decided.
 - **Rank-4 spindles, empty-shell survivors, and non-spindle rotations** are
   untouched. Section 10 lists them.
-- **Suite status:** 29 of 30 entries pass from a clean extraction of the archive.
-  The last, `lambda_sweep`, is a rerun in progress under a larger cap; it passed
-  in earlier full runs and its script has not changed.
+- **Suite status:** all 30 entries pass from a clean extraction of the archive,
+  with no FAIL and no TIMEOUT. The first pass had three that did not: a path that
+  only breaks in a clean extraction, and two timeouts on caps set below the
+  scripts' own typical runtimes. All three are fixed, and the run behind this
+  statement is the one after the fixes.
 
 ## Errors earlier reviewers found, and where the fix landed
 

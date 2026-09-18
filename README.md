@@ -19,7 +19,7 @@ table is the honest answer, and it is deliberately the first thing in the file.
 | the ball behind each construction | `scripts/ball_params.py`, measured from the shipped coordinates |
 | kinds of joining edge | `scripts/cross_kinds.py`, PASS |
 | the 5-cross-edge bound and the 1920 sets | `scripts/interface_bound_exact.py`, `interface_matchings.py`. The 1920 solve a **restricted hitting-set problem**; no 5-chromatic graph with five cross edges is claimed |
-| the whole suite from a clean extraction | run in full. **29 of 30 PASS.** The three that did not were a broken path and two caps of mine set too tight, all three fixed and rerun: `build_join16` now passes in 75s, `prove_step5` in 1674s under a 5400s cap. `lambda_sweep` is rerunning under 10800s and had not finished when this was packed |
+| the whole suite from a clean extraction | run in full: **30 of 30 PASS**, no FAIL and no TIMEOUT. The first pass had three that did not -- a path that only breaks in a clean extraction, and two timeouts on caps I had set below the scripts' own typical runtimes. All three fixed and rerun here: `build_join16` 75s, `prove_step5` 1674s, `lambda_sweep` 2819s |
 
 Two things this archive deliberately does not contain. There are **no DRAT/LRAT
 proof certificates**: non-4-colourability is re-established by re-running a
