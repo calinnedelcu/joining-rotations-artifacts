@@ -109,12 +109,12 @@ TIMEOUT for each. Budget about two hours: `lambda_sweep`, `z4_relation`,
 | §6 | **kinds of joining edge**: 2/4/3/2 for the integer spindles, 1 for each rational one, and 2 for each of the five rotations already known -- so eight are type M | `scripts/cross_kinds.py` | `logs/cross_kinds.log` |
 | §7 | the periodic filter, every occurring residue pair | `scripts/join_filter_residues.py 12` and `20` | run it |
 | §8 | the five-cross-edge bound, from a ball | `scripts/interface_bound.py 4 --depth 4 --radius 2.53 --model shared` | run it |
-| §8 | the same bound with **no ball**, from Proposition 18 | `scripts/interface_bound_exact.py 4` (also 16, 28, 36) | `logs/interface_bound_exact_*.log` |
-| Thm 20-21 | the 1920 minimum interfaces, their shape and factorisation | `scripts/interface_matchings.py` | `logs/interface_matchings.log` |
+| §8 | the same bound with **no ball**, from Proposition 20 | `scripts/interface_bound_exact.py 4` (also 16, 28, 36) | `logs/interface_bound_exact_*.log` |
+| Thm 21-23 | the 1920 minimum interfaces, their shape and factorisation | `scripts/interface_matchings.py` | `logs/interface_matchings.log` |
 | §9 | `L_1` to `L_4`: rank 12, joint rank 24, covolume 1/7 each step | `scripts/hept_rank.py` | `logs/hept_rank.log` |
 | §9 | `theta_1` dead and `theta_2` surviving in `L_1` | `scripts/hept_classify.py 1 2` | `logs/hept_classify.log` |
 | §9 | `theta_4`'s free pass there: 210 units, 42 in `2*Lambda` | `scripts/hept_halfunit.py 1` | run it |
-| Prop 23 | both lattices carry a unit triangle | `scripts/blind_spot.py` | `logs/blind_spot.log` |
+| Prop 25 | both lattices carry a unit triangle | `scripts/blind_spot.py` | `logs/blind_spot.log` |
 | §10 | the nested family: index `9^(J-2)`, units `6(2J+1)` | `scripts/finer_lattices.py` | `logs/finer_lattices.log` |
 | §10 | both filters blind to the whole family `rho*u` | `scripts/rho_unit_family.py` | run it |
 | §1 | the five known rotations, and that we kill none | `scripts/voronov_rotations.py` | run it |
@@ -174,7 +174,7 @@ Everything numbered in the paper is proved there and checked here: Theorems 1, 4
 Nothing in the current draft is stated as a conjecture.
 
 **The shell criterion changed status.** In the previous version of this archive it
-was Conjecture 17 -- local conditions proved necessary, integral sufficiency
+was labelled a conjecture -- local conditions proved necessary, integral sufficiency
 unproved, checked exhaustively only to `a <= 400`. It is now **Theorem 16**, and
 proved: `3R` is the maximal order of `V = Q(sqrt33, i sqrt3)` (Proposition 8), so
 `|z|^2` is the relative norm `N_{V/F}`, `h(F) = h(V) = 1`, and `F`'s totally

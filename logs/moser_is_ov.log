@@ -36,6 +36,14 @@
   ok  disc(V)                                                                  1089
   ok  so V/F is unramified at every finite prime                               True
   ok  h(V)                                                                        1
+  ok  Minkowski bound for V is below 5.02                                    5.0154
+  ok  norms of the primes above 2, 3 and 5                     [3, 3, 4, 4, 25, 25]
+  ok    so the only ideals of norm <= 5 are 1 and those four           [3, 3, 4, 4]
+  ok  33 is a non-residue mod 5, so 5 is inert in F                           False
+  ok  w = (1 + i(2sqrt3 + sqrt11))/2 lies in 3R = O_V                          True
+  ok    |w|^2 rational part = 6                                                   6
+  ok    and its sqrt33 part = 1                                                   1
+  ok    so N_{V/Q}(w) = 36 - 33 = 3                                               3
   ok  V is totally imaginary, signature (0,2)                                [0, 2]
   ok  N_{V/F}(eta) = 23 - 4 sqrt33, F's fundamental unit                       True
   ok  that unit is totally positive                                            True

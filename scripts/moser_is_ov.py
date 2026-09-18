@@ -205,6 +205,26 @@ check("  and is fundamental (PARI agrees)",
 check("disc(V)", int(pari(f'nfdisc({pol})')), 1089)
 check("so V/F is unramified at every finite prime", int(pari(f'nfdisc({pol})')) == 33*33, True)
 check("h(V)", int(pari(f'bnfinit({pol},1).no')), 1)
+# the paper proves h(V) = 1 by Minkowski rather than citing PARI; check every
+# ingredient of that argument
+_mb = (4/math.pi)**2 * math.factorial(4)/4**4 * 1089**0.5
+check("Minkowski bound for V is below 5.02", round(_mb, 4), 5.0154)
+_norms = sorted(int(pari(f'{p}')**int(pari(f'idealprimedec(nfinit({pol}),{p})[{k}].f')))
+                for p in (2, 3, 5)
+                for k in range(1, int(pari(f'#idealprimedec(nfinit({pol}),{p})')) + 1))
+check("norms of the primes above 2, 3 and 5", _norms, [3, 3, 4, 4, 25, 25])
+check("  so the only ideals of norm <= 5 are 1 and those four",
+      [n for n in _norms if n <= 5], [3, 3, 4, 4])
+check("33 is a non-residue mod 5, so 5 is inert in F", 33 % 5 in (1, 4), False)
+# w = (1 + i(2 sqrt3 + sqrt11))/2 generates a prime above 3
+W = (6, 0, 12, 6)                                  # chart point, over 12
+check("w = (1 + i(2sqrt3 + sqrt11))/2 lies in 3R = O_V",
+      in_R(tuple(c // 3 for c in W)), True)
+_S = W[0]**2 + 33*W[1]**2 + 3*W[2]**2 + 11*W[3]**2
+_T = W[0]*W[1] + W[2]*W[3]
+check("  |w|^2 rational part = 6", F(_S, 144), 6)
+check("  and its sqrt33 part = 1", F(2*_T, 144), 1)
+check("  so N_{V/Q}(w) = 36 - 33 = 3", 36 - 33, 3)
 check("V is totally imaginary, signature (0,2)", str(pari(f'nfinit({pol}).sign')), "[0, 2]")
 eta = pari(f'bnfinit({pol},1).fu[1]')
 emb = pari(f'nfeltembed(nfinit({pol}), bnfinit({pol},1).fu[1])')

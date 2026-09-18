@@ -1189,11 +1189,38 @@ positive: $23^2 - 33\cdot4^2 = 1$, and both conjugates $23 \mp 4\sqrt{33}$ are
 positive. Since $-1$ is negative at both real places, the totally positive units
 are exactly the powers of $\varepsilon$.
 
-$h(V) = 1$ is the one fact here that is a computation rather than an argument: $V$
-is a quartic CM field of discriminant $1089$, and both its class number and the
-splitting data below are what \texttt{scripts/moser\_is\_ov.py} checks through
-\textsc{Pari}. Nothing else in this paper depends on it; it enters only at the
-step from an ideal to a generator.
+$h(V) = 1$, by Minkowski again, and the computation is small enough to give in
+full. With $n = 4$, $r_2 = 2$ and $\lvert\operatorname{disc}(V)\rvert = 1089$ the
+bound is
+\[
+  \Bigl(\frac4\pi\Bigr)^{2}\frac{4!}{4^4}\sqrt{1089}
+  = \frac{16}{\pi^2}\cdot\frac{3}{32}\cdot 33 < 5.02 ,
+\]
+so every ideal class contains an integral ideal of norm at most $5$. Which primes
+of $\Ok_V$ have norm that small? Above $2$: each $\pi_i$ is inert in $V$, so the
+prime above it has norm $\Nm(\pi_i)^2 = 4$, and there is no prime of norm $2$.
+Above $3$: the prime $\mathfrak p_3$ of $F$ ramifies, and splits in $V$ into two
+primes of norm $3$. Above $5$: $33 \equiv 3 \pmod 5$ is a non-residue, so $5$ is
+inert in $F$ and every prime above it has norm at least $25$. Hence the only
+integral ideals of norm at most $5$ are the unit ideal, the two primes of norm $3$
+and the two of norm $4$, and it is enough to generate those four.
+
+The ones above $2$ are $\pi_1\Ok_V$ and $\pi_2\Ok_V$, principal already in
+$\Ok_F$. For those above $3$, take
+\[
+  w = \tfrac12\bigl(1 + i(2\sqrt3 + \sqrt{11})\bigr) \in \Ok_V,
+\]
+which lies in $3\Lat$ at the chart point $(6,0,12,6)$ and has
+\[
+  \Nm_{V/F}(w) = \lvert w \rvert^2
+  = \tfrac14\bigl(1 + (2\sqrt3+\sqrt{11})^2\bigr)
+  = \tfrac14\bigl(24 + 4\sqrt{33}\bigr) = 6 + \sqrt{33},
+\]
+so $\Nm_{V/\Q}(w) = 36 - 33 = 3$ and $(w)$ is one of the two; its conjugate under
+$\sqrt{33} \mapsto -\sqrt{33}$ is the other. So the class group is trivial.
+
+(\textsc{Pari} agrees, and \texttt{scripts/moser\_is\_ov.py} runs the check, but
+the argument above does not need it.)
 
 Which primes of $F$ are inert in $V$? Exactly those above an obstructed $p$,
 together with the one above $11$. That is the content of the two symbols: $p$
@@ -1390,7 +1417,12 @@ $\alpha_{256/9}$ & $503/512$ & $\Q(\sqrt3,\sqrt{11},\sqrt{1015})$ & $6$ & $5.350
 \end{center}
 
 The last column is not one measurement, and it is worth saying how the six were
-built, because no search went into them. For each rotation, take the points of
+built, because no vertex-selection or minimisation search entered the full-ball
+constructions reported here: the halves are whole balls, not chosen subsets of
+one. The two parameters were found by taking the smallest depth whose ball
+reaches the shell at $\sqrt a$---a ball stopping short of it holds no pair
+$p, \theta_a(p)$ and cannot work, so there is nothing to choose below that---and
+then the radius is the ball's own. For each rotation, take the points of
 $\Lat$ reachable as a sum of at most $d$ unit vectors and lying within radius $r$,
 and glue that set to its own $\theta_a$-image at the origin: $L$ and $S$ are the
 \emph{same} ball, so the union has $2\lvert L\rvert - 1$ vertices. The two
@@ -1482,8 +1514,13 @@ Among the induced subgraphs of $G$ that contain the origin and are not
 $4$-colourable---a non-empty family, since $G$ is one---take one, $H$, with
 fewest vertices. Then $\chi(H) \ge 5$. For the other direction pick any
 $v \ne 0$ of $H$; by minimality $H - v$ has a proper $4$-colouring, and giving
-$v$ a fifth colour extends it to $H$, so $\chi(H) \le 5$. Being induced in $G$,
-$H$ is $(L \cap H) \cup \theta(S \cap H)$ and still shares the origin.
+$v$ a fifth colour extends it to $H$, so $\chi(H) \le 5$. And $H$ is a join of the
+same form: putting
+\[
+  L_H = L \cap V(H), \qquad S_H = \theta^{-1}\bigl(V(H) \cap \theta(S)\bigr),
+\]
+we have $V(H) = L_H \cup \theta(S_H)$ with $L_H \subseteq L$ and
+$S_H \subseteq S$, and $0 \in V(H)$ by construction.
 \end{proof}
 
 \noindent So every entry of the table gives a $5$-chromatic join, of at most the

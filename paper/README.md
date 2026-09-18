@@ -3,9 +3,9 @@
 Two finished papers, both typeset and both compiling:
 
 * **`joining-rotations.tex`** -- which rotations join two Moser lattices into a
-  5-chromatic graph. 18 pages, 8 figures.
+  5-chromatic graph. 39 pages including one appendix, 8 figures.
 * **`v5-at-least-29.tex`** -- the order of a 5-chromatic unit-distance graph is
-  at least 29, improving the published 28. 5 pages, no figures, independent of
+  at least 29, improving the published 28. 3 pages, no figures, independent of
   the other.
 
 The `.md` files are the working drafts the `.tex` files were written from; the
@@ -33,7 +33,7 @@ program than the one that compiled the document.
 tectonic -X compile joining-rotations.tex --outdir /tmp/texout
 ```
 
-**Both compile clean** -- 18 pages with 8 figures, and 5 pages, no warnings
+**Both compile clean** -- 39 pages with 8 figures, and 3 pages, no warnings
 from the engine on either.
 
 ## Why this format
@@ -103,7 +103,7 @@ reproducible from this repository:
 | which shells are non-empty | `scripts/shells.py` |
 | the closed criterion for which shells are non-empty | `scripts/shell_criterion.py` |
 | the rank-8 hypothesis: rank 4 exactly at `4a-1 = 3k^2` or `11k^2` | `scripts/rank8_condition.py` |
-| where Proposition 4's cyclic condition holds, and where it fails | `scripts/z4_relation.py` |
+| where Proposition 5's cyclic condition holds, and where it fails | `scripts/z4_relation.py` |
 | Theorem 4's count by enumeration: 35 subgroups, 2 survive | `scripts/two_colourings.py` |
 | the kinds of joining edge: 2/4/3/2 for the integer spindles, 1 each for the rational ones, 2 for each of the five known rotations | `scripts/cross_kinds.py` |
 | the ball behind each construction: half-size, radius and depth, measured from the shipped coordinates | `scripts/ball_params.py` |
@@ -116,7 +116,7 @@ reproducible from this repository:
 | the same bound with no ball, per rotation | `scripts/interface_bound_exact.py 4` (or `28`, `36`, `16`) |
 | the 1920 minimal interfaces, their shape and factorisation | `scripts/interface_matchings.py` |
 | Haugland's lattice: rank 12, joint rank 24, covolume 1/7 per extra set | `scripts/hept_rank.py` |
-| Proposition 23's two halves on both lattices | `scripts/blind_spot.py` |
+| Proposition 25's two halves on both lattices | `scripts/blind_spot.py` |
 | section 10's nested family: index `9^(J-2)`, units `6(2J+1)` | `scripts/finer_lattices.py` |
 | the free pass for `theta_4` there, 210 units and 42 in 2L | `scripts/hept_halfunit.py 1` |
 | `theta_1` dead and `theta_2` surviving there | `scripts/hept_classify.py 1 2` |
