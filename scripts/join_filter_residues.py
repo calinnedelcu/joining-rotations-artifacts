@@ -60,10 +60,17 @@ from pysat.solvers import Solver
 
 total = shell_count(num, den)
 if total == 0:
-    log(f"the shell at {num}/{den} is EMPTY in this lattice: the rotation has "
-        f"nothing to act on, and the question does not arise")
-    sys.exit(1)
-log(f"shell at {num}/{den}: {total} lattice points (non-empty, so the rotation acts)")
+    # An empty shell means no pair p, theta(p) at distance 1 -- the spindle
+    # mechanism is absent.  It does NOT mean there are no cross edges: Lambda_J
+    # still has unit vectors, they just pair distinct points.  So the filter is
+    # valid here and we run it.  An earlier version exited at this point saying
+    # "the question does not arise", which was wrong, and hid the three
+    # empty-shell multiples of 4 below 100 that survive filter 1.
+    log(f"the shell at {num}/{den} is EMPTY: no pair p, theta(p) at distance 1, "
+        f"so the spindle mechanism is absent. Cross edges may still exist, and "
+        f"the filter is run on them below.")
+log(f"shell at {num}/{den}: {total} lattice points"
+    + (" (non-empty, so the rotation acts on it)" if total else ""))
 
 t = time.time()
 L0 = Lattice(WL)

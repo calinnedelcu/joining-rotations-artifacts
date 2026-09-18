@@ -1668,11 +1668,24 @@ occupied-shell \emph{integer} spindles that Theorem~\ref{thm:law} admits to
 $a = 100$---the candidates as Section~\ref{sec:seven} defines them---the account
 is now complete: eleven die to a test that uses every periodic colouring, four
 are the constructions of Section~\ref{sec:seven}, and $a = 64$ joins by
-Lemma~\ref{lem:chain}. The empty-shell multiples of $4$ lie outside that tally,
-since the law is silent at an empty shell; $a = 8$, $32$, $40$ and $56$ carry a
-homomorphism $4$-colouring and so are dead anyway, while $a = 24$ carries none
-and $a = 68$, $72$, $88$, $96$ we have not tested. Those five are open, and are
-not counted above. Nothing here
+Lemma~\ref{lem:chain}. The empty-shell multiples of $4$ lie outside that tally, since the law is silent
+at an empty shell, and they are worth settling separately rather than leaving
+implicit. There are nine of them below $100$, and both filters have now been run
+on all nine. Six die: $a = 8$, $32$, $40$, $56$, $68$ and $96$ each carry a
+homomorphism $4$-colouring---in fact $96$ of them---so no subset of the joint
+lattice is 5-chromatic there either. Three survive both: $a = 24$, $72$ and $88$
+admit no homomorphism $4$-colouring at all, and the periodic filter proves at
+modulus $4$ that no pair of $4$-periodic colourings kills them, over the $66$
+residue pairs that occur in each. Those three are genuine candidates, on the same
+footing as the survivors above and with no construction known; they are not
+counted in the sixteen, because the law never admitted them.
+
+That the filters can speak here at all is worth a sentence. An empty shell means
+no point is paired with its own image, so the spindle mechanism is absent---but
+$\Lam_a$ still has rank $8$ and $72$ unit vectors, and the cross edges they give
+pair \emph{distinct} points. An earlier version of the accompanying code declined
+to run the periodic filter at an empty shell, on the ground that the question did
+not arise. It does arise, and these three are what the refusal was hiding. Nothing here
 covers the rational candidates---three of which work---or the finer lattices, or
 rotations outside the spindle family, where Section~\ref{sec:notclaimed} reports
 both tools blind.

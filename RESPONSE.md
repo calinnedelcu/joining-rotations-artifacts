@@ -39,10 +39,21 @@ sentence was doing too much work. We have not defended it; we have replaced it:
 
 - §7 now names its scope in place — "the sixteen occupied-shell integer spindles
   that Theorem 1 admits to `a = 100`, the candidates as §6 defines them".
-- It then accounts for the empty-shell cases out loud rather than by omission:
-  `a = 8, 32, 40, 56` carry a homomorphism 4-colouring and are dead anyway;
-  `a = 24` carries none, and `a = 68, 72, 88, 96` we have not tested; **those five
-  are open and are not counted.**
+- It then settles the empty-shell cases rather than leaving them implicit. Both
+  filters have now been run on all nine below 100. **Six die** — `8, 32, 40, 56,
+  68, 96` each carry a homomorphism 4-colouring, 96 of them. **Three survive
+  both** — `24, 72, 88` admit none, and the periodic filter proves at modulus 4
+  that no pair of 4-periodic colourings kills them, over the 66 residue pairs
+  occurring in each. Those three are candidates on the same footing as the
+  sixteen, and are not counted among them because the law never admitted them.
+
+  We owe R2 more than the sentence, then. The reason we could not see those three
+  was a refusal in our own code: `join_filter_residues.py` exited at an empty
+  shell saying "the question does not arise". It does arise — an empty shell means
+  no point is paired with its own image, so the spindle mechanism is absent, but
+  `Λ_a` still has rank 8 and 72 unit vectors whose cross edges pair distinct
+  points. The filter is valid there, now runs, and produced the three. R2 reached
+  the right neighbourhood by the wrong route, and there was something in it.
 - Figure 3's caption now labels the bottom row as the sixteen with an *occupied*
   shell, and says the nine gaps lie outside the accounting because the law is
   silent at an empty shell.
