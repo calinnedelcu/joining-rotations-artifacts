@@ -1,0 +1,12 @@
+STEP 5:  R equals the congruence sublattice L
+  the 30 unit vectors satisfy both congruences: True
+  L occupies 16 of 256 residue classes mod 4, so [Z^4 : L] = 16
+  the conditions are closed under addition, so L is a group: True
+  R contains 4 Z^4: True
+  hence R is inside L, contains 4 Z^4, and meets the same 16 classes: R = L
+
+STEP 6:  64 | S  <=>  p/2 in R,  over all residues mod 32
+  residue tuples satisfying the hypotheses: 11776
+  exceptions: 0
+
+PROVED: 4 | a  =>  theta_a admits no homomorphism 4-colouring.

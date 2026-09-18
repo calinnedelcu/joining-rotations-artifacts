@@ -1,0 +1,31 @@
+# tectonic build, 2026-09-18 04:42 UTC
+
+## joining-rotations.tex
+note: Rerunning TeX because "joining-rotations.aux" changed ...
+note: Running TeX ...
+note: Running xdvipdfmx ...
+note: Skipped writing 2 intermediate files (use --keep-intermediates to keep them)
+note: Writing `joining-rotations.pdf` (388.1865234375 KiB)
+warning: joining-rotations.tex:1066: Overfull \hbox (95.14447pt too wide) in paragraph at lines 1059--1066
+warning: joining-rotations.tex:113: Overfull \vbox (2.69603pt too high) has occurred while \output is active
+warning: joining-rotations.tex:1301: Underfull \vbox (badness 4454) has occurred while \output is active
+warning: joining-rotations.tex:1636: Overfull \hbox (3.7719pt too wide) in paragraph at lines 1627--1636
+warning: joining-rotations.tex:1636: Overfull \hbox (4.71468pt too wide) in paragraph at lines 1627--1636
+warning: joining-rotations.tex:1720: Underfull \vbox (badness 10000) has occurred while \output is active
+warning: joining-rotations.tex:1845: Overfull \hbox (7.5883pt too wide) in paragraph at lines 1844--1845
+warning: joining-rotations.tex:1899: Underfull \hbox (badness 10000) in paragraph at lines 1895--1899
+warning: joining-rotations.tex:1899: Underfull \hbox (badness 2941) in paragraph at lines 1895--1899
+warning: joining-rotations.tex:289: Overfull \hbox (31.17816pt too wide) in paragraph at lines 285--289
+warning: joining-rotations.tex:289: Overfull \hbox (37.59593pt too wide) in paragraph at lines 285--289
+warning: warnings were issued by the TeX engine; use --print and/or --keep-logs for details.
+
+## v5-at-least-29.tex
+note: Rerunning TeX because "v5-at-least-29.aux" changed ...
+note: Running TeX ...
+note: Running xdvipdfmx ...
+note: Skipped writing 2 intermediate files (use --keep-intermediates to keep them)
+note: Writing `v5-at-least-29.pdf` (62.5458984375 KiB)
+
+## result
+joining-rotations.pdf: 34 pages, 0 errors, 0 unresolved references
+v5-at-least-29.pdf:    3 pages, 0 errors, 0 unresolved references

@@ -1,0 +1,24 @@
+ball 8131 points, 126 cross edges
+  they biject with the 126 unit vectors of the rank-8 joint lattice, so the count is ball-free
+  depth 4, radius 2.53:   8131 points -> 126 cross edges
+  depth 5, radius 2.53:  14323 points -> 126 cross edges
+  depth 4, radius 3.0:  10369 points -> 126 cross edges
+384 admissible pairings -> 235 patterns
+60 cross edges touch the centre and appear in no pattern; 66 usable
+
+five-edge sets meeting every pattern: 1920  (0s)
+  of those, perfect matchings (10 distinct endpoints): 1920
+  the 66 usable cross edges are themselves a matching: True
+
+  orbit profile of the solutions:
+    {'auxiliary': 4, 'reference': 1}  ->  1920
+
+  distinct reference edges used: 30
+  solutions per reference edge: [64]
+  auxiliary split by crosswise direction: {((0, 2), (1, 2)): 1920}
+  per reference edge: [8] pairs in one direction, [8] in the other
+  every combination of the two occurring, for every reference edge: True
+  => 30 x 8 x 8 = 1920
+  (across ALL reference edges the direction-0 pairs number 72, so the 8 is relative to the reference edge)
+
+  C(66,5) = 8936928, so the solutions are 0.021% of all five-subsets

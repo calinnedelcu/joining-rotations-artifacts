@@ -1,0 +1,14 @@
+rotation      m  classes  pairs  verdict
+theta_100     4      256     69  ok
+theta_12      4      256     69  ok
+theta_20      4      256     69  ok
+theta_44      4      256     69  ok
+theta_48      8     4096     69  ok
+theta_52      4      256     69  ok
+theta_60      4      256     69  ok
+theta_76      4      256     69  ok
+theta_80      8     4096     69  ok
+theta_84      4      256     69  ok
+theta_92      4      256     69  ok
+
+11 witnesses, 0 bad

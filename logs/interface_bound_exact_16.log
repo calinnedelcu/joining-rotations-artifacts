@@ -1,0 +1,4 @@
+theta_16 in Q(v3,v11,v7): lattice rank 4, 30 unit vectors, 8 homomorphism colourings
+cross edges of the whole union, by Proposition 18: 126  (60 at the shared origin, 66 usable)
+384 pairings -> 157 distinct patterns, 0 empty  (0s)
+at most 0: UNSAT, at most 1: SAT  ->  needs at least 1 of the 66 usable cross edges, over the LATTICE

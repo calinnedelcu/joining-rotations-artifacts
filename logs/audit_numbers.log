@@ -1,0 +1,133 @@
+
+Section 2-4: the lattice and its colourings
+  ok  index of R in the chart lattice Z^4                                        16
+  ok  unit vectors of R (|z|^2 = 1)                                              30
+  ok  R-points at |z|^2 = 1/9                                                     6
+  ok  R-points at |z|^2 = 1/36 (page 9: none)                                     0
+  ok  smallest norms below 1/4: only 1/9                                    ['1/9']
+
+Section 6: the seven constructions
+  ok  theta_4: cos = (2a-1)/(2a)                                                7/8
+  ok  theta_4: shell points                                                      30
+  ok  theta_16: cos = (2a-1)/(2a)                                             31/32
+  ok  theta_16: shell points                                                     30
+  ok  theta_28: cos = (2a-1)/(2a)                                             55/56
+  ok  theta_28: shell points                                                     60
+  ok  theta_36: cos = (2a-1)/(2a)                                             71/72
+  ok  theta_36: shell points                                                     54
+  ok  alpha_64/3: cos = (2a-1)/(2a)                                         125/128
+  ok  alpha_64/3: shell points                                                   18
+  ok  alpha_64/9: cos = (2a-1)/(2a)                                         119/128
+  ok  alpha_64/9: shell points                                                    6
+  ok  alpha_256/9: cos = (2a-1)/(2a)                                        503/512
+  ok  alpha_256/9: shell points                                                   6
+  ok  total shell points in Figure 6                                            204
+  ok  radicands of 4a-1 for the seven                      [15, 7, 111, 143, 759, 247, 1015]
+  ok  alpha_64/9 at Parts' mono-pair distance 8/3                              64/9
+  ok  alpha_64/3 at Parts' other mono-pair distance 8/sqrt3                     64/3
+  ok  alpha_256/9 at twice the first                                          256/9
+
+Section 6: obstructed primes and the shell criterion
+  ok  obstructed residue classes mod 33                          [2, 8, 17, 29, 32]
+  ok  obstructed primes below 200                          [2, 17, 29, 41, 83, 101, 107, 131, 149, 167, 173, 197]
+  ok  residue form vs symbols, odd primes < 20000                                 0
+  ok  closed criterion vs the form, a = 1..400                                    0
+  ok  empty multiples of 4 below 100                       [8, 24, 32, 40, 56, 68, 72, 88, 96]
+  ok  candidates below 100                                                       16
+
+Proposition 3: where the rank-8 hypothesis fails
+  ok  excluded a <= 100 (4a-1 = 3k^2 or 11k^2)             [1, 3, 7, 19, 25, 37, 61, 69, 91]
+  ok  occupied shells at integer a <= 100                                        59
+
+Theorem 1: the shell hypothesis is not decoration
+  ..  the three 'dead'/'not dead' lines below are READ from
+  ..  results/JOIN-CLASSIFICATION.json, not re-derived here: that file is a
+  ..  complete certificate search at rank 8, and repeating it is not this
+  ..  script's job.  Everything else in this audit comes from the definitions.
+  ok  multiples of 4 below 60 with an empty shell               [8, 24, 32, 40, 56]
+  ok  of those, a homomorphism colouring EXISTS at                  [8, 32, 40, 56]
+  ok  and does not at                                                          [24]
+  ok  48, 64 and 80 all have non-empty shells                          [48, 64, 80]
+
+Proposition 5: the cyclic half, and the exceptions that were not
+  ok  1 + omega + omega^2 = 2 omega (omega = exp(i pi/3))                      True
+  ok  omega is a unit vector of R                                              True
+  ok  half-unit witnesses at 48, 64, 80 lie in R                       [48, 64, 80]
+  ok  and each has |w|^2 = a/4, so (1-theta_a)w has length 1/2             [48, 64, 80]
+  ok  omega and omega^2 keep them in R                                 [48, 64, 80]
+
+Theorem 4: the two kernels, named directly
+  ok  pi_1 R / 2R                                                     [0, 5, 9, 12]
+  ok  pi_2 R / 2R                                                      [0, 3, 4, 7]
+  ok  unit vectors fall into 9 non-zero classes                                   9
+  ok  2-dim subspaces avoiding all nine                    [(0, 3, 4, 7), (0, 5, 9, 12)]
+
+Theorem 4: why the quotient must be Klein
+  ok  T = I does not satisfy T^2 - T + I = 0 in End(Z/4)                          1
+  ok  T = -I does not either                                                      3
+  ok  so no cyclic quotient survives; Aut(Z/4) has only those two                   [1, 3]
+
+Section 7: kinds, and the reach of the record
+  ok  type-M rotations: four spindles + five known, theta_4 in both                        8
+  ok  joining rotations in all: five known + six new                             11
+  ok  Parts' record has 509 vertices                                            509
+  ok  all of them inside radius 2.5244 (max 2.524338)                          True
+  ok  488 of the 509 lie inside radius 2                                        488
+  ok  the other 21 sit at four radii                       [2.0238, 2.2909, 2.432, 2.5243]
+  ok  theta_4's shell, at radius 2, is the only one within that                     True
+
+Section 9: where rho comes from
+  ok  |(-sqrt3, 4cos(pi/7)-1)| = 4 sin(2pi/7)                                   0.0
+  ok  theta = (21/pi) phi - 14, as Haugland reports it             0.42363201413287
+  ok  |rho| = 1                                                                 1.0
+  ok  arg rho in degrees                                                     3.6311
+
+Section 4: the six cyclic colourings, enumerated
+  ok  tuples phi(b_i) in Z/4 killing no unit vector                              12
+  ok  up to negation, the six Section 4 prints             [(0, 0, 2, 1), (0, 1, 0, 0), (1, 0, 1, 3), (1, 1, 0, 0), (1, 1, 2, 1), (1, 3, 1, 3)]
+  ok  so eight homomorphism colourings: two Klein, six cyclic                        8
+
+Section 7-8: the interface
+  ok  admissible pairings 8^2 * 6                                               384
+  ok  C(66,5)                                                               8936928
+  ok  1920 = 30 x 8 x 8                                                        1920
+  ok  1920 as a share of C(66,5)                                              0.021
+  ok  permutations of four colours fixing 0                                       6
+  ok  Parts' record: |L| + |S| - 1                                              509
+  ok  theta_28's ball doubles at the shared origin                           156577
+  ok  every union is a ball glued to its own image, so odd    [1, 1, 1, 1, 1, 1, 1]
+  ok  and each is 2|L| - 1                                 [14557, 78289, 87913, 93613, 2905, 79129]
+  ok  1408 against Parts' 509                                                  2.77
+
+Section 9-10: Haugland's lattice and the nested family
+  ok  degree of Q(zeta_420)                                                      96
+  ok  degree of Q(zeta_42)                                                       12
+  ok  squarefree divisors of 105                           [1, 3, 5, 7, 15, 21, 35, 105]
+  ok  spindles available below 17                               [1, 2, 4, 7, 9, 16]
+  ok  of those, rank 12 (4N-1 = 3k^2 or 7k^2)                         [1, 2, 7, 16]
+  ok  Proposition 23 applies at                                             [4, 16]
+  ok  unit triangles, Moser lattice                                              60
+  ok  unit triangles, Haugland's lattice                                         84
+
+Section 6: the density
+  ok  (1/6) * prod over odd obstructed p <= 2*10^6                          0.10882
+  ok  obstructed share of the primes (Dirichlet density 1/4)                     0.25
+  ok  density at N = 10^2                                                      0.16
+  ok  density at N = 10^3                                                     0.136
+  ok  density at N = 10^4                                                    0.1236
+
+The second paper: v5 >= 29
+  ok  u non-decreasing in the lower bounds                 [60, 64, 68, 72, 76, 81, 85, 89, 93]
+  ok  u non-decreasing in the upper bounds                 [61, 66, 72, 78, 84, 90, 96, 103, 110]
+  ok  u(28) <= 96 kills every n <= 28 against e5 >= 99                         True
+  ok  u(29) <= 103 does not, so the route stops at 29                          True
+  ok  threshold for v5 >= 30                                                    104
+  ok  threshold for v5 >= 31                                                    111
+  ok  1/104 to seven places                                               0.0096154
+  ok  drop below 1/99 needed, as a percentage                                  4.81
+  ok  u <= 98 lies inside [89,103]                                             True
+  ok  u <= 98 lies inside [93,110]                                             True
+  ok  Agoston-Palvolgyi left 28 alive: 102 >= 99                               True
+  ok  and excluded 27: 97 < 99                                                 True
+
+every number checks

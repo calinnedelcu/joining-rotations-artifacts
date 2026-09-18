@@ -1,0 +1,22 @@
+   a  par  cross  pi_1 divides r or s / pi_2 divides r or s
+   4 even     36  pi1 36/36, pi2 36/36
+   6 even     36  pi1 36/36, pi2 36/36
+   9  odd     12  pi1 12/12, pi2 12/12
+  10 even     60  pi1 60/60, pi2 60/60
+  15  odd     60  pi1 60/60, pi2 60/60
+  16 even     36  pi1 36/36, pi2 36/36
+  21  odd     60  pi1 60/60, pi2 60/60
+  24 even     12  pi1 12/12, pi2 12/12
+  28 even     60  pi1 60/60, pi2 60/60
+  30 even     12  pi1 12/12, pi2 12/12
+  34 even     12  pi1 12/12, pi2 12/12
+  36 even     36  pi1 36/36, pi2 36/36
+  39  odd     12  pi1 0/12, pi2 0/12
+  42 even     24  pi1 24/24, pi2 24/24
+  45  odd     36  pi1 36/36, pi2 36/36
+  51  odd     12  pi1 0/12, pi2 0/12
+  55  odd     36  pi1 36/36, pi2 36/36
+
+cross vectors with lambda != -1 examined: 552
+counterexamples to the contrapositive (a even, neither divisible): 0
+counterexamples to the trichotomy (4 does not divide a, both divisible): 0

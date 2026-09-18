@@ -1,0 +1,16 @@
+R/2R = F_2^4;  the 30 unit vectors give 9 nonzero classes
+index-4 subgroups of R containing 2R: 35
+of those, missing every unit-vector class: 2
+   [0, 4, 9, 13]
+   [0, 7, 11, 12]
+
+gamma_i(x) = 0 <=> pi_i | x, on the depth-3 ball (2083 points):
+   [0, 4, 9, 13] = ker gamma_2 = pi_2 R   (451 of 2083 divisible, agreement everywhere)
+   [0, 7, 11, 12] = ker gamma_1 = pi_1 R   (457 of 2083 divisible, agreement everywhere)
+
+O-stability, tested on the depth-3 ball:
+   [0, 4, 9, 13]:  451 points, (1+sqrt33)/2 keeps 451, sqrt33 keeps 451
+   [0, 7, 11, 12]:  457 points, (1+sqrt33)/2 keeps 457, sqrt33 keeps 457
+   but so are 11 of the 35, since sqrt33 is the identity on R/2R -- stability does not identify them
+
+the two survivors are pi_1 R and pi_2 R, by the divisibility test above

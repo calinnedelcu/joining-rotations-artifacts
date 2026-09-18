@@ -1,0 +1,10 @@
+ J  generators  6(2J+1) index over the 30-vector lattice   9^(J-2)
+ 2          30       30                                1         1
+ 3          42       42                                9         9
+ 4          54       54                               81        81
+ 5          66       66                              729       729
+
+J = 2: 30 unit vectors, against 30 generators
+J = 3: 42 unit vectors, against 42 generators
+
+all three claims hold where they were checked

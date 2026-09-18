@@ -1,0 +1,17 @@
+1. the seven joining spindles of Section 7
+  ok  theta_4: 126 edges, 60 at the origin, kinds                   2
+  ok  theta_16: 126 edges, 60 at the origin, kinds                  4
+  ok  theta_28: 180 edges, 60 at the origin, kinds                  3
+  ok  theta_36: 150 edges, 60 at the origin, kinds                  2
+  ok  alpha_64/3: 78 edges, 60 at the origin, kinds                  1
+  ok  alpha_64/9: 66 edges, 60 at the origin, kinds                  1
+  ok  alpha_256/9: 66 edges, 60 at the origin, kinds                  1
+
+2. the five rotations already known, each rho times a unit vector
+  ok  Im psi = 0.48412291: 126 edges, 60 at 0, kinds                  2
+  ok  Im psi = 0.24642936: 108 edges, 60 at 0, kinds                  2
+  ok  Im psi = 0.21092166: 108 edges, 60 at 0, kinds                  2
+  ok  Im psi = 0.08023868: 90 edges, 60 at 0, kinds                  2
+  ok  Im psi = 0.04383445: 90 edges, 60 at 0, kinds                  2
+
+So every one of the eight is type M in Parts' sense (theta_4 = rho lies in both lists).

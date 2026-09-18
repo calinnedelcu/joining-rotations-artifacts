@@ -1,0 +1,13 @@
+theta_16 = arccos(31/32) in Q(v3,v11,v7)
+1. rotation modulus exactly 1: True
+2. all 30 lattice vectors exactly unit: True
+3. ball depth 4 radius 4.0: 14557 points  (1s)
+4. shell points at squared radius exactly 16: 30
+5. union L u theta_16(L): 29113 distinct points
+6. edges recomputed from coordinates: 285294  (8s)
+7. exact re-check of 4076 sampled edges: 0 wrong
+8. min degree 4 (critical needs >= 4)
+9. NOT 4-colourable, fresh solver: True  (26s)
+10. written to out/join16.pts (29113 points)
+
+VERDICT: theta_16 rebuilt and re-verified

@@ -1,0 +1,16 @@
+Moser, 30 unit vectors: 60 ordered triples with g1 + g2 = g3   e.g. #0 + #10 = #5
+Haugland, 42 unit vectors: 84 ordered triples with g1 + g2 = g3   e.g. #0 + #14 = #7
+
+both lattices carry a unit triangle, so Proposition 23's cyclic half
+applies at every a = 4m^2, for either of them.
+
+     a   m   |h_g| = m|1-theta_a|   m even kills Z/4
+     4   1         0.500000000000  needs the triangle
+    16   2         0.500000000000                yes
+    36   3         0.500000000000  needs the triangle
+    64   4         0.500000000000                yes
+   100   5         0.500000000000  needs the triangle
+   144   6         0.500000000000                yes
+
+every h_g has length exactly 1/2, so 2h_g is a unit vector of the joint
+lattice and any Z/4 homomorphism must give h_g an odd value.

@@ -1,0 +1,21 @@
+   a  shell  units  half-unit  odd relation
+   4     30    126         30           YES
+  12     42    102         42           YES
+  16     30    126         42           YES
+  20     60    120         60           YES
+  28     60    180         60           YES
+  36     54    150         54           YES
+  44     30     90         30           YES
+  48     42    102         42           YES
+  52     60    120         60           YES
+  60     84    144         84           YES
+  64     30     90         30           YES
+  76     60    120         60           YES
+  80     60    120         60           YES
+  84     84    144         84           YES
+  92     60    120         60           YES
+ 100     90    150         90           YES
+
+rotations with a half-unit vector: 16
+the odd relation holds on: 16 of 16
+It holds everywhere, as the omega-identity says it must.

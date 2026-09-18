@@ -1,0 +1,64 @@
+N=1 gives 30 points: the form is right
+
+  shell   1:    30 points
+  shell   3:    42 points
+  shell   4:    30 points
+  shell   5:    60 points
+  shell   7:    60 points
+  shell   9:    54 points
+  shell  11:    30 points
+  shell  12:    42 points
+  shell  13:    60 points
+  shell  15:    84 points
+  shell  16:    30 points
+  shell  19:    60 points
+  shell  20:    60 points
+  shell  21:    84 points
+  shell  23:    60 points
+  shell  25:    90 points
+  shell  27:    66 points
+  shell  28:    60 points
+  shell  31:   120 points
+  shell  33:    42 points
+  shell  35:   120 points
+  shell  36:    54 points
+  shell  37:   120 points
+  shell  39:    84 points
+  shell  43:    60 points
+  shell  44:    30 points
+  shell  45:   108 points
+  shell  47:    60 points
+  shell  48:    42 points
+  shell  49:    90 points
+  shell  52:    60 points
+  shell  53:    60 points
+  shell  55:    60 points
+  shell  57:    84 points
+  shell  59:    60 points
+  shell  60:    84 points
+  shell  61:    60 points
+  shell  63:   108 points
+  shell  64:    30 points
+  shell  65:   120 points
+  shell  67:   120 points
+  shell  69:    84 points
+  shell  71:    60 points
+  shell  73:    60 points
+  shell  75:   126 points
+  shell  76:    60 points
+  shell  77:    60 points
+  shell  79:    60 points
+  shell  80:    60 points
+  shell  81:    78 points
+  shell  84:    84 points
+  shell  89:    60 points
+  shell  91:   120 points
+  shell  92:    60 points
+  shell  93:   168 points
+  shell  95:   120 points
+  shell  97:   120 points
+  shell  99:    54 points
+  shell 100:    90 points
+
+OCCUPIED: [1, 3, 4, 5, 7, 9, 11, 12, 13, 15, 16, 19, 20, 21, 23, 25, 27, 28, 31, 33, 35, 36, 37, 39, 43, 44, 45, 47, 48, 49, 52, 53, 55, 57, 59, 60, 61, 63, 64, 65, 67, 69, 71, 73, 75, 76, 77, 79, 80, 81, 84, 89, 91, 92, 93, 95, 97, 99, 100]
+EMPTY:    [2, 6, 8, 10, 14, 17, 18, 22, 24, 26, 29, 30, 32, 34, 38, 40, 41, 42, 46, 50, 51, 54, 56, 58, 62, 66, 68, 70, 72, 74, 78, 82, 83, 85, 86, 87, 88, 90, 94, 96, 98]

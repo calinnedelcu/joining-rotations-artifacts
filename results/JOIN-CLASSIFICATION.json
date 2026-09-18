@@ -1,0 +1,983 @@
+{
+ "amax": 60,
+ "bmax": 12,
+ "decided": 107,
+ "survivors": [
+  "theta_4",
+  "theta_12",
+  "theta_16",
+  "theta_20",
+  "theta_24",
+  "theta_28",
+  "theta_36",
+  "theta_44",
+  "theta_48",
+  "theta_52",
+  "theta_60"
+ ],
+ "rows": [
+  {
+   "name": "theta_1",
+   "field": "Q(v3,v11,v5)",
+   "cos": "1/2",
+   "rank": 4,
+   "units": 30,
+   "dead": true,
+   "seconds": 0.02
+  },
+  {
+   "name": "theta_2",
+   "field": "Q(v3,v11,v7)",
+   "cos": "3/4",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 0.88
+  },
+  {
+   "name": "theta_3",
+   "field": "Q(v3,v11,v5)",
+   "cos": "5/6",
+   "rank": 4,
+   "units": 42,
+   "dead": true,
+   "seconds": 0.05
+  },
+  {
+   "name": "theta_4",
+   "field": "Q(v3,v11,v5)",
+   "cos": "7/8",
+   "rank": 8,
+   "units": 126,
+   "dead": false,
+   "seconds": 2.06
+  },
+  {
+   "name": "theta_5",
+   "field": "Q(v3,v11,v19)",
+   "cos": "9/10",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 2.57
+  },
+  {
+   "name": "theta_6",
+   "field": "Q(v3,v11,v23)",
+   "cos": "11/12",
+   "rank": 8,
+   "units": 96,
+   "dead": true,
+   "seconds": 3.44
+  },
+  {
+   "name": "theta_7",
+   "field": "Q(v3,v11,v5)",
+   "cos": "13/14",
+   "rank": 4,
+   "units": 60,
+   "dead": true,
+   "seconds": 0.12
+  },
+  {
+   "name": "theta_8",
+   "field": "Q(v3,v11,v31)",
+   "cos": "15/16",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 5.17
+  },
+  {
+   "name": "theta_9",
+   "field": "Q(v3,v11,v35)",
+   "cos": "17/18",
+   "rank": 8,
+   "units": 126,
+   "dead": true,
+   "seconds": 6.2
+  },
+  {
+   "name": "theta_10",
+   "field": "Q(v3,v11,v13)",
+   "cos": "19/20",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 7.6
+  },
+  {
+   "name": "theta_11",
+   "field": "Q(v3,v11,v43)",
+   "cos": "21/22",
+   "rank": 8,
+   "units": 90,
+   "dead": true,
+   "seconds": 8.57
+  },
+  {
+   "name": "theta_12",
+   "field": "Q(v3,v11,v47)",
+   "cos": "23/24",
+   "rank": 8,
+   "units": 102,
+   "dead": false,
+   "seconds": 10.22
+  },
+  {
+   "name": "theta_13",
+   "field": "Q(v3,v11,v17)",
+   "cos": "25/26",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 11.64
+  },
+  {
+   "name": "theta_14",
+   "field": "Q(v3,v11,v5)",
+   "cos": "27/28",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 12.95
+  },
+  {
+   "name": "theta_15",
+   "field": "Q(v3,v11,v59)",
+   "cos": "29/30",
+   "rank": 8,
+   "units": 204,
+   "dead": true,
+   "seconds": 14.56
+  },
+  {
+   "name": "theta_16",
+   "field": "Q(v3,v11,v7)",
+   "cos": "31/32",
+   "rank": 8,
+   "units": 126,
+   "dead": false,
+   "seconds": 16.23
+  },
+  {
+   "name": "theta_17",
+   "field": "Q(v3,v11,v67)",
+   "cos": "33/34",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 18.08
+  },
+  {
+   "name": "theta_18",
+   "field": "Q(v3,v11,v71)",
+   "cos": "35/36",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 20.05
+  },
+  {
+   "name": "theta_19",
+   "field": "Q(v3,v11,v5)",
+   "cos": "37/38",
+   "rank": 4,
+   "units": 60,
+   "dead": true,
+   "seconds": 0.58
+  },
+  {
+   "name": "theta_20",
+   "field": "Q(v3,v11,v79)",
+   "cos": "39/40",
+   "rank": 8,
+   "units": 120,
+   "dead": false,
+   "seconds": 23.86
+  },
+  {
+   "name": "theta_21",
+   "field": "Q(v3,v11,v83)",
+   "cos": "41/42",
+   "rank": 8,
+   "units": 204,
+   "dead": true,
+   "seconds": 26.27
+  },
+  {
+   "name": "theta_22",
+   "field": "Q(v3,v11,v29)",
+   "cos": "43/44",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 30.63
+  },
+  {
+   "name": "theta_23",
+   "field": "Q(v3,v11,v91)",
+   "cos": "45/46",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 33.86
+  },
+  {
+   "name": "theta_24",
+   "field": "Q(v3,v11,v95)",
+   "cos": "47/48",
+   "rank": 8,
+   "units": 72,
+   "dead": false,
+   "seconds": 34.93
+  },
+  {
+   "name": "theta_25",
+   "field": "Q(v3,v11,v5)",
+   "cos": "49/50",
+   "rank": 4,
+   "units": 90,
+   "dead": true,
+   "seconds": 0.9
+  },
+  {
+   "name": "theta_26",
+   "field": "Q(v3,v11,v103)",
+   "cos": "51/52",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 38.85
+  },
+  {
+   "name": "theta_27",
+   "field": "Q(v3,v11,v107)",
+   "cos": "53/54",
+   "rank": 8,
+   "units": 126,
+   "dead": true,
+   "seconds": 43.28
+  },
+  {
+   "name": "theta_28",
+   "field": "Q(v3,v11,v37)",
+   "cos": "55/56",
+   "rank": 8,
+   "units": 180,
+   "dead": false,
+   "seconds": 44.81
+  },
+  {
+   "name": "theta_29",
+   "field": "Q(v3,v11,v115)",
+   "cos": "57/58",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 47.62
+  },
+  {
+   "name": "theta_30",
+   "field": "Q(v3,v11,v119)",
+   "cos": "59/60",
+   "rank": 8,
+   "units": 72,
+   "dead": true,
+   "seconds": 51.51
+  },
+  {
+   "name": "theta_31",
+   "field": "Q(v3,v11,v41)",
+   "cos": "61/62",
+   "rank": 8,
+   "units": 180,
+   "dead": true,
+   "seconds": 52.92
+  },
+  {
+   "name": "theta_32",
+   "field": "Q(v3,v11,v127)",
+   "cos": "63/64",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 56.39
+  },
+  {
+   "name": "theta_33",
+   "field": "Q(v3,v11,v131)",
+   "cos": "65/66",
+   "rank": 8,
+   "units": 102,
+   "dead": true,
+   "seconds": 58.53
+  },
+  {
+   "name": "theta_34",
+   "field": "Q(v3,v11,v5)",
+   "cos": "67/68",
+   "rank": 8,
+   "units": 72,
+   "dead": true,
+   "seconds": 58.8
+  },
+  {
+   "name": "theta_35",
+   "field": "Q(v3,v11,v139)",
+   "cos": "69/70",
+   "rank": 8,
+   "units": 180,
+   "dead": true,
+   "seconds": 59.13
+  },
+  {
+   "name": "theta_36",
+   "field": "Q(v3,v11,v13)",
+   "cos": "71/72",
+   "rank": 8,
+   "units": 150,
+   "dead": false,
+   "seconds": 61.59
+  },
+  {
+   "name": "theta_37",
+   "field": "Q(v3,v11,v5)",
+   "cos": "73/74",
+   "rank": 4,
+   "units": 120,
+   "dead": true,
+   "seconds": 1.72
+  },
+  {
+   "name": "theta_38",
+   "field": "Q(v3,v11,v151)",
+   "cos": "75/76",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 68.88
+  },
+  {
+   "name": "theta_39",
+   "field": "Q(v3,v11,v155)",
+   "cos": "77/78",
+   "rank": 8,
+   "units": 156,
+   "dead": true,
+   "seconds": 73.14
+  },
+  {
+   "name": "theta_40",
+   "field": "Q(v3,v11,v53)",
+   "cos": "79/80",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 76.0
+  },
+  {
+   "name": "theta_41",
+   "field": "Q(v3,v11,v163)",
+   "cos": "81/82",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 79.08
+  },
+  {
+   "name": "theta_42",
+   "field": "Q(v3,v11,v167)",
+   "cos": "83/84",
+   "rank": 8,
+   "units": 84,
+   "dead": true,
+   "seconds": 83.32
+  },
+  {
+   "name": "theta_43",
+   "field": "Q(v3,v11,v19)",
+   "cos": "85/86",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 86.54
+  },
+  {
+   "name": "theta_44",
+   "field": "Q(v3,v11,v7)",
+   "cos": "87/88",
+   "rank": 8,
+   "units": 90,
+   "dead": false,
+   "seconds": 108.21
+  },
+  {
+   "name": "theta_45",
+   "field": "Q(v3,v11,v179)",
+   "cos": "89/90",
+   "rank": 8,
+   "units": 204,
+   "dead": true,
+   "seconds": 114.77
+  },
+  {
+   "name": "theta_46",
+   "field": "Q(v3,v11,v61)",
+   "cos": "91/92",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 105.11
+  },
+  {
+   "name": "theta_47",
+   "field": "Q(v3,v11,v17)",
+   "cos": "93/94",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 107.18
+  },
+  {
+   "name": "theta_48",
+   "field": "Q(v3,v11,v191)",
+   "cos": "95/96",
+   "rank": 8,
+   "units": 102,
+   "dead": false,
+   "seconds": 115.28
+  },
+  {
+   "name": "theta_49",
+   "field": "Q(v3,v11,v65)",
+   "cos": "97/98",
+   "rank": 8,
+   "units": 150,
+   "dead": true,
+   "seconds": 121.37
+  },
+  {
+   "name": "theta_50",
+   "field": "Q(v3,v11,v199)",
+   "cos": "99/100",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 123.49
+  },
+  {
+   "name": "theta_51",
+   "field": "Q(v3,v11,v203)",
+   "cos": "101/102",
+   "rank": 8,
+   "units": 72,
+   "dead": true,
+   "seconds": 129.86
+  },
+  {
+   "name": "theta_52",
+   "field": "Q(v3,v11,v23)",
+   "cos": "103/104",
+   "rank": 8,
+   "units": 120,
+   "dead": false,
+   "seconds": 125.96
+  },
+  {
+   "name": "theta_53",
+   "field": "Q(v3,v11,v211)",
+   "cos": "105/106",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 131.32
+  },
+  {
+   "name": "theta_54",
+   "field": "Q(v3,v11,v215)",
+   "cos": "107/108",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 135.34
+  },
+  {
+   "name": "theta_55",
+   "field": "Q(v3,v11,v73)",
+   "cos": "109/110",
+   "rank": 8,
+   "units": 156,
+   "dead": true,
+   "seconds": 133.65
+  },
+  {
+   "name": "theta_56",
+   "field": "Q(v3,v11,v223)",
+   "cos": "111/112",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 139.51
+  },
+  {
+   "name": "theta_57",
+   "field": "Q(v3,v11,v227)",
+   "cos": "113/114",
+   "rank": 8,
+   "units": 144,
+   "dead": true,
+   "seconds": 144.71
+  },
+  {
+   "name": "theta_58",
+   "field": "Q(v3,v11,v7)",
+   "cos": "115/116",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 143.53
+  },
+  {
+   "name": "theta_59",
+   "field": "Q(v3,v11,v235)",
+   "cos": "117/118",
+   "rank": 8,
+   "units": 120,
+   "dead": true,
+   "seconds": 154.06
+  },
+  {
+   "name": "theta_60",
+   "field": "Q(v3,v11,v239)",
+   "cos": "119/120",
+   "rank": 8,
+   "units": 144,
+   "dead": false,
+   "seconds": 161.63
+  },
+  {
+   "name": "alpha_1/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "0",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 0.37
+  },
+  {
+   "name": "alpha_3/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "2/3",
+   "rank": 8,
+   "units": 72,
+   "dead": true,
+   "seconds": 0.63
+  },
+  {
+   "name": "alpha_5/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "4/5",
+   "rank": 8,
+   "units": 96,
+   "dead": true,
+   "seconds": 1.01
+  },
+  {
+   "name": "alpha_7/2",
+   "field": "Q(v3,v11,v13)",
+   "cos": "6/7",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 1.41
+  },
+  {
+   "name": "alpha_9/2",
+   "field": "Q(v3,v11,v17)",
+   "cos": "8/9",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 2.0
+  },
+  {
+   "name": "alpha_11/2",
+   "field": "Q(v3,v11,v7)",
+   "cos": "10/11",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 2.67
+  },
+  {
+   "name": "alpha_13/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "12/13",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 3.31
+  },
+  {
+   "name": "alpha_15/2",
+   "field": "Q(v3,v11,v29)",
+   "cos": "14/15",
+   "rank": 8,
+   "units": 84,
+   "dead": true,
+   "seconds": 4.24
+  },
+  {
+   "name": "alpha_17/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "16/17",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 5.51
+  },
+  {
+   "name": "alpha_19/2",
+   "field": "Q(v3,v11,v37)",
+   "cos": "18/19",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 6.29
+  },
+  {
+   "name": "alpha_21/2",
+   "field": "Q(v3,v11,v41)",
+   "cos": "20/21",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 7.55
+  },
+  {
+   "name": "alpha_23/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "22/23",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 8.66
+  },
+  {
+   "name": "alpha_25/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "24/25",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 9.59
+  },
+  {
+   "name": "alpha_27/2",
+   "field": "Q(v3,v11,v53)",
+   "cos": "26/27",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 10.75
+  },
+  {
+   "name": "alpha_29/2",
+   "field": "Q(v3,v11,v19)",
+   "cos": "28/29",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 12.58
+  },
+  {
+   "name": "alpha_31/2",
+   "field": "Q(v3,v11,v61)",
+   "cos": "30/31",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 15.12
+  },
+  {
+   "name": "alpha_33/2",
+   "field": "Q(v3,v11,v65)",
+   "cos": "32/33",
+   "rank": 8,
+   "units": 72,
+   "dead": true,
+   "seconds": 15.79
+  },
+  {
+   "name": "alpha_35/2",
+   "field": "Q(v3,v11,v23)",
+   "cos": "34/35",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 18.85
+  },
+  {
+   "name": "alpha_37/2",
+   "field": "Q(v3,v11,v73)",
+   "cos": "36/37",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 20.26
+  },
+  {
+   "name": "alpha_39/2",
+   "field": "Q(v3,v11,v7)",
+   "cos": "38/39",
+   "rank": 8,
+   "units": 72,
+   "dead": true,
+   "seconds": 22.52
+  },
+  {
+   "name": "alpha_41/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "40/41",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 23.65
+  },
+  {
+   "name": "alpha_43/2",
+   "field": "Q(v3,v11,v85)",
+   "cos": "42/43",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 29.42
+  },
+  {
+   "name": "alpha_45/2",
+   "field": "Q(v3,v11,v89)",
+   "cos": "44/45",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 30.51
+  },
+  {
+   "name": "alpha_47/2",
+   "field": "Q(v3,v11,v31)",
+   "cos": "46/47",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 32.02
+  },
+  {
+   "name": "alpha_49/2",
+   "field": "Q(v3,v11,v97)",
+   "cos": "48/49",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 34.03
+  },
+  {
+   "name": "alpha_51/2",
+   "field": "Q(v3,v11,v101)",
+   "cos": "50/51",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 39.29
+  },
+  {
+   "name": "alpha_53/2",
+   "field": "Q(v3,v11,v35)",
+   "cos": "52/53",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 39.09
+  },
+  {
+   "name": "alpha_55/2",
+   "field": "Q(v3,v11,v109)",
+   "cos": "54/55",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 43.03
+  },
+  {
+   "name": "alpha_57/2",
+   "field": "Q(v3,v11,v113)",
+   "cos": "56/57",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 42.6
+  },
+  {
+   "name": "alpha_59/2",
+   "field": "Q(v3,v11,v13)",
+   "cos": "58/59",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 44.93
+  },
+  {
+   "name": "alpha_61/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "60/61",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 47.04
+  },
+  {
+   "name": "alpha_63/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "62/63",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 46.43
+  },
+  {
+   "name": "alpha_65/2",
+   "field": "Q(v3,v11,v43)",
+   "cos": "64/65",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 55.04
+  },
+  {
+   "name": "alpha_67/2",
+   "field": "Q(v3,v11,v133)",
+   "cos": "66/67",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 63.11
+  },
+  {
+   "name": "alpha_69/2",
+   "field": "Q(v3,v11,v137)",
+   "cos": "68/69",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 75.08
+  },
+  {
+   "name": "alpha_71/2",
+   "field": "Q(v3,v11,v47)",
+   "cos": "70/71",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 75.96
+  },
+  {
+   "name": "alpha_73/2",
+   "field": "Q(v3,v11,v145)",
+   "cos": "72/73",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 71.0
+  },
+  {
+   "name": "alpha_75/2",
+   "field": "Q(v3,v11,v149)",
+   "cos": "74/75",
+   "rank": 8,
+   "units": 84,
+   "dead": true,
+   "seconds": 74.03
+  },
+  {
+   "name": "alpha_77/2",
+   "field": "Q(v3,v11,v17)",
+   "cos": "76/77",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 78.36
+  },
+  {
+   "name": "alpha_79/2",
+   "field": "Q(v3,v11,v157)",
+   "cos": "78/79",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 88.19
+  },
+  {
+   "name": "alpha_81/2",
+   "field": "Q(v3,v11,v161)",
+   "cos": "80/81",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 89.27
+  },
+  {
+   "name": "alpha_83/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "82/83",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 91.6
+  },
+  {
+   "name": "alpha_85/2",
+   "field": "Q(v3,v11,v5)",
+   "cos": "84/85",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 85.31
+  },
+  {
+   "name": "alpha_87/2",
+   "field": "Q(v3,v11,v173)",
+   "cos": "86/87",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 89.96
+  },
+  {
+   "name": "alpha_89/2",
+   "field": "Q(v3,v11,v59)",
+   "cos": "88/89",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 104.06
+  },
+  {
+   "name": "alpha_91/2",
+   "field": "Q(v3,v11,v181)",
+   "cos": "90/91",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 110.08
+  },
+  {
+   "name": "alpha_93/2",
+   "field": "Q(v3,v11,v185)",
+   "cos": "92/93",
+   "rank": 8,
+   "units": 60,
+   "dead": true,
+   "seconds": 101.69
+  }
+ ]
+}

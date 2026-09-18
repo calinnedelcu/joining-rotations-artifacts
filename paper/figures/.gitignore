@@ -1,0 +1,4 @@
+# Previews and caches, both regenerable: the PDFs are what the paper includes.
+*.png
+crossedges.json
+__pycache__/

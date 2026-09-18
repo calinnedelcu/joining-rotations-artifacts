@@ -1,0 +1,13 @@
+1. Parts' gadget: 367 vertices, every one of them in R
+2. edges recomputed from the coordinates: 1822  (his file says 1822)
+3. terminals at -4/3 and 4/3, squared distance 7.111111 = (8/3)^2
+4. with the terminals forced apart the graph is not 4-colourable: True
+5. chain of 1: 367 vertices (bound 367)
+   terminals now 0 and 2.6667, so a = 64/9
+6. theta_a: cos = 119/128, modulus exactly 1: True
+7. union with its image, sharing the origin: 733 vertices
+   edges: 3645  (0s)
+   the two far terminals are at unit distance
+8. NOT 4-colourable: True   (450s)
+
+=> a = 64/9 carries a 5-chromatic join on at most 733 vertices.   total 492s
