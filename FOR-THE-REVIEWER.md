@@ -78,4 +78,4 @@ Not a defence — a map, so you can check the repairs rather than the originals.
 
 ---
 
-*Archive pinned at commit `5057ce45ba1e`. A tag can be moved; a commit cannot.*
+*The archive's `v1.0` release is the snapshot this note describes.*
