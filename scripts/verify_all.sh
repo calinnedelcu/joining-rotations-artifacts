@@ -20,17 +20,13 @@ echo "python: $PY  ($("$PY" -V 2>&1))"
   || echo "  note: python-sat is absent, so the solver entries will fail" >&2
 echo
 
-run () {                       # run <label> <timeout> <args...>
-  local label=$1; shift
-  local secs=$1; shift
-  local log="$OUT/$label.log"
-  local t0=$SECONDS
-  timeout "$secs" $PY -u "$@" > "$log" 2>&1
-  local rc=$?
-  printf '%-22s %-8s %5ds  %s\n' "$label" \
-    "$( [ $rc -eq 0 ] && echo PASS || { [ $rc -eq 124 ] && echo TIMEOUT || echo "FAIL($rc)"; } )" \
-    "$((SECONDS - t0))" "$log"
-}
+# Entries are collected first and executed at the end, so that JOBS>1 can send
+# them through xargs -P.  Most are single-threaded and the machine is not, so a
+# sequential run wastes most of the box: about three hours becomes about one.
+SPECS="$OUT/_specs"
+: > "$SPECS"
+run    () { echo "$1 $2 $PY -u ${*:3}" >> "$SPECS"; }
+sh_run () { echo "$*" >> "$SPECS"; }
 
 echo "=== reproducing every claim in paper/README.md ==="
 # --- the fast ones first, so a broken environment shows up in seconds --------
@@ -44,6 +40,7 @@ run cross_kinds       900 scripts/cross_kinds.py
 run gadget_chain      600 scripts/gadget_chain.py 3
 run ball_params      3600 scripts/ball_params.py
 run check_periodic    120 scripts/check_periodic.py
+run check_emptyshell  120 scripts/check_emptyshell.py
 run empty_shell_st   1800 scripts/empty_shell_status.py
 run shells            300 scripts/shells.py 100
 run shell_criterion   600 scripts/shell_criterion.py 400
@@ -65,6 +62,45 @@ run join_filter12    1800 scripts/join_filter_residues.py 12
 run join_filter20    1800 scripts/join_filter_residues.py 20
 run rho_unit_family  1800 scripts/rho_unit_family.py
 run prove_step5      5400 scripts/prove_step5.py
-run z4_relation      4200 scripts/z4_relation.py 100
+run z4_relation      9000 scripts/z4_relation.py 100
 run lambda_sweep    10800 scripts/lambda_sweep.py
+
+# --- the proof certificates -------------------------------------------------
+# drat-trim is deliberately not vendored, so this entry reports SKIP rather
+# than FAIL when it is absent: see proofs/README.md for the two build lines.
+if [ -x ./tools/drat-trim ] || command -v drat-trim >/dev/null 2>&1; then
+  DT=$( [ -x ./tools/drat-trim ] && echo ./tools/drat-trim || command -v drat-trim )
+  sh_run check_drat     1800 bash scripts/check_drat.sh "$DT"
+else
+  printf '%-22s %-8s %5ds  %s\n' check_drat SKIP 0 "no drat-trim; see proofs/README.md"
+fi
+
+# --- the rendered paper -----------------------------------------------------
+if command -v pdftotext >/dev/null 2>&1 && [ -f paper/joining-rotations.pdf ]; then
+  sh_run check_paper      60 bash scripts/check_paper.sh
+else
+  printf '%-22s %-8s %5ds  %s\n' check_paper SKIP 0 "needs pdftotext and a built PDF"
+fi
+
+# --- execute -----------------------------------------------------------------
+JOBS=${JOBS:-6}
+RUNNER="$OUT/_run_one.sh"
+cat > "$RUNNER" <<'EOS'
+#!/bin/bash
+label=$1; secs=$2; shift 2
+log="$OUT/$label.log"
+t0=$SECONDS
+timeout "$secs" "$@" > "$log" 2>&1
+rc=$?
+printf '%-22s %-8s %5ds  %s\n' "$label" \
+  "$( [ $rc -eq 0 ] && echo PASS || { [ $rc -eq 124 ] && echo TIMEOUT || echo "FAIL($rc)"; } )" \
+  "$((SECONDS - t0))" "$log"
+EOS
+chmod +x "$RUNNER"
+export OUT
+echo "running $(wc -l < "$SPECS" | tr -d ' ') entries, $JOBS at a time"
+echo
+< "$SPECS" xargs -P "$JOBS" -L1 "$RUNNER"
+
+echo
 echo "=== done ==="

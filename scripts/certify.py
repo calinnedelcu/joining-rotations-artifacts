@@ -118,10 +118,17 @@ else:
     for c, v in enumerate(tri):
         cls.append([var(v, c)])
     log(f"  colour symmetry broken on the triangle {tuple(tri)} -> colours 0,1,2")
-with open(cnf_path, "w") as f:
-    f.write(f"p cnf {n*k} {len(cls)}\n")
-    f.write("".join(" ".join(map(str, c)) + " 0\n" for c in cls))
-log(f"CNF: {n*k} variables, {len(cls)} clauses -> proofs/{name}.cnf")
+body = f"p cnf {n*k} {len(cls)}\n" + "".join(
+    " ".join(map(str, c)) + " 0\n" for c in cls)
+# The full-ball instances run to 140-170 MB.  Ship those gzipped, as the proofs
+# are: check_drat.sh unpacks either form, and an unverifiable certificate is no
+# certificate -- leaving the CNF out entirely made four of the eight fail on a
+# clean clone, which is how this was found.
+with open(cnf_path, "w") as f:                 # plain for now: both tools need a path
+    f.write(body)
+big_cnf = len(body) > 8 << 20
+log(f"CNF: {n*k} variables, {len(cls)} clauses -> proofs/{name}.cnf"
+    + ("  (will be gzipped once checked)" if big_cnf else ""))
 
 t = time.time()
 cmd = [CADICAL, "--no-binary", cnf_path, drat_path]
@@ -160,6 +167,16 @@ with open(os.path.join(out, f"{name}.drat-trim.log"), "w") as f:
 with open(drat_path, "rb") as fi, gzip.open(drat_path + ".gz", "wb") as fo:
     shutil.copyfileobj(fi, fo)
 os.remove(drat_path)
+# The full-ball instances run to 140-170 MB.  Ship those gzipped, as the proofs
+# are; check_drat.sh unpacks either form.  Leaving the CNF out of the repository
+# entirely made four of the eight certificates fail on a clean clone, and an
+# unverifiable certificate is not a certificate.
+if big_cnf:
+    with open(cnf_path, "rb") as fi, gzip.open(cnf_path + ".gz", "wb") as fo:
+        shutil.copyfileobj(fi, fo)
+    os.remove(cnf_path)
+    log(f"gzipped the CNF to proofs/{name}.cnf.gz "
+        f"({os.path.getsize(cnf_path + '.gz')/2**20:.0f} MB)")
 log(f"wrote proofs/{name}.drat.gz "
     f"({os.path.getsize(drat_path + '.gz')/2**20:.0f} MB)   total {time.time()-t0:.0f}s")
 raise SystemExit(0 if ok else 3)

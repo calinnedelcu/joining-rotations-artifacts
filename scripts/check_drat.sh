@@ -30,18 +30,23 @@ T=$(mktemp -d)
 trap 'rm -rf "$T"' EXIT
 fail=0
 for n in $NAMES; do
-  [ -f "proofs/$n.cnf" ] && [ -f "proofs/$n.drat.gz" ] || {
-    echo "== $n: no such certificate in proofs/" >&2; fail=1; continue; }
+  # The four largest CNFs are 140-170 MB raw, so they ship gzipped like the
+  # proofs.  Accept either form; drat-trim needs a real file, so unpack first.
+  if   [ -f "proofs/$n.cnf" ];    then CNF="proofs/$n.cnf"
+  elif [ -f "proofs/$n.cnf.gz" ]; then CNF="$T/p.cnf"; gzip -dc "proofs/$n.cnf.gz" > "$CNF"
+  else CNF=""; fi
+  [ -n "$CNF" ] && [ -f "proofs/$n.drat.gz" ] || {
+    echo "== $n: FAILED -- no such certificate in proofs/" >&2; fail=1; continue; }
   echo "== $n"
   gzip -dc "proofs/$n.drat.gz" > "$T/p.drat"
   # drat-trim draws its progress with carriage returns, so the verdict line
   # arrives as "\rs VERIFIED" and an anchored grep misses it.  Strip the CRs.
-  "$DT" "proofs/$n.cnf" "$T/p.drat" | tee "$T/out.txt"
+  "$DT" "$CNF" "$T/p.drat" | tee "$T/out.txt"
   if tr '\r' '\n' < "$T/out.txt" | grep -qx 's VERIFIED'; then
     echo "OK -- $n checks"
   else
     echo "NOT VERIFIED -- drat-trim did not report success for $n" >&2; fail=1
   fi
-  rm -f "$T/p.drat"
+  rm -f "$T/p.drat" "$T/p.cnf"
 done
 exit $fail

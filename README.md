@@ -29,8 +29,20 @@ The certificate gap is closed. A reviewer asked why the only proof here was for
 someone else's graph while our own claims were solver verdicts, and was right.
 `proofs/` now holds eight DRAT proofs -- every construction of the paper's
 Section 6, the monochromatic-pair property Lemma 18 rests on, and Parts' record
--- each with its `drat-trim` log. That is most of this repository's 460 MB, and
-it is the point of it.
+-- each with its `drat-trim` log. At 415 MB of compressed proof they are most of
+this repository, and a shallow clone runs to about 900 MB; they are also the
+point of it. If you would rather test the pipeline before pulling that, the
+smallest is 31 MB and checks in half a minute:
+
+    bash scripts/check_drat.sh ./tools/drat-trim gadget367
+
+Nothing in the checking path needs a SAT solver, or `pysat`, or the `.venv`:
+`check_drat.sh`, `check_emptyshell.py`, `check_periodic.py` and
+`audit_numbers.py` all run on a bare `python3` plus a `drat-trim` you built
+yourself. We ran exactly that from a clean clone on Python 3.14 with no `pysat`
+present: 97/97 numbers, 9 empty-shell witnesses, 11 periodic witnesses, 8
+certificates. A solver is needed only to *regenerate* a proof or to rebuild a
+construction from scratch.
 
 The nine empty-shell verdicts of Section 7 are certified too, differently:
 `results/emptyshell/` holds a witness for each, and `scripts/check_emptyshell.py`

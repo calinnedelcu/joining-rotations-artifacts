@@ -25,7 +25,17 @@ each settles its rotation on its own; the four largest are whole balls, left
 unminimised.
 
 Total: about 415 MB of compressed proof, and roughly ten minutes to re-check the
-lot. Timings are on an Apple M5 with 32 GB.
+lot. A shallow clone of this repository is therefore around 900 MB; if you only
+want to sanity-check the pipeline first, `gadget367` is 31 MB and verifies in
+half a minute:
+
+    bash scripts/check_drat.sh ./tools/drat-trim gadget367
+
+Timings are on an Apple M5 with 32 GB.
+
+Nothing here needs a SAT solver installed: `check_drat.sh` reads the shipped
+proofs and calls `drat-trim`. Only `certify.py`, which *regenerates* a proof,
+needs CaDiCaL.
 
 Checker: `drat-trim` as distributed at
 `raw.githubusercontent.com/marijnheule/drat-trim/master/drat-trim.c`, sha256

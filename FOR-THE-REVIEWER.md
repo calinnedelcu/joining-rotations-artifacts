@@ -32,7 +32,9 @@ the code, CC BY 4.0 for the paper, the certificates and the data.
    `drat-trim` yourself (the script deliberately does not vendor it: a checker
    you got from the people whose proof you are checking is not a check) and
    expect eight `s VERIFIED` in about ten minutes.
-5. **`bash scripts/verify_all.sh`** — the whole table. Budget three hours.
+5. **`bash scripts/verify_all.sh`** — the whole table, run in parallel
+   (`JOBS`, default 6). A little over an hour. Our last full run: **35 of 35
+   PASS**, 0 FAIL, 0 TIMEOUT.
 
 ## What is proved, in one paragraph
 
@@ -77,8 +79,9 @@ spindles, each with a checked DRAT certificate; an infinite chained family at
   positively rather than merely report it: [9]'s first series clips its point set
   to radius 2, and only `theta_4` of the seven has a shell that reaches so far —
   which is why `theta_4` is the one it found.
-- **Section 9 is thin relative to its billing**, and `N = 7` and `N = 9` are
-  unfinished.
+- **Section 9 is thin relative to its billing.** `N = 7` is now settled — it
+  survives, with no half-unit vector, so the search that decides it is the
+  informative kind — but `N = 9` is still open and is rank 24.
 
 ## Where we were wrong before, in case it bears on how you read the rest
 
