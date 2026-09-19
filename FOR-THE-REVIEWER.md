@@ -9,7 +9,7 @@ rediscovering what we already know.
 | | |
 |---|---|
 | the manuscript | `joining-rotations.pdf`, 46 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
-| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `acde8deab4b4` |
+| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `66d7470f4653` |
 | a transcript | `VERIFICATION.md` — every check we ran, with its raw output |
 
 The repository is public; nothing else needs to be sent. Its `README.md` opens

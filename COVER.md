@@ -9,7 +9,7 @@ Enclosed:
 | `joining-rotations.pdf` | the manuscript |
 | `FOR-THE-REVIEWER.md` | what is supplied, what is already known to be open, and the cheapest checks in order |
 | `VERIFICATION.md` | every check we ran, with its raw output, so you can compare a run rather than trust a summary |
-| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `acde8deab4b4` |
+| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `66d7470f4653` |
 
 ## The result, in one paragraph
 
