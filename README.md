@@ -12,20 +12,33 @@ table is the honest answer, and it is deliberately the first thing in the file.
 |---|---|
 | every number in the paper | `scripts/audit_numbers.py`, PASS. One block is **read** from `results/JOIN-CLASSIFICATION.json`, not re-derived, and the script says so as it runs |
 | `R = (1/3) O_V`, `R/2R = F_4 x F_4`, Theorems 4 and 16 | `scripts/moser_is_ov.py`, PASS. Its second half needs `cypari`; without it the script **skips** that stage |
-| the seven constructions, chi >= 5 | coordinates in `graphs/`, re-verified by re-running a solver. **No UNSAT certificates are shipped** |
+| the seven constructions, chi >= 5 | coordinates in `graphs/`, and **all seven now ship a checked DRAT certificate** in `proofs/` -- `scripts/check_drat.sh` re-verifies the eight proofs (the seven plus Parts' 509 record) in about ten minutes, each reporting `s VERIFIED` |
 | chi = 5 for a full union | **not established** for any of the seven, and the paper says so. Lemma 19 gives `chi = 5` for a minimal induced subjoin of any of them; the vertex-critical 1408 has it outright |
 | the eleven periodic exclusions | **all 11** have a witness in `results/periodic/`, named for its modulus. Nine die at `m = 4`; `theta_48` and `theta_80` are degenerate at `m = 4` and `m = 6` and die at `m = 8`. `scripts/check_periodic.py` re-validates all eleven from the JSON alone, importing no project code: 11 witnesses, 0 bad |
-| `a = 64` joins | `scripts/gadget_chain.py n`, PASS at n = 1, 2, 3 in 40s each. The check is structural, not a solve: the gadget's monochromatic-pair property on 367 vertices, plus all six copies present intact (1822/1822 edges) inside the union. `GADGET_CHAIN_SOLVE=1` adds the redundant direct solve, which agrees at n = 1 in 450s and does not finish at n = 3 |
+| `a = 64` joins | `proofs/gadget367.*` certifies the premise -- Parts' gadget has no 4-colouring separating its terminals -- and `scripts/gadget_chain.py n`, PASS at n = 1, 2, 3 in 40s each. The check is structural, not a solve: the gadget's monochromatic-pair property on 367 vertices, plus all six copies present intact (1822/1822 edges) inside the union. `GADGET_CHAIN_SOLVE=1` adds the redundant direct solve, which agrees at n = 1 in 450s and does not finish at n = 3 |
 | the ball behind each construction | `scripts/ball_params.py`, measured from the shipped coordinates |
 | kinds of joining edge | `scripts/cross_kinds.py`, PASS |
 | the 5-cross-edge bound and the 1920 sets | `scripts/interface_bound_exact.py`, `interface_matchings.py`. The 1920 solve a **restricted hitting-set problem**; no 5-chromatic graph with five cross edges is claimed |
 | the whole suite from a clean extraction | run in full: **30 of 30 PASS**, no FAIL and no TIMEOUT. The first pass had three that did not -- a path that only breaks in a clean extraction, and two timeouts on caps I had set below the scripts' own typical runtimes. All three fixed and rerun here: `build_join16` 75s, `prove_step5` 1674s, `lambda_sweep` 2819s |
 
-Two things this archive deliberately does not contain. There are **no DRAT/LRAT
-proof certificates**: non-4-colourability is re-established by re-running a
-solver, which is weaker, and the paper says so. And the **repository URL and
-archival DOI are not filled in** -- that is a decision for the authors, not an
-oversight of the packaging.
+One thing this archive still does not contain: the **archival DOI is not
+filled in** -- that is a decision for the authors, not an oversight of the
+packaging.
+
+The certificate gap is closed. A reviewer asked why the only proof here was for
+someone else's graph while our own claims were solver verdicts, and was right.
+`proofs/` now holds eight DRAT proofs -- every construction of the paper's
+Section 6, the monochromatic-pair property Lemma 18 rests on, and Parts' record
+-- each with its `drat-trim` log. That is most of this repository's 460 MB, and
+it is the point of it.
+
+The nine empty-shell verdicts of Section 7 are certified too, differently:
+`results/emptyshell/` holds a witness for each, and `scripts/check_emptyshell.py`
+validates all nine from the JSON alone, computing lengths from the field's own
+multiplication table and importing nothing from this project. For the six that
+die the witness is an explicit homomorphism 4-colouring; for the three that
+survive it is a vector of length 1/2, which by Proposition 5 settles the question
+in one line rather than by a search log.
 
 ## What is new since the previous archive
 

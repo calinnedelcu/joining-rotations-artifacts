@@ -73,7 +73,18 @@ def main():
     print(f"{'a':>4} {'shell':>6} {'units':>6} {'half-unit':>10} {'odd relation':>13}")
     tested = holds = 0
     for a in range(1, amax + 1):
-        if a % 4 or not shell_count(a):
+        # 4 | a only.  Where 4 does not divide a, Theorem 1 gives a homomorphism
+        # 4-colouring, and Proposition 5 says a half-unit vector would rule every
+        # such colouring out -- so those spindles have none, by proof rather than
+        # by search, and running them would only be slow.
+        #
+        # An EMPTY shell is not a reason to skip.  It used to be one here, and
+        # that is what made this sweep report sixteen: the shell construction is
+        # the only source of half-unit vectors the paper had in closed form, so
+        # an empty shell looked like an empty question.  It is not.  At a = 24,
+        # 72 and 88 the shell is empty and Lambda_a holds twelve of them anyway,
+        # which is what decides those three rotations.
+        if a % 4:
             continue
         built = rational_spindle(a, 1).build()
         if built is None:
@@ -98,6 +109,9 @@ def main():
         print(f"{a:>4} {shell_count(a):>6} {len(U):>6} {len(H):>10} "
               f"{('YES' if ok else 'NO'):>13}")
     print(f"\nrotations with a half-unit vector: {tested}")
+    print(f"(the sweep covers every multiple of 4 up to {amax}, occupied shell or"
+          f" not; where 4 does not divide a there is none, by Theorem 1 with"
+          f" Proposition 5.)")
     print(f"the odd relation holds on: {holds} of {tested}")
     assert holds == tested, "the odd relation should hold wherever a half-unit exists"
     print("It holds everywhere, as the omega-identity says it must.")

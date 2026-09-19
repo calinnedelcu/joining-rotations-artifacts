@@ -1,0 +1,118 @@
+% The odd case, and the sweep.
+%
+% This was Appendix A of the paper.  It records the case analysis that the
+% trichotomy at the end of Step 4 replaced -- which lambda actually occur at odd
+% a, rather than merely that each one is harmless -- and the computational sweep
+% that checks both.  Nothing in the paper depends on it, which is why it was
+% moved here.  Kept because it is how the step was first proved, and because
+% Remark 27 in it records a claim of ours that turned out to be false.
+%
+% It is not a standalone document; the macros are the paper's.
+
+\appendix
+
+\section{The odd case, and the sweep}\label{app:odd}
+
+The trichotomy at the end of Step 4 settles the odd case together with the even
+one, for every $\lambda$ at once. This appendix records the finer analysis it
+replaced---which says not merely that each $\lambda \ne -1$ is harmless but which
+$\lambda$ occur---and the computational sweep that checks both against every
+rank-$8$ spindle to $a = 80$. Nothing in the paper depends on either.
+
+\subsection*{Which $\lambda$ occur at odd $a$}
+For odd $a$ Lemma \ref{lem:E} says nothing, and two sub-cases exhaust what occurs.
+
+\emph{(a) $\lambda$ rational.} Write $\lambda = \alpha/\beta$ with
+$\alpha, \beta$ coprime integers, $\beta \ge 1$. A rational $\lambda$ makes
+$m = \lvert v \rvert^2$ rational, so $m$ is a rational squared norm of a non-zero
+point of $\Lat$, hence $m \ge 1/9$ by Section \ref{sec:arith}. Rearranged,
+\eqref{eq:star} reads $m\big[a(\alpha+\beta)^2 - \alpha\beta\big] = a$. Both
+signs end up bounding the same quantity, $\lvert\alpha\rvert - \lvert\beta\rvert$,
+but for different reasons.
+
+\emph{Negative $\lambda$}, $\lambda = -p/q$ with $p,q \ge 1$, $d = q-p$. Here
+\eqref{eq:star} reads $a d^2 + pq = a/m$. With $pq \ge 1$,
+\[
+  d^2 < 1/m \le 9, \qquad\text{so}\qquad \lvert d \rvert \le 2 ,
+\]
+and $d = 0$ is $\lambda = -1$; $\lvert d \rvert = 3$ is impossible, not merely
+unobserved. If $\lvert d \rvert = 1$ then exactly one of $p,q$ is even, so $2$ and
+hence both primes divide one of $r,s$, while the other is an odd multiple of $v$
+and Corollary \ref{cor:even} keeps its colour non-zero: $\varphi(u) = 0 + c$ with
+$c \ne 0$ once more. (Here $a$ is odd, so it is the first half of the corollary
+that applies, not the second.) If $\lvert d \rvert = 2$ then $p$ and $q$ are coprime and differ by $2$, so
+both are odd; $4a + pq = a/m$ forces $m < 1/4$, and $1/9$ is the only squared
+norm below $1/4$ (Section \ref{sec:arith}), so $m = 1/9$ exactly and
+$pq = 5a$. Then $r = qv$ and $s = -pv$ with $\lvert v \rvert^2 = 1/9$ and $p,q$
+odd, so $\pi_i$ divides neither, multiplication by them is invertible mod $\pi_i$,
+and $\gamma_i(r) = 0 \iff \pi_i \mid v \iff \gamma_i(s) = 0$.
+
+\begin{lemma}\label{lem:F}
+In that case $\pi_i$ does not divide $v$.
+\end{lemma}
+
+\begin{proof}
+If $v = \pi w$ with $w \in \Lat$ then, $\pi$ being real,
+$\lvert v \rvert^2 = \pi^2 \lvert w \rvert^2$, so
+$\lvert w \rvert^2 = 1/(9\pi^2) = (58 \mp 10\sqrt{33})/144$ and \eqref{eq:norm}
+demands $A^2 + 33B^2 + 3C^2 + 11D^2 = 58$. The congruences force
+$A \equiv B \equiv C \equiv D \pmod 2$: all even makes the form $\equiv 0 \pmod 4$
+against $58 \equiv 2$; all odd makes every square $\equiv 1 \pmod 8$, so the form
+is $\equiv 1 + 33 + 3 + 11 = 48 \equiv 0 \pmod 8$, again against $58 \equiv 2$.
+Neither is possible.
+\end{proof}
+
+So both colours are equal and non-zero, and the vector imposes the same diagonal
+condition $(c,c)$ that the shell displacements of Step 2 impose. Nothing new.
+(Two shorter routes reach the same place. Corollary \ref{cor:even} gives
+$c \ne 0$ at once, since $c = 0$ would put $v$ in $\pi_i\Lat$; and $c = 0$ would put
+$v$ in $2\Lat$, forcing $\lvert v/2 \rvert^2 = 1/36$, which Section
+\ref{sec:arith} records as unattained---congruence (ii) refuses its only candidate,
+$(\pm2,0,0,0)$. That second route is the one the accompanying code takes.
+Lemma \ref{lem:F} needs neither, and proves the stronger statement that neither
+prime divides $v$.)
+
+\emph{Positive $\lambda$}, $\alpha,\beta \ge 1$. This sign occurs and is not
+covered by the bound above: $\alpha\beta \ge 1$ now, so the rearrangement gives
+$a\big[m(\alpha+\beta)^2 - 1\big] = m\alpha\beta$, and $4a > 1$---which
+$\sqrt{4a-1}$ needs---is exactly $m(\alpha-\beta)^2 < 1$, so $(\alpha-\beta)^2 < 9$
+again. The dichotomy is parity, not size. If $\alpha,\beta$ have opposite parity,
+one is even, both primes divide the corresponding one of $r,s$, and the other
+colour is again non-zero by Corollary \ref{cor:even}. If both are odd then
+$\gamma_i(r) = \gamma_i(s) = \gamma_i(v)$ and the pair is the diagonal $(c,c)$ of
+Step 2, with $c \ne 0$ by Corollary \ref{cor:even}. Nothing new either way. The
+case is not vacuous: $a = 7/19$ is odd and of rank $8$, and
+$v = \tfrac56 + \tfrac{i\sqrt3}{6}$, of squared norm $7/9$, gives a cross unit
+vector with $\lambda = 1$.
+
+\emph{(b) $\lambda$ irrational.} Then $\lvert v \rvert^2$ is irrational and the
+bound of (a) is unavailable; the three cases above need none of it. For the record,
+irrational $\lambda$ occurs only at even $a$ in every case computed
+($a = 4, 10, 16, 28$, over all rank-$8$ spindles to $a = 80$), but nothing rests on
+that now: it was the last computed-only step in the proof of
+Theorem~\ref{thm:law}, and the trichotomy removes it.
+
+\subsection*{What the sweep checks}
+The accompanying code checks Step 4 and the analysis above against the actual
+cross unit vectors of every rank-$8$ spindle to $a = 80$, with zero violations,
+and both halves of
+Corollary \ref{cor:even} on all $552$ cross vectors with $\lambda \ne -1$ to
+$a = 60$. Each prime divides $r$ or $s$ in every one of them---not only at even
+$a$, where the corollary asks for it, but at odd $a$ as well---with exactly two
+exceptions, $a = 39$ and $a = 51$. Both are the $\lvert d \rvert = 2$ case above,
+where $p$ and $q$ are odd and neither $r$ nor $s$ is divisible; there Lemma \ref{lem:F}, or the trichotomy, applies instead. The trichotomy is checked
+on the same $552$ directly: where $4 \nmid a$, no prime divides \emph{both} $r$
+and $s$, again with zero counterexamples.
+
+\begin{remark}
+An earlier form of this analysis asserted that every rational $\lambda$ is a ratio of
+\emph{consecutive} integers, $\lvert p - q \rvert = 1$, measured over every
+rank-$8$ spindle with $a \le 35$. That is false: at $a = 39$ the cross vectors have
+$\lambda = -13/15$ and $-15/13$. The measurement had stopped four short of its own
+counterexample. The bound $\lvert d \rvert \le 2$ above is a proof, and
+$\lvert d \rvert = 2$ occurs exactly when $pq = 5a$ with $m = 1/9$---which to
+$a = 80$ means $a = 39$ and $a = 51$, the two the sweep singles out, since
+$a = p(p+2)/5$ gives rank $4$ at $p = 3$ and $5$ and lands past $80$ at $p = 23$.
+The positive-$\lambda$ branch refutes the old assertion a second time, from the other
+side: $\lambda = 1$ has $\lvert \alpha - \beta \rvert = 0$.
+\end{remark}

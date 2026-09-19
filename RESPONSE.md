@@ -1,131 +1,199 @@
-# Response to the second-round report
+# Response to the review
 
-The Area Chair's closing sentence was that the hard fixes were done properly and
-the easy ones were agreed to and not done, and that this was the whole of what was
-keeping the paper out. That was accurate, and it is the criticism we took most
-seriously. This revision does the list.
+*On* **A divisibility obstruction for joining two Moser lattices**, 44 pages.
 
-We have also stopped writing "accepted without argument" and then not acting. Where
-we still disagree, we say so and act anyway; where we cannot act, we say who has
-to.
+We are grateful for the report, and particularly for the reviewer who
+reimplemented the lattice from the chart and the congruences rather than running
+our code. Three of the findings were errors on our side that we had not seen,
+and one of them was a mathematical overreach in the section that carries the
+paper's own method. Everything below is done unless it says otherwise.
 
 ---
 
-## The ten items, in the order the report put them
+## The ten must-fix items
 
-**1. Rewrite the abstract; add a Results block on p. 1.** Done. The abstract now
-opens with the obstruction deciding every rational `a`, then `3R = O_V` as its
-engine, then shell occupancy in closed form with the criterion stated, then
-density zero — and only then the constructions, with Lemma 18's infinite family
-named rather than left as a subordinate clause. Its last sentence is that the
-record of 509 is untouched. A **What is proved here** block on p. 1 lists the six
-results in order of weight, each with the section that proves it, and points at
-§10 for what is not settled.
+**1. The new constructions were uncertified.** Fixed, and further than asked.
+The report requested DRAT proofs for the two minimised graphs, and said a
+certificate for the four full-ball unions "may genuinely be impractical" with a
+reported attempt sufficing. It is not impractical. **All seven constructions of
+Section 6 now carry a checked DRAT proof**, as does Parts' 509-vertex record:
 
-**2. Retitle.** Done: *A divisibility obstruction for joining two Moser lattices*.
-The Area Chair is right that an editor cannot title a paper whose scope only we
-know, and right that we had deferred a decision already made for us.
+| instance | vertices | clauses | proof lines | solve | `drat-trim` |
+|---|---:|---:|---:|---:|---|
+| `theta16`, minimised | 2 901 | 87 250 | 1 575 613 | 65 s | `s VERIFIED` 45 s |
+| `alpha64_9`, minimised | 1 408 | 37 911 | 1 220 482 | 43 s | `s VERIFIED` 33 s |
+| `theta28`, full ball | 156 577 | 8 443 306 | 8 171 047 | 236 s | `s VERIFIED` 65 s |
+| `theta36`, full ball | 175 825 | 9 533 074 | 9 172 884 | 375 s | `s VERIFIED` 160 s |
+| `alpha64_3`, full ball | 187 225 | 10 140 490 | 9 659 817 | 237 s | `s VERIFIED` 74 s |
+| `alpha256_9`, full ball | 158 257 | 8 536 258 | 8 157 168 | 175 s | `s VERIFIED` 47 s |
+| `gadget367`, terminals split | 367 | 9 864 | 1 139 281 | 33 s | `s VERIFIED` 30 s |
+| `509_not4col` | 509 | 13 331 | 3 101 213 | — | `s VERIFIED` 131 s |
 
-**3. Certify the gadget property and the three smallest unions; label the four
-largest honestly in the table.** Half done, and the half that is done is not the
-half that was asked for.
+`theta_4` is the record itself, so the eight rows account for all seven
+rotations. About 415 MB of compressed proof; roughly ten minutes to re-check the
+lot with `scripts/check_drat.sh`.
 
-The labelling is in place: every one of the seven rows now carries **reported
-UNSAT, uncertified** in the same paragraph as the table, together with the solver,
-its version and the machine — CaDiCaL 1.9.5 through `python-sat` 1.9.dev15, Python
-3.11.15, Apple M5, 32 GB.
+Two things made this possible, and both are stated in `proofs/README.md`. Of the
+`python-sat` bindings only `lingeling` emits a proof at all, and it is far too
+slow here — it ran 22 minutes on the *smallest* instance without finishing — so
+`scripts/certify.py` now writes the CNF and calls the CaDiCaL binary. And every
+instance fixes a triangle's three vertices to colours 0, 1, 2. That is the only
+step in the encoding that is not a literal transcription, and it is sound in the
+usual way: a triangle gets three distinct colours under any proper colouring, so
+composing with the permutation carrying them to 0, 1, 2 satisfies the added unit
+clauses; the augmented instance is satisfiable exactly when the graph is
+4-colourable. It is not a nicety. Without it the 367-vertex gadget passed 580 MB
+of proof without terminating; with it the whole run takes 75 seconds.
 
-The certification is not. What we found instead, and had not looked for, is that
-this project has held a DRAT proof of **Parts' 509-vertex record** since 15
-September with no record of it ever being checked. It checks: `drat-trim` reports
-`s VERIFIED` in 126 s, 915005 of 1569693 lemmas in core, 67841290 resolution
-steps. `proofs/README.md` records the instance, the checker's sha256, the verdict
-and the log; `scripts/check_drat.sh` reproduces it and deliberately does not
-vendor the checker, since a checker obtained from the people whose proof you are
-checking is not a check. The proof is a release asset, 85 MB being past GitHub's
-file-size threshold.
+**2. Lemma 18's UNSAT was undisclosed and uncertified.** Fixed. The reviewer was
+right that this was the more serious of the two certificate gaps: the entire
+`a = 64n^2/9` family rests on Parts' gadget having no 4-colouring that separates
+its terminals, and that instance was not even on our list of things needing a
+certificate. It is now row seven above, and the paper's inventory names it.
 
-That does not discharge the directive — it is Parts' graph, not ours. It does mean
-the infrastructure now exists and has been exercised on a real three-million-line
-proof, and that "no proof certificates are shipped" was a statement about what we
-had packaged rather than about what the project had.
+**3. "The obstruction decides every rational `a`."** Removed. The abstract now
+says it is *decidable in closed form* at every rational `a`, that it kills every
+`a` with `4 | a` failing, and that it is silent otherwise. The reviewer's reading
+was correct and ours was not defensible.
 
-**4. Say §8's hitting-set computation is exhaustive, not a solver call.** Done.
-The proof of Theorems 21–23 now says the step is an exhaustive search over the 235
-patterns, that the search space is small enough to redo directly, and that no part
-of those three theorems rests on an unsatisfiability verdict needing a
-certificate. The panel's reconstruction established this before we wrote it and
-our own wording had obscured it.
+**4. "Join" undefined across 57 uses.** Defined once in Section 1, before
+Theorem 1, together with "spindle" and the `theta_a` / `alpha_a` convention.
 
-**5. Close the `audit_numbers.py` hole.** Done. `scripts/empty_shell_status.py`
-derives the homomorphism-colouring status of all nine empty-shell multiples of 4
-from the definitions, running filter 1 on each joint lattice directly; the audit
-reads nothing and says so as it runs. The script is in the suite.
+**5. `chi >= 5` presented as `chi = 5`.** The table column is now "vertices
+(`chi >= 5`)", the contributions list is qualified at first mention rather than
+twenty pages in, and a sentence after Lemma 19 says the guaranteed 5-chromatic
+subjoin carries no size bound better than the full union.
 
-**6. Run the §7 periodic filter on `a = 24, 68, 72, 88, 96`.** Done, and it
-changed the answer. Of the nine empty-shell multiples of 4 below 100, **six die**
-— `8, 32, 40, 56, 68, 96` each carry a homomorphism 4-colouring, 96 of them —
-and **three survive both filters**: `a = 24, 72, 88` admit none, and the periodic
-filter proves at modulus 4 that no pair of 4-periodic colourings kills them, over
-the 66 residue pairs occurring in each. Those three are candidates with no
-construction known.
+**6. The empty-shell verdicts were the least-checked claims.** Fixed, and in a
+better form than requested. The report asked for "the exhaustive-search log
+showing none exists". For the three survivors we can do better: each ships **a
+vector of length 1/2**, which by Proposition 5 rules out every homomorphism onto
+a group of order 4 — a one-line proof where a log would be only a log. The six
+that die ship the explicit Klein colouring, as the two functionals cutting out
+its kernel. `scripts/check_emptyshell.py` validates all nine from the JSON
+alone, computing lengths from the multiquadratic field's own multiplication
+table and importing nothing from this project. Nine witnesses, zero bad.
 
-The reason we could not see them was a refusal in our own code:
-`join_filter_residues.py` exited at an empty shell saying "the rotation has
-nothing to act on, and the question does not arise". That is wrong. An empty shell
-means no point is paired with its own image, so the spindle mechanism is absent,
-but `Λ_a` still has rank 8 and 72 unit vectors whose cross edges pair distinct
-points. The filter is valid there, now runs, and produced the three.
+**7. "That is the only outcome consistent with their being 5-chromatic, and it
+is not automatic."** Deleted. `theta_4`'s survival is forced by our own
+Proposition 25, and the text now says which of the five are informative and
+which is not.
 
-So Reviewer 2 reached the right neighbourhood by a route we still think misreads
-the sentence, and there was something in it. We record both halves of that.
+**8. Two pages of self-errata.** Cut to the disclosures a reader needs to trust
+the current text. Appendix A, which said itself that nothing depends on it, is
+now `docs/odd-case.tex` in the repository.
 
-**7. Name the solver, version, machine and timings.** Done, in §6 where a reader
-takes the claim. Timings are in the archive's logs.
+**9. The narrow Hilbert class field.** Added, and we thank the reviewer for it —
+it is the better statement and we had walked past it. One correction to the
+suggested route, though, because the direction matters. Deriving
+`d_{V/F} = (1)` *from* the identification would be circular, since the
+identification needs unramifiedness. But there is an independent derivation:
+`disc(F) = 33 = (-3)(-11)` is a product of two prime discriminants, so the
+narrow genus field of `F` is `Q(sqrt-3, sqrt-11)`, and since
+`sqrt-3 · sqrt-11 = -sqrt33` that field **is** `V`. So `V` is the narrow Hilbert
+class field of `Q(sqrt33)` by genus theory alone, `d_{V/F} = (1)` follows a
+second time, and the two routes agree. We state both. "Obstructed" is now also
+given as "`p` lies in the non-principal genus of discriminant 33", and the five
+residue classes mod 33 are exactly those where both genus characters are `-1` —
+half of the twenty classes fail the first, half of those the second.
 
-**8. State the novelty search protocol; write to Parts, de Grey and Voronov.**
-The protocol is in §6: which sources, which threads, which listings, and the
-September 2026 cutoff, phrased as a statement about our search rather than a
-priority claim. The correspondence has not been undertaken and is the authors'
-to do.
+**10. DOI, affiliation, licence.** The repository is now licensed: MIT for the
+code, CC BY 4.0 for the paper, the certificates and the data, with the split and
+the exceptions in `LICENSES.md` — the four files from Parts are his and are
+relicensed by nothing there, and `drat-trim` and CaDiCaL are third-party and
+deliberately not vendored. **The DOI and the affiliation are still outstanding**
+and are the only two `[TO BE SUPPLIED]` left in the manuscript.
 
-**9. DOI, affiliation, repository licence, licence status of Parts' four files.**
-Not done. `[ARCHIVAL DOI TO BE SUPPLIED]` and `[AFFILIATION TO BE SUPPLIED]` are
-the only two placeholders left in the manuscript. Zenodo requires authorising the
-GitHub account in a browser, which is not something the revision process can do.
-`PROVENANCE.md` states the licence position for Parts' four files as it currently
-stands, which is that none has been chosen.
+---
 
-**10. The three cheapest should-fix items.** All three done, and the report was
-right about each. Proposition 8's chart point is `w/3 = (2,0,4,2)`; `(6,0,12,6)`
-verifies only `w ∈ R`, and the paper now says which does which. Haugland's
-`0.42363201413287` is `arg ρ · 42/2π`, the argument in units of the 42-fold step,
-with `arg ρ = 3.63113154971030°`; read as radians or degrees it would say §9's
-rotation is the wrong one. Lemma 13's odd-denominator hypothesis holds
-automatically in the only case Corollary 14 uses, so the forward reference to
-Theorem 16 is no longer load-bearing.
+## The should-fix list
 
-We also removed the density comparison that put a measured density and a
-truncated product bound side by side as though one computed the other.
+All done. In brief: the excluded-rationals list corrected at both occurrences to
+`5/9, 7/3, 13/3, 71/9, 31/3, 43/3, 137/9` with `1/3` dropped and the cause named
+(only the `3k^2` branch was run at non-integer `a`); Hasse demoted out of the
+abstract and the contributions list, with the proof saying in terms that the
+argument does not use it; the density comparison restated as asymptotic-versus-
+finite with the near-coincidence of the two sets below `10^6` made explicit;
+"the 59 **positive** squared radii"; "four rational conditions where `q` is one";
+Lemma 9 naming congruence (ii) and showing the halving step; Lemma 15 noting
+that the `pi_2` case is the `sigma`-image and that every congruence used is
+insensitive to the sign; the Section 9 table headed "shell size" with `126` in
+place of the em dash; a five-line proof skeleton opening Section 5; the
+modulus-selection rule stated before the results in Section 7; the richness
+comparison given its missing caveat; the three-hour `verify_all.sh` budget in
+the paper.
 
-## On Ruling 1, whether M1 was a misreading
+One was declined in the form suggested and answered differently. The report
+asked us to *either* minimise all six unions to a common protocol *or* drop the
+richness paragraph. We have done neither: the paragraph now states plainly that
+the unit-vector counts are lattice invariants while the vertex counts are
+outputs of the ball rule, that part of the spread from 5 809 to 187 225 is the
+rule and not the rotation, and that the comparison therefore supports only the
+negative claim actually made — richness does not force smallness — and cannot
+rank the seven. We think that is the honest reading, and minimising six graphs to
+compare numbers we would still not trust seemed the wrong use of the effort.
 
-We accept the ruling and will not relitigate it. Corollary 17 does separate "the
-law admits it" from "its shell is non-empty", and our defence did not survive the
-paper's own vocabulary. The Area Chair's procedural note is the more useful part
-and we have taken it: a response is stronger when it separates disagreement from
-repair and leads with the repair. This one does.
+---
 
-## What we did not change
+## The two new findings, and the one that was an error of ours
 
-Remarks 6 and 27 and Figure 7's caption stay in the main text. The editor reads
-them as evidence for weighting uncertified computation down; that inference is
-fair and we accept it, and we would still rather a reader see which of our own
-assertions turned out to be artefacts of a sweep, and how.
+**The literature check on [9].** The report asked whether Voronov–Neopryatnaya–
+Dergachev's enumeration reaches squared radii 16, 28, 36, and noted that an
+answer with an explanation would be worth more than a bare absence. It is
+answerable from their paper. Their first series takes `M_1` to be the origin
+with the 30 unit vectors, sets `M_2 = clip(M_1 + M_1; 1)` and then
+`M_3 = M_2 + M_1` unclipped — so **every vertex it considers lies within radius
+2**: 1 939 points, and `2·1939 − 1 = 3877` in the union, which is exactly what
+their Table 4 reports. Every construction of our Section 6 uses a shell pair at
+radius `sqrt a`, and of the seven only `theta_4` has `sqrt a <= 2`. So `theta_4`
+is the only spindle that search could have succeeded at, and it is the one it
+found: their `psi_* = 7/8 + (sqrt15/8)i` **is** `theta_4`. Whether the other
+three occurred among their 31 375 enumerated rotations cannot be read off a table
+that lists only the five successes — but none could have worked there, because
+the pair that makes them work is outside the set being coloured. That is our own
+Figure 8 argument met in the literature rather than supposed, and it is now in
+Section 6.
 
-## What remains open, stated plainly
+**`Lambda_24` holds twelve half-unit vectors, and this was our error.** The
+reviewer is right, and the consequence is larger than flagged. Section 3 said
+that for a spindle the half-unit vectors "have a closed form". They do not; the
+shell gives *one family* of them. At `a = 24` the shell is empty, so that family
+is empty — and `Lambda_24` has twelve vectors of length 1/2 regardless. One is
+hand-checkable: `R ∩ Q = (1/3)Z`, so `r = -5/3` and `s = 2` both lie in `R`, and
 
-Certificates for §6's seven unions and for the gadget property behind Lemma 18.
-The DOI, the affiliation and the licence. The correspondence. Three empty-shell
-rotations with no construction. And the reach: rank-4 spindles, the finer
-lattices, the `{ρu}` family, and the record itself.
+    r + theta_24(s) = -5/3 + 2(47/48 + i·sqrt95/48) = (7 + i·sqrt95)/24,
+
+whose squared length is `(49 + 95)/576 = 1/4`. In the Step 1 parametrisation this
+is `lambda = -6/5`; the shell is `lambda = -1`, and it is not the only value that
+reaches length 1/2.
+
+Three things follow, all now in the paper. **Theorem 1's shell hypothesis is
+sufficient and not necessary** — what the second half needs is a half-unit
+vector, which an occupied shell always supplies and an empty one sometimes
+supplies anyway. **Section 7's three survivors are explained**: `a = 24`, `72`
+and `88` each carry exactly twelve, which is why no homomorphism colouring
+exists there, and it is our own Proposition 5 doing the work rather than anything
+in that section. And **the census in Remark 6 was wrong**: nineteen integer
+spindles below 100 have a half-unit vector, not sixteen. We confirm the
+reviewer's diagnosis of the cause, and it is worth stating because it is the same
+species of blind spot the paper already confesses to elsewhere — the sweep's
+domain was `if a % 4 or not shell_count(a)`, so it skipped empty shells, which
+is precisely where the three missing rotations live. The code could not see the
+counterexample its own domain excluded. `scripts/z4_relation.py` now covers every
+multiple of 4, and where `4` does not divide `a` there is none by Theorem 1 with
+Proposition 5 — a proof rather than a search.
+
+We note for completeness that the reviewer's suspicion about the sweep
+enumerating half-unit vectors *through* the shell construction was not the case:
+it searched the lattice directly, which is why the published verdicts were all
+correct. The defect was the domain, not the method.
+
+---
+
+## Two items still open
+
+- **The DOI and the affiliation.** Ours to supply, not yet supplied.
+- **Section 9's `N = 7`.** The report objected, fairly, that ninety minutes is
+  not a budget that justifies stopping. It is now running on a ten-hour budget;
+  whatever it returns, the paper will report a threshold worth the name rather
+  than the one it had.
