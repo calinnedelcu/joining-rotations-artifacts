@@ -9,7 +9,7 @@ point-by-point reply to the previous round is in `RESPONSE-ROUND-3.md`.
 
 | | |
 |---|---|
-| the manuscript | `joining-rotations.pdf`, 44 pages, 0 unresolved references |
+| the manuscript | `joining-rotations.pdf`, 44 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
 | the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public |
 
 The repository is public; nothing else needs to be sent. Its `README.md` opens
@@ -106,3 +106,13 @@ sit, that is our own best guess at the class of defect to hunt for.
    further than we push it — we use it to explain, not to prove.
 3. Any 5-chromatic `L ∪ theta_4(S)` whose interface is one of the 1920. We could
    not build one and do not know whether one exists.
+
+## One more thing we got wrong, since it bears on the last point
+
+The previous round's companion note asserted "0 unresolved references" and the
+manuscript contained two `??`. The assertion was not checked: it was made by
+grepping the TeX engine's `.log` for "undefined", and the engine writes no `.log`
+unless asked — so the grep matched nothing and we read the absence as success.
+The only honest test is on the rendered PDF, and `scripts/check_paper.sh` now
+does it. We mention it because the shape is the same as the two defects the paper
+already discloses: a check whose domain excluded the thing it was meant to find.
