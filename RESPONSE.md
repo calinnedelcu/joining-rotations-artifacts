@@ -1,146 +1,131 @@
-# Response to the review
+# Response to the second-round report
 
-We are grateful for a report of this quality, and in particular for the
-independent recomputation in Appendix V. Being told that an outside pass over the
-arithmetic found no numerical error is worth more than any assurance we could
-offer ourselves.
+The Area Chair's closing sentence was that the hard fixes were done properly and
+the easy ones were agreed to and not done, and that this was the whole of what was
+keeping the paper out. That was accurate, and it is the criticism we took most
+seriously. This revision does the list.
 
-Below: one finding we believe rests on a misreading, one place where the panel
-found a real error we had missed, and the remaining items with what we did about
-each. Section and page numbers refer to the revised manuscript, 40 pages.
+We have also stopped writing "accepted without argument" and then not acting. Where
+we still disagree, we say so and act anyway; where we cannot act, we say who has
+to.
 
 ---
 
-## 1. The `a = 24` accounting (R2's M1) — we believe this is a misreading, and we
-## have rewritten the sentence so that it cannot recur
+## The ten items, in the order the report put them
 
-R2 reads §7's
+**1. Rewrite the abstract; add a Results block on p. 1.** Done. The abstract now
+opens with the obstruction deciding every rational `a`, then `3R = O_V` as its
+engine, then shell occupancy in closed form with the criterion stated, then
+density zero — and only then the constructions, with Lemma 18's infinite family
+named rather than left as a subordinate clause. Its last sentence is that the
+record of 509 is untouched. A **What is proved here** block on p. 1 lists the six
+results in order of weight, each with the section that proves it, and points at
+§10 for what is not settled.
 
-> For the sixteen integer spindles **it admits** to `a = 100` the account is now
-> complete
+**2. Retitle.** Done: *A divisibility obstruction for joining two Moser lattices*.
+The Area Chair is right that an editor cannot title a paper whose scope only we
+know, and right that we had deferred a decision already made for us.
 
-as claiming that every multiple of 4 below 100 is settled, and concludes that
-`a = 24, 68, 72, 88, 96` are undetermined inside a range the paper claims to have
-closed.
+**3. Certify the gadget property and the three smallest unions; label the four
+largest honestly in the table.** Half done, and the half that is done is not the
+half that was asked for.
 
-The antecedent of *it* is the divisibility law, and §6 opens by defining what the
-law admits:
+The labelling is in place: every one of the seven rows now carries **reported
+UNSAT, uncertified** in the same paragraph as the table, together with the solver,
+its version and the machine — CaDiCaL 1.9.5 through `python-sat` 1.9.dev15, Python
+3.11.15, Apple M5, 32 GB.
 
-> The law leaves `4 | a` with a non-empty shell as the candidates.
+The certification is not. What we found instead, and had not looked for, is that
+this project has held a DRAT proof of **Parts' 509-vertex record** since 15
+September with no record of it ever being checked. It checks: `drat-trim` reports
+`s VERIFIED` in 126 s, 915005 of 1569693 lemmas in core, 67841290 resolution
+steps. `proofs/README.md` records the instance, the checker's sha256, the verdict
+and the log; `scripts/check_drat.sh` reproduces it and deliberately does not
+vendor the checker, since a checker obtained from the people whose proof you are
+checking is not a check. The proof is a release asset, 85 MB being past GitHub's
+file-size threshold.
 
-So "the sixteen it admits" is exactly the sixteen occupied-shell multiples of 4,
-and the empty-shell values are not in that set. The manuscript states twice that
-an empty shell decides nothing either way, and §5 says in terms that at `a = 24`
-no homomorphism colouring exists. Nothing was claimed about those five and
-nothing was silently dropped.
+That does not discharge the directive — it is Parts' graph, not ours. It does mean
+the infrastructure now exists and has been exercised on a real three-million-line
+proof, and that "no proof certificates are shipped" was a statement about what we
+had packaged rather than about what the project had.
 
-That said, R2 is a careful reader who reached the other reading, which means the
-sentence was doing too much work. We have not defended it; we have replaced it:
+**4. Say §8's hitting-set computation is exhaustive, not a solver call.** Done.
+The proof of Theorems 21–23 now says the step is an exhaustive search over the 235
+patterns, that the search space is small enough to redo directly, and that no part
+of those three theorems rests on an unsatisfiability verdict needing a
+certificate. The panel's reconstruction established this before we wrote it and
+our own wording had obscured it.
 
-- §7 now names its scope in place — "the sixteen occupied-shell integer spindles
-  that Theorem 1 admits to `a = 100`, the candidates as §6 defines them".
-- It then settles the empty-shell cases rather than leaving them implicit. Both
-  filters have now been run on all nine below 100. **Six die** — `8, 32, 40, 56,
-  68, 96` each carry a homomorphism 4-colouring, 96 of them. **Three survive
-  both** — `24, 72, 88` admit none, and the periodic filter proves at modulus 4
-  that no pair of 4-periodic colourings kills them, over the 66 residue pairs
-  occurring in each. Those three are candidates on the same footing as the
-  sixteen, and are not counted among them because the law never admitted them.
+**5. Close the `audit_numbers.py` hole.** Done. `scripts/empty_shell_status.py`
+derives the homomorphism-colouring status of all nine empty-shell multiples of 4
+from the definitions, running filter 1 on each joint lattice directly; the audit
+reads nothing and says so as it runs. The script is in the suite.
 
-  We owe R2 more than the sentence, then. The reason we could not see those three
-  was a refusal in our own code: `join_filter_residues.py` exited at an empty
-  shell saying "the question does not arise". It does arise — an empty shell means
-  no point is paired with its own image, so the spindle mechanism is absent, but
-  `Λ_a` still has rank 8 and 72 unit vectors whose cross edges pair distinct
-  points. The filter is valid there, now runs, and produced the three. R2 reached
-  the right neighbourhood by the wrong route, and there was something in it.
-- Figure 3's caption now labels the bottom row as the sixteen with an *occupied*
-  shell, and says the nine gaps lie outside the accounting because the law is
-  silent at an empty shell.
+**6. Run the §7 periodic filter on `a = 24, 68, 72, 88, 96`.** Done, and it
+changed the answer. Of the nine empty-shell multiples of 4 below 100, **six die**
+— `8, 32, 40, 56, 68, 96` each carry a homomorphism 4-colouring, 96 of them —
+and **three survive both filters**: `a = 24, 72, 88` admit none, and the periodic
+filter proves at modulus 4 that no pair of 4-periodic colourings kills them, over
+the 66 residue pairs occurring in each. Those three are candidates with no
+construction known.
 
-So the substance R2 was reaching for — that a reader cannot tell from the text
-what happens at `a = 24` — is now answered in the text, and the sentence that
-invited the misreading is gone. We would rather lose the elegance than the
-sentence's meaning.
+The reason we could not see them was a refusal in our own code:
+`join_filter_residues.py` exited at an empty shell saying "the rotation has
+nothing to act on, and the question does not arise". That is wrong. An empty shell
+means no point is paired with its own image, so the spindle mechanism is absent,
+but `Λ_a` still has rank 8 and 72 unit vectors whose cross edges pair distinct
+points. The filter is valid there, now runs, and produced the three.
 
-We accept the related point (R2's weakness 2) that `audit_numbers.py` declines to
-re-derive exactly the lines that decide this, and that the hole in the
-verification design fell on the same spot. Closing it is on the list below.
+So Reviewer 2 reached the right neighbourhood by a route we still think misreads
+the sentence, and there was something in it. We record both halves of that.
 
-## 2. The one real error the panel found, which was not on our own list
+**7. Name the solver, version, machine and timings.** Done, in §6 where a reader
+takes the claim. Timings are in the archive's logs.
 
-§5, p. 14, previously said that avoiding the 30 unit vectors of each summand
-"forces each to be a geometric 4-colouring". **That does not follow, and the
-manuscript refutes it three sections earlier**, where §4 counts six cyclic
-colourings that avoid every unit vector and are not geometric. We are grateful
-this was caught; it had survived several rounds.
+**8. State the novelty search protocol; write to Parts, de Grey and Voronov.**
+The protocol is in §6: which sources, which threads, which listings, and the
+September 2026 cutoff, phrased as a statement about our search rather than a
+priority claim. The correspondence has not been undertaken and is the authors'
+to do.
 
-The conclusion is unaffected but the reason was wrong, and is now given properly:
+**9. DOI, affiliation, repository licence, licence status of Parts' four files.**
+Not done. `[ARCHIVAL DOI TO BE SUPPLIED]` and `[AFFILIATION TO BE SUPPLIED]` are
+the only two placeholders left in the manuscript. Zenodo requires authorising the
+GitHub account in a browser, which is not something the revision process can do.
+`PROVENANCE.md` states the licence position for Parts' four files as it currently
+stands, which is that none has been chosen.
 
-- the Klein group has exponent 2, so `2R ⊆ ker φ_i` with no geometric hypothesis
-  at all — and none is available;
-- Theorem 4's enumeration then leaves `π₁R` and `π₂R`;
-- the image cannot have order 2, by `1 + ω + ω² = 2ω`, and independently because a
-  hyperplane of `R/2R` holds seven non-zero classes while only six are free;
-- the cyclic target is disposed of by Proposition 5, as before.
+**10. The three cheapest should-fix items.** All three done, and the report was
+right about each. Proposition 8's chart point is `w/3 = (2,0,4,2)`; `(6,0,12,6)`
+verifies only `w ∈ R`, and the paper now says which does which. Haugland's
+`0.42363201413287` is `arg ρ · 42/2π`, the argument in units of the 42-fold step,
+with `arg ρ = 3.63113154971030°`; read as radians or degrees it would say §9's
+rotation is the wrong one. Lemma 13's odd-denominator hypothesis holds
+automatically in the only case Corollary 14 uses, so the forward reference to
+Theorem 16 is no longer load-bearing.
 
-That the two reductions *are* geometric is now a conclusion of Theorem 4 in that
-paragraph, not an assumption feeding it. Both exclusions of the order-2 image are
-checked in `scripts/moser_is_ov.py`.
+We also removed the density comparison that put a measured density and a
+truncated product bound side by side as though one computed the other.
 
-## 3. Theorems 21–23 had no proof paragraph — added
+## On Ruling 1, whether M1 was a misreading
 
-The panel is right that the three interface theorems were stated and then
-explained, with nothing saying what is computed or where. They now carry a joint
-proof that names the objects (126 unit vectors, 60 at the shared origin and 66
-not, 8 colourings, 384 pairings, 235 patterns), says which theorem is which
-statement about them, points at the two scripts, and notes that both print every
-intermediate count so a reader can check them singly rather than trusting one
-verdict. The proof also states inside itself what the theorems do not say: the
-1920 defeat every pairing of homomorphism colourings, which is necessary and not
-known to be sufficient.
-
-## 4. UNSAT certificates
-
-We accept this as the weakest part of the paper and have said so in the text
-rather than only in correspondence. We think the panel's framing — that without
-DRAT/LRAT the results are not *established* — is stronger than the field applies
-uniformly, given that instances, versions, coordinates and an independent
-re-derivation are supplied. But the asymmetry the panel points at is real: a
-referee can check the arithmetic in an afternoon and cannot check the four largest
-graphs at all.
-
-We would rather state the position than argue it. The paper says non-4-colourability
-is re-established by re-running a solver, names the four unions for which that is
-the only evidence, and does not claim more. Whether to add proof logging is a
-decision we will take with the editor once a venue is fixed, since the cost is
-concentrated in exactly the instances where it is largest.
-
-## 5. Administrative items
-
-The panel is right that these make the document look unfinished, and right that
-they are cheap. `[ARCHIVAL DOI]` and `[AFFILIATION]` remain the two placeholders;
-the archive has no licence yet. The 30-entry suite now passes **30 of 30** from a
-clean extraction — the entry the cover note reported as still running,
-`lambda_sweep`, completed in 2819s, and the two earlier failures were a path that
-breaks only in a clean extraction and two timeout caps we had set below the
-scripts' own runtimes. All three are fixed and rerun.
-
-## 6. Editorial points accepted without argument
-
-- The title promises a classification the paper does not deliver. We have not yet
-  settled on a replacement and would welcome the editor's view.
-- The strongest result is the arithmetic obstruction together with density zero,
-  not the table of seven constructions, and the front matter should lead with it.
-- Novelty for `θ₁₆, θ₂₈, θ₃₆` is stated as a search, not a priority claim: "we
-  have found no prior construction", with the sources and cutoff named.
-- Figures 4 and 7 are dense at print size; we will supply them at larger scale or
-  move the data into tables.
+We accept the ruling and will not relitigate it. Corollary 17 does separate "the
+law admits it" from "its shell is non-empty", and our defence did not survive the
+paper's own vocabulary. The Area Chair's procedural note is the more useful part
+and we have taken it: a response is stronger when it separates disagreement from
+repair and leads with the repair. This one does.
 
 ## What we did not change
 
-We have left the record of retracted earlier claims — Remark 6, Remark 27,
-Figure 7's caption — in the main text. The editor reads these as evidence that
-uncertified computational claims should be weighted down, and that inference is
-fair. We would still rather a reader see which of our own assertions turned out to
-be artefacts of a sweep, and how, than have that history tidied away.
+Remarks 6 and 27 and Figure 7's caption stay in the main text. The editor reads
+them as evidence for weighting uncertified computation down; that inference is
+fair and we accept it, and we would still rather a reader see which of our own
+assertions turned out to be artefacts of a sweep, and how.
+
+## What remains open, stated plainly
+
+Certificates for §6's seven unions and for the gadget property behind Lemma 18.
+The DOI, the affiliation and the licence. The correspondence. Three empty-shell
+rotations with no construction. And the reach: rank-4 spindles, the finer
+lattices, the `{ρu}` family, and the record itself.
