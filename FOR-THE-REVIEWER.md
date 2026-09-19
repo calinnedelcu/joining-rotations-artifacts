@@ -9,7 +9,7 @@ rediscovering what we already know.
 | | |
 |---|---|
 | the manuscript | `joining-rotations.pdf`, 46 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
-| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, release `v1.1`, commit `a40f6fdf5dac` |
+| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `acde8deab4b4` |
 | a transcript | `VERIFICATION.md` — every check we ran, with its raw output |
 
 The repository is public; nothing else needs to be sent. Its `README.md` opens
@@ -102,12 +102,12 @@ the class of defect to look for.
 ## What we would most value
 
 1. Whether the identification `3R = O_V` and the shell classification
-   (Theorem 16) are new. We believe so and have not found them, but this
+   (Theorem 17) are new. We believe so and have not found them, but this
    literature is partly distributed across blog comments and data files.
 2. Whether the narrow-class-field framing of Sections 4 and 6 can be pushed
    further than we push it — we use it to explain, not to prove. One candidate:
    since "obstructed" is "`p` lies in the non-principal genus of discriminant
-   33", Theorem 16's sufficiency might be rederivable as a statement about which
+   33", Theorem 17's sufficiency might be rederivable as a statement about which
    rationals are norms from the genus field, removing the separate appeal to
    `h(V) = 1`. We have not worked it through.
 3. Any 5-chromatic `L ∪ theta_4(S)` realising one of the 1920 interfaces. We
