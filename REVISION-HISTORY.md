@@ -1,6 +1,11 @@
-# Response to the review
+# Revision history
 
-*On* **A divisibility obstruction for joining two Moser lattices**, 45 pages.
+*What changed in* **A divisibility obstruction for joining two Moser lattices**
+*and why.* This was written as a reply to a round of referee reports, so it is
+phrased as a response; it is kept here because it records the reasoning behind
+each change, including three errors of ours that the reports found. A reader
+coming to the paper fresh does not need it — `FOR-THE-REVIEWER.md` is the
+orientation note.
 
 We are grateful for the report, and particularly for the reviewer who
 reimplemented the lattice from the chart and the congruences rather than running
