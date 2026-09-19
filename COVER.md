@@ -1,6 +1,6 @@
 # Cover note
 
-**A divisibility obstruction for joining two Moser lattices** — 45 pages.
+**A divisibility obstruction for joining two Moser lattices** — 46 pages.
 
 Enclosed:
 
@@ -9,7 +9,7 @@ Enclosed:
 | `joining-rotations.pdf` | the manuscript |
 | `FOR-THE-REVIEWER.md` | what is supplied, what is already known to be open, and the cheapest checks in order |
 | `VERIFICATION.md` | every check we ran, with its raw output, so you can compare a run rather than trust a summary |
-| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, release `v1.1` |
+| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, release `v1.1`, commit `a40f6fdf5dac` |
 
 ## The result, in one paragraph
 
