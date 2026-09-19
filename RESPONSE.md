@@ -1,6 +1,6 @@
 # Response to the review
 
-*On* **A divisibility obstruction for joining two Moser lattices**, 44 pages.
+*On* **A divisibility obstruction for joining two Moser lattices**, 45 pages.
 
 We are grateful for the report, and particularly for the reviewer who
 reimplemented the lattice from the chart and the congruences rather than running

@@ -1,7 +1,7 @@
 # What is supplied, and what is already known to be open
 
 *Companion note to* **A divisibility obstruction for joining two Moser lattices**
-*(44 pages).* Read this first if you would rather not spend the first hour
+*(45 pages).* Read this first if you would rather not spend the first hour
 rediscovering what we already know. It is written for a fresh reader; a
 point-by-point reply to the previous round is in `RESPONSE-ROUND-3.md`.
 
@@ -9,7 +9,7 @@ point-by-point reply to the previous round is in `RESPONSE-ROUND-3.md`.
 
 | | |
 |---|---|
-| the manuscript | `joining-rotations.pdf`, 44 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
+| the manuscript | `joining-rotations.pdf`, 45 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
 | the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public |
 
 The repository is public; nothing else needs to be sent. Its `README.md` opens
@@ -31,7 +31,9 @@ the code, CC BY 4.0 for the paper, the certificates and the data.
 4. **`scripts/check_drat.sh`** — verifies all eight proof certificates. Fetch
    `drat-trim` yourself (the script deliberately does not vendor it: a checker
    you got from the people whose proof you are checking is not a check) and
-   expect eight `s VERIFIED` in about ten minutes.
+   expect eight `s VERIFIED` in about ten minutes. We ran exactly this from a
+   clean `git clone` of the public archive, on a bare `python3` with no `pysat`,
+   with `drat-trim` built from source on the spot: eight of eight.
 5. **`bash scripts/verify_all.sh`** — the whole table, run in parallel
    (`JOBS`, default 6). A little over an hour. Our last full run: **35 of 35
    PASS**, 0 FAIL, 0 TIMEOUT.
