@@ -9,7 +9,7 @@ Enclosed:
 | `joining-rotations.pdf` | the manuscript |
 | `FOR-THE-REVIEWER.md` | what is supplied, what is already known to be open, and the cheapest checks in order |
 | `VERIFICATION.md` | every check we ran, with its raw output, so you can compare a run rather than trust a summary |
-| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `cdaad8531ad0` |
+| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `cdaad8531ad0`, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504) |
 
 ## The result, in one paragraph
 
@@ -62,7 +62,10 @@ Every construction in the paper carries a checked proof. `drat-trim` is
 deliberately not vendored — fetch and build it yourself; the sha256 of the
 source we used is pinned in `proofs/README.md` and printed by the script.
 
-## Two things are missing, and they are ours
+## Nothing is left blank
 
-The archival DOI and the affiliation are the only `[TO BE SUPPLIED]` left in the
-manuscript.
+The manuscript carries no placeholders: the affiliation is filled and the
+archive is deposited at Zenodo under the concept DOI
+[10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which
+resolves to the newest version while the commit hash beside it fixes the
+snapshot these numbers came from.
