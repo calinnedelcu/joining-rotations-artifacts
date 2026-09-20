@@ -9,7 +9,7 @@ Enclosed:
 | `joining-rotations.pdf` | the manuscript |
 | `FOR-THE-REVIEWER.md` | what is supplied, what is already known to be open, and the cheapest checks in order |
 | `VERIFICATION.md` | every check we ran, with its raw output, so you can compare a run rather than trust a summary |
-| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `66d7470f4653` |
+| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `cdaad8531ad0` |
 
 ## The result, in one paragraph
 
@@ -56,7 +56,7 @@ From a clean clone of the archive:
 | `scripts/check_drat.sh` | **8 DRAT certificates**, ~10 min, all `s VERIFIED` |
 | `scripts/check_emptyshell.py` | 9 witnesses, seconds, imports nothing from the project |
 | `scripts/check_periodic.py` | 11 witnesses, seconds, same |
-| `bash scripts/verify_all.sh` | the whole table in parallel, a little over an hour. Our last full run: **35 of 35 PASS**, 0 FAIL, 0 TIMEOUT |
+| `bash scripts/verify_all.sh` | the whole table in parallel, a little over an hour. Our last full run: **35 of 35 PASS**, 0 FAIL, 0 TIMEOUT (the 36th, `check_notes`, was added after that run and passes) |
 
 Every construction in the paper carries a checked proof. `drat-trim` is
 deliberately not vendored — fetch and build it yourself; the sha256 of the

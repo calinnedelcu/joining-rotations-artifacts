@@ -9,7 +9,7 @@ rediscovering what we already know.
 | | |
 |---|---|
 | the manuscript | `joining-rotations.pdf`, 24 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
-| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `66d7470f4653` |
+| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `cdaad8531ad0` |
 | a transcript | `VERIFICATION.md` — every check we ran, with its raw output |
 
 The repository is public; nothing else needs to be sent. Its `README.md` opens
@@ -36,7 +36,8 @@ CC BY 4.0 for the paper, the certificates and the data.
    with `drat-trim` built from source on the spot: eight of eight.
 5. **`bash scripts/verify_all.sh`** — the whole table, run in parallel (`JOBS`,
    default 6). A little over an hour. Our last full run: **35 of 35 PASS**,
-   0 FAIL, 0 TIMEOUT.
+   0 FAIL, 0 TIMEOUT; the 36th entry, `check_notes`, was added after that run
+   and passes on its own.
 
 Nothing in the checking path needs a SAT solver, `pysat`, or a virtualenv. A
 solver is needed only to *regenerate* a proof or rebuild a construction.

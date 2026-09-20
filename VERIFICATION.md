@@ -4,7 +4,7 @@ Every check we ran, with its output, so you can compare your run against ours
 rather than take a summary on trust. Machine: Apple M5, 32 GB, macOS, ten cores.
 Reproduce any line with the command above it.
 
-Archive commit: `66d7470f465311780a0db8742633a642f0dcf366`, the same commit the
+Archive commit: `cdaad8531ad0c6f4ec94677f2f5b2a700c8612d4`, the same commit the
 paper pins. Check out that commit, not a tag. A shallow clone is about 900 MB, most of it proof.
 
 ---
