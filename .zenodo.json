@@ -1,0 +1,23 @@
+{
+  "title": "Artifacts for \"A divisibility obstruction for joining two Moser lattices\"",
+  "description": "<p>Computational artifacts for the paper <em>A divisibility obstruction for joining two Moser lattices</em>.</p><p>Contains: eighteen DRAT proof certificates, all checked with <code>drat-trim</code> &mdash; eight for the paper's constructions and Parts' 509-vertex record, ten for the Galois-seam results around it; twenty witnesses for the periodic and empty-shell exclusions, each validated from JSON alone by a checker that imports nothing from the project; exact coordinates for every graph, each file naming the field it was written in; and <code>scripts/audit_numbers.py</code>, which re-derives the paper's numbers from the definitions on the standard library alone and shares no code with the rest.</p><p><code>scripts/verify_all.sh</code> runs all 36 recorded claims in parallel in a little over an hour. <code>README.md</code> opens with a coverage table saying, claim by claim, what the archive settles and what it does not. Neither <code>drat-trim</code> nor CaDiCaL is vendored: a checker obtained from the people whose proof you are checking is not a check.</p>",
+  "creators": [
+    {
+      "name": "Nedelcu, Andrei-Călin"
+    }
+  ],
+  "upload_type": "software",
+  "license": "cc-by-4.0",
+  "access_right": "open",
+  "keywords": [
+    "Hadwiger-Nelson problem",
+    "chromatic number of the plane",
+    "unit-distance graph",
+    "Moser lattice",
+    "algebraic number theory",
+    "DRAT",
+    "SAT solving",
+    "reproducibility"
+  ],
+  "notes": "Code is MIT; the paper, the certificates and the data are CC BY 4.0. See LICENSES.md for the split and for the four files taken from arXiv:2010.12665, which are not ours to relicense."
+}
