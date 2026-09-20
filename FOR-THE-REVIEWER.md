@@ -114,8 +114,8 @@ the class of defect to look for.
    lattice's (the Loeschian numbers); we found no closed-form spectrum for `R`,
    which is rank 4.
 
-   One precedent we did find, and name in the paper as reference [9]: David
-   Speyer's comment of 3 May 2018 on the Polymath16 third thread. It gives the
+   One precedent we did find, and cite in the paper: David Speyer's comment of
+   3 May 2018 on the Polymath16 third thread. It gives the
    Moser ring as the elements of `Q(sqrt-3, sqrt-11)` integral over `Z[1/3]`,
    names the subring `Z[(1+sqrt33)/2]` — the ring Theorem 9 works over — and
    takes the norm `N(u) = u * conj(u)` from one to the other, colouring by the
