@@ -104,15 +104,30 @@ the class of defect to look for.
 ## What we would most value
 
 1. Whether the identification `3R = O_V` and the shell classification
-   (Theorem 18) are new. We have checked what can be checked: the four papers
-   working in or on this lattice — Dúcz `arXiv:2606.12325`, Parts
-   `arXiv:2010.12665`, Voronov et al. `arXiv:2106.11824`, and `arXiv:1908.03880`
-   — contain, in their full texts, **no occurrence** of "maximal order", "ring of
-   integers", "prime ideal" or "number field". The classical spectrum here is the
-   triangular lattice's (the Loeschian numbers); we found no closed-form spectrum
-   for `R`, which is rank 4. That is evidence, not proof: the literature includes
-   blog comments and data files, and a negative over it cannot be certified.
-   If you know of a precedent we would want to hear it.
+   (Theorem 18) are new. We have checked what can be checked: the six papers the
+   manuscript lists as working in or on this lattice — Dúcz `arXiv:2606.12325`,
+   Parts `arXiv:2010.12665`, Voronov et al. `arXiv:2106.11824`, Haugland
+   `arXiv:2608.04542`, Engel et al. `arXiv:2406.15317`, Ruhland
+   `arXiv:2410.16172`, and also `arXiv:1908.03880` — contain, in their full
+   texts, **no occurrence** of "maximal order", "ring of integers", "prime
+   ideal" or "number field". The classical spectrum here is the triangular
+   lattice's (the Loeschian numbers); we found no closed-form spectrum for `R`,
+   which is rank 4.
+
+   One precedent we did find, and name in the paper as reference [9]: David
+   Speyer's comment of 3 May 2018 on the Polymath16 third thread. It gives the
+   Moser ring as the elements of `Q(sqrt-3, sqrt-11)` integral over `Z[1/3]`,
+   names the subring `Z[(1+sqrt33)/2]` — the ring Theorem 9 works over — and
+   takes the norm `N(u) = u * conj(u)` from one to the other, colouring by the
+   elements of norm 1. So the field, that ring and the norm map are not ours.
+   What Proposition 8 adds is that `3R` is the **maximal** order of `V` rather
+   than some order inside it, and what Theorem 18 adds is the closed form for
+   occupancy.
+
+   That is still evidence and not proof: this literature is partly distributed
+   across blog comments and data files — Speyer's is one — and a negative over
+   it cannot be certified. If you know of another precedent we would want to
+   hear it.
 2. Whether the narrow-class-field framing of Sections 4 and 6 can be pushed
    further than we push it — we use it to explain, not to prove. One candidate:
    since "obstructed" is "`p` lies in the non-principal genus of discriminant

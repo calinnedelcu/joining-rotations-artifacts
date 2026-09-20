@@ -17,6 +17,9 @@
 \usepackage{graphicx}
 \graphicspath{{figures/}}
 \usepackage[hidelinks]{hyperref}
+% Two references are blog comments whose URLs are long and nearly unbreakable;
+% justified without this, a short line stretches until its words stand alone.
+\usepackage{xurl}
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{#1}}}
 
 \theoremstyle{plain}
@@ -228,17 +231,17 @@ coordinates inside one fixed lattice; the divisibility here is a condition on th
 four of \cite{Voronov}. What is claimed below is the arithmetic, the law, and the
 constructions of Section~\ref{sec:seven}.
 
-That claim deserves a comparison and not a keyword search, because the
-arithmetic framing is not new even where the results are. The Polymath16
+That claim deserves a comparison, not a keyword search: the arithmetic framing
+is not new even where the results are. The Polymath16
 material sets the Moser \emph{ring} inside $\Q(\sqrt{-3},\sqrt{-11})$ and writes
-it as $\Z[\tfrac{1+i\sqrt3}{2}, \tfrac{1+\sqrt{33}}{2}, \tfrac13]$; in
-particular $\Ok = \Z[\tfrac{1+\sqrt{33}}{2}]$, the ring
-Theorem~\ref{thm:primes} works over, is already there, as is the observation
-that unit-modulus elements are what generate edges. Gibbs factors such elements
-through $\Q[\sqrt{-p},\sqrt{-q}]$. We claim none of that.
+it as $\Z[\tfrac{1+i\sqrt3}{2}, \tfrac{1+\sqrt{33}}{2}, \tfrac13]$; Speyer
+\cite{Speyer} gives it as the elements integral over $\Z[\tfrac13]$, names the
+ring $\Ok = \Z[\tfrac{1+\sqrt{33}}{2}]$ that Theorem~\ref{thm:primes} works over,
+and takes the norm $N(u) = u\bar u$ from one to the other, colouring by the
+norm-$1$ elements. Gibbs factors unit-modulus elements through
+$\Q[\sqrt{-p},\sqrt{-q}]$. We claim none of that.
 
-What we add to it is ideal-theoretic and is what
-Proposition~\ref{prop:order} states: that $3\Lat$ is the \emph{maximal} order of
+What we add is ideal-theoretic, and is what Proposition~\ref{prop:order} states: that $3\Lat$ is the \emph{maximal} order of
 $V$, not merely an order inside it; that $2$ splits in $F$ and both primes above
 it are inert in $V$, so $\Lat/2\Lat \cong \F_4 \times \F_4$ and the two
 colourings are the two coordinate projections; and that occupancy of a shell is
@@ -247,15 +250,12 @@ Theorem~\ref{prop:shells}. Of the six papers working on this
 lattice---\cite{Ducz}, \cite{Parts}, \cite{Voronov}, \cite{Haugland},
 \cite{Engel}, \cite{Ruhland}---none contains the words \emph{maximal order},
 \emph{ring of integers}, \emph{prime ideal} or \emph{number field} anywhere in
-its full text, and we have found no statement of the distance spectrum in closed
-form. The Polymath16 threads are long and partly informal, so this is a
-comparison of what we could read, not a certified negative. The squared-distance spectrum that
-is classical here is the triangular lattice's, where the attainable values are
-the Loeschian numbers $a^2+ab+b^2$; we have found no statement, in those papers
-or in the Polymath16 material, of the corresponding set for $\Lat$, which is
-rank $4$ and whose spectrum is Theorem~\ref{prop:shells}. That is evidence and
-not proof: this literature is partly distributed across blog comments and data
-files, and a negative over it cannot be certified.
+its full text. The classical spectrum here is the triangular lattice's, the
+Loeschian numbers $a^2+ab+b^2$; we have found no statement, in those papers or
+in the Polymath16 material, of the corresponding set for the rank-$4$ lattice
+$\Lat$, whose spectrum is Theorem~\ref{prop:shells}. That is evidence and not proof: this
+literature is partly distributed across blog comments and data files---Speyer's
+is one---and a negative over it cannot be certified.
 
 \begin{figure}[ht]
 \centering
@@ -804,9 +804,8 @@ stable---the two eigenspaces and the nine sums of a line from each---not two. It
 is avoiding the unit vectors that cuts the field to two, and the ring structure
 above that names them.
 
-The theorem counts the Klein colourings, and the interface bound of the
-empty-shell verdicts of Section~\ref{sec:stronger} need the cyclic ones too, so
-count them here. A homomorphism $\Lat \to \Z/4$ missing every
+The theorem counts the Klein colourings, and the empty-shell verdicts of
+Section~\ref{sec:stronger} need the cyclic ones too, so count them here. A homomorphism $\Lat \to \Z/4$ missing every
 unit vector is determined by its values on a basis; writing those as
 $\ell + 2s$ over $\F_2$ makes the condition one affine system per $\ell$, a sweep
 over $2^4$ rather than $4^4$, exactly as in Proposition~\ref{prop:half}'s proof.
@@ -1628,16 +1627,15 @@ Every computation here is carried out by a script in the archive,
 \url{https://github.com/calinnedelcu/joining-rotations-artifacts}, whose
 \texttt{README.md} maps each claim to the script that reproduces it and says what
 the archive settles and what it does not. Its code and data stand at commit
-\texttt{c2181150b8dbd4b90d77d72e5cddec34385744eb}---a hash, not a tag, because
-tags move.
+\texttt{c2181150b8dbd4b90d77d72e5cddec34385744eb}.
 \texttt{audit\_numbers.py} re-derives the paper's numbers from the definitions in
 three minutes on the standard library alone, sharing no code with the rest;
 \texttt{check\_emptyshell.py} and \texttt{check\_periodic.py} validate the twenty
 witnesses from their JSON alone;
 \texttt{check\_drat.sh} verifies the eight DRAT certificates---every construction
 of the companion paper, the gadget Lemma~\ref{lem:chain} rests on, and Parts'
-record---in ten minutes, \texttt{drat-trim} deliberately not vendored, since a
-checker supplied by the prover is not a check; and \texttt{verify\_all.sh} runs
+record---in ten minutes, \texttt{drat-trim} deliberately not vendored; and
+\texttt{verify\_all.sh} runs
 the whole suite in parallel, about an hour on six cores; its last full run passed
 $35$ of $35$, and the entry added since passes too. \texttt{PROVENANCE.md}
 names the four files taken from \cite{Parts}, \texttt{LICENSES.md} the licence split: MIT for the
@@ -1655,10 +1653,11 @@ the $\omega_t$ notation and the algebraic framework are Polymath16's. The
 classification of the Moser lattice's two geometric $4$-colourings is due to
 \'Akos D\'ucz.
 
-% The bibliography ends two lines short of holding the address block, which would
-% otherwise sit alone on a twenty-fifth page.
-\enlargethispage{2\baselineskip}
+% The bibliography ends a few lines short of holding the address block, which
+% would otherwise sit alone on a twenty-fifth page.
+\enlargethispage{3\baselineskip}
 \begin{thebibliography}{99}
+\setlength{\itemsep}{0pt}\setlength{\parsep}{0pt}
 
 \bibitem{deGrey}
 A.~D.~N.~J. de~Grey,
@@ -1702,6 +1701,11 @@ J. Parts,
 \emph{Graph minimization, focusing on the example of 5-chromatic unit-distance
 graphs in the plane},
 Geombinatorics \textbf{29} (2020), 137--166; arXiv:2010.12665.
+
+\bibitem{Speyer}
+D. Speyer, comment of 3 May 2018 on \emph{Polymath16, third thread: is
+6-chromatic within reach?}, Polymath16, 2018;
+\url{https://dustingmixon.wordpress.com/2018/05/01/polymath16-third-thread-is-6-chromatic-within-reach/}.
 
 \bibitem{Polymath}
 Polymath16,
