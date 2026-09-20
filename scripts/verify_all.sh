@@ -82,6 +82,18 @@ else
   printf '%-22s %-8s %5ds  %s\n' check_paper SKIP 0 "needs pdftotext and a built PDF"
 fi
 
+# --- the notes that ship with the manuscript --------------------------------
+# Three rounds running, a referee found stale cross-references in these: a
+# release that did not exist, a tag at the wrong commit, then six "Theorem N"
+# left over from a renumbering.  The paper was fixed each time and the notes
+# were not re-checked against it.  check_paper.sh tests the PDF; this tests
+# the prose that ships beside it.
+if [ -f paper/joining-rotations.aux ]; then
+  run check_notes        60 scripts/check_notes.py COVER.md FOR-THE-REVIEWER.md VERIFICATION.md
+else
+  printf '%-22s %-8s %5ds  %s\n' check_notes SKIP 0 "needs the .aux; compile with --keep-intermediates"
+fi
+
 # --- execute -----------------------------------------------------------------
 JOBS=${JOBS:-6}
 RUNNER="$OUT/_run_one.sh"

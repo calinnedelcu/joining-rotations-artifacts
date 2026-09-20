@@ -44,7 +44,7 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
 ## What we already know is open, so you need not find it
 
 - **The record of 509 is untouched**, and nothing here brings it closer. We say
-  so in the abstract and again in Section 10.
+  so in the abstract and again in Section 8.
 - **The law is silent exactly where the constructions live.** It kills three
   rational `a` in four; Theorem 1's own second half proves that at `4 | a` with
   an occupied shell *no* homomorphism colouring exists, so the method has
@@ -52,9 +52,9 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   than leaving it to be assembled.
 - **It is silent outside the spindle family altogether.** Four of the five
   previously known working rotations have irrational cosine; neither the law nor
-  the periodic refinement applies, and Section 10 says both tools are blind there.
+  the periodic refinement applies, and Section 8 says both tools are blind there.
 - **`chi = 5` is not established for any full union.** What is certified is
-  non-4-colourability, i.e. `chi >= 5`. Lemma 19 gives a 5-chromatic induced
+  non-4-colourability, i.e. `chi >= 5`. Lemma 21 gives a 5-chromatic induced
   subjoin, with no size bound better than the full union. The table column says
   `chi >= 5`.
 - **The interface bound at `theta_4` is in the companion paper**, not here, and
@@ -102,12 +102,12 @@ the class of defect to look for.
 ## What we would most value
 
 1. Whether the identification `3R = O_V` and the shell classification
-   (Theorem 17) are new. We believe so and have not found them, but this
+   (Theorem 18) are new. We believe so and have not found them, but this
    literature is partly distributed across blog comments and data files.
 2. Whether the narrow-class-field framing of Sections 4 and 6 can be pushed
    further than we push it — we use it to explain, not to prove. One candidate:
    since "obstructed" is "`p` lies in the non-principal genus of discriminant
-   33", Theorem 17's sufficiency might be rederivable as a statement about which
+   33", Theorem 18's sufficiency might be rederivable as a statement about which
    rationals are norms from the genus field, removing the separate appeal to
    `h(V) = 1`. We have not worked it through.
 3. Any 5-chromatic `L ∪ theta_4(S)` realising one of the 1920 minimum

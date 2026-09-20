@@ -16,6 +16,11 @@ paper pins. Check out that commit, not a tag. A shallow clone is about 900 MB, m
 Entries run in parallel (`JOBS`, default 6); one at a time takes about three
 hours, six at a time a little over one.
 
+Nine of the thirty-five belong to the companion paper rather than to this one —
+`ib_exact_4/16/28/36`, `interface_bound`, `interface_match`, `hept_classify`,
+`hept_halfunit`, `hept_rank`. They are left in because the archive serves both
+papers; a referee of this manuscript can ignore their rows.
+
 ```
 audit_numbers          PASS       144s
 ball_params            PASS       169s
