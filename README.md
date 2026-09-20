@@ -103,17 +103,20 @@ standard library only. From this directory:
 
     python3 -m venv .venv && .venv/bin/pip install python-sat
     .venv/bin/python scripts/audit_numbers.py        # no solver needed
-    bash scripts/verify_all.sh                       # all 30 table entries
+    bash scripts/verify_all.sh                       # all 36 entries
 
 `verify_all.sh` uses `.venv/bin/python` when there is one and the `python3` on
 PATH otherwise, says which it picked, and warns if `python-sat` is missing; set
-`PY=` to override it and `OUT=` to choose where the per-script logs go. It was
+`PY=` to override it, `OUT=` to choose where the per-script logs go, and `JOBS=`
+to set how many entries run at once (6 by default). It was
 run once, in full, from a clean extraction of this tarball -- which is how the
 two broken paths below were found.
 
 `scripts/verify_all.sh` writes one log per script and prints PASS, FAIL or
-TIMEOUT for each. Budget about two hours: `lambda_sweep`, `z4_relation`,
-`prove_step5` and `rho_unit_family` are the long ones.
+TIMEOUT for each. Most entries are single-threaded and the box is not, so the
+default `JOBS=6` turns about three hours into a little over one; `JOBS=1` runs
+them in sequence. `lambda_sweep`, `z4_relation`, `prove_step5` and
+`rho_unit_family` are the long ones, and they set the floor whatever `JOBS` is.
 
 ## The claim-to-file map
 
