@@ -9,7 +9,7 @@ Enclosed:
 | `joining-rotations.pdf` | the manuscript |
 | `FOR-THE-REVIEWER.md` | what is supplied, what is already known to be open, and the cheapest checks in order |
 | `VERIFICATION.md` | every check we ran, with its raw output, so you can compare a run rather than trust a summary |
-| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `cdaad8531ad0`, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504) |
+| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `e1e582848570`, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504) |
 
 ## The result, in one paragraph
 

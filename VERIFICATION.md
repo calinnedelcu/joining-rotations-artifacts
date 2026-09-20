@@ -4,7 +4,7 @@ Every check we ran, with its output, so you can compare your run against ours
 rather than take a summary on trust. Machine: Apple M5, 32 GB, macOS, ten cores.
 Reproduce any line with the command above it.
 
-Archive commit: `cdaad8531ad0c6f4ec94677f2f5b2a700c8612d4`, the same commit the
+Archive commit: `e1e582848570edd8dbce3b5f63e425fbde7ace43`, the same commit the
 paper pins. Check out that commit, not a tag. A shallow clone is about 900 MB, most of it proof.
 
 ---
@@ -170,13 +170,15 @@ project.
 
 ```
 ok   no unresolved references
-note: 2 placeholder(s) still to fill:
-    1493:[ARCHIVAL DOI TO BE SUPPLIED]
-    1526:[AFFILIATION TO BE SUPPLIED]
+ok   no placeholders
      24 pages
 ```
 
-The two placeholders are ours to fill and are the only ones left.
+Run against the submitted manuscript. The copy bundled in the archive at the
+pinned commit is the one revision behind this file that any document naming its
+own repository must be, and an earlier draft of this transcript quoted that
+copy's output, which still showed the DOI and affiliation unfilled — a
+contradiction with the cover note, caught in review.
 
 This check exists because a previous draft claimed "0 unresolved references"
 while containing two `??`. The claim had been made by grepping the TeX engine's
