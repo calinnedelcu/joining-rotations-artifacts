@@ -6,7 +6,7 @@ needs the owner's Zenodo account.
 1. Sign in at <https://zenodo.org> with GitHub.
 2. Go to <https://zenodo.org/account/settings/github/> and switch this
    repository **on**. Zenodo then watches it for releases.
-3. Cut a release here (`gh release create v1.1 --verify-tag`, or the web UI).
+3. Cut a release here (`gh release create <tag> --verify-tag`, or the web UI).
    Zenodo archives that tag and mints a DOI within a minute or two.
 
    **The order matters.** Zenodo picks up releases made *after* the repository

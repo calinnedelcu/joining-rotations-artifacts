@@ -4,8 +4,18 @@ Every check we ran, with its output, so you can compare your run against ours
 rather than take a summary on trust. Machine: Apple M5, 32 GB, macOS, ten cores.
 Reproduce any line with the command above it.
 
-Archive commit: `e1e582848570edd8dbce3b5f63e425fbde7ace43`, the same commit the
-paper pins. Check out that commit, not a tag. A shallow clone is about 900 MB, most of it proof.
+Archive: the Zenodo deposit at DOI 10.5281/zenodo.22855504, or the repository at
+the release that deposit was cut from. The paper pins commit
+`c2181150b8dbd4b90d77d72e5cddec34385744eb` for its code and data, and nothing the
+suite below runs changed after it. A shallow clone is about 900 MB, most of it
+proof.
+
+The transcript was taken at an earlier commit, which differs from the pinned one
+in two scripts and nothing else. `certify.py`, which regenerates the
+certificates, named a build directory that is not shipped; it is not in the
+suite. `check_paper.sh` is: its row in section 1 predates the test that compiles
+the shipped source and compares it to the shipped PDF, and section 5 quotes the
+current script.
 
 ---
 
@@ -172,13 +182,15 @@ project.
 ok   no unresolved references
 ok   no placeholders
      24 pages
+ok   the shipped source reproduces the shipped PDF
 ```
 
-Run against the submitted manuscript. The copy bundled in the archive at the
-pinned commit is the one revision behind this file that any document naming its
-own repository must be, and an earlier draft of this transcript quoted that
-copy's output, which still showed the DOI and affiliation unfilled — a
-contradiction with the cover note, caught in review.
+Run against the submitted manuscript, which is the copy bundled in the archive.
+The fourth line is the check that a referee's compile of the shipped source
+gives back the shipped PDF: it was added after that compile produced 42 pages
+against a 24-page submission, and a paper missing a proof the PDF still had. An
+earlier draft of this transcript quoted a bundled copy whose DOI and affiliation
+were still unfilled — a contradiction with the cover note, caught in review.
 
 This check exists because a previous draft claimed "0 unresolved references"
 while containing two `??`. The claim had been made by grepping the TeX engine's

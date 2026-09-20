@@ -13,6 +13,14 @@ label -> kind, then scans the Markdown notes for "Theorem 18", "Lemma 20",
 that number.  A reference that resolves to the WRONG object -- "Theorem 17" when
 17 is a Remark -- is exactly the case it is built to catch.
 
+It also checks the commit hashes.  The notes tell a referee which snapshot of
+the archive to check out, and after the paper's pin was moved off a commit whose
+certificate script named files that are not shipped, three of them still sent
+the referee back to it.  Numbered cross-references were all this checked at the
+time, so the run that should have caught it passed: the check's domain excluded
+the thing it was meant to find.  Any `<hex>` in a note that is not a prefix of a
+hash the paper names is now a failure.
+
 Run after every recompile:  .venv/bin/python scripts/check_notes.py [notes...]
 """
 import glob, os, re, sys
@@ -35,6 +43,9 @@ kind = {m.group(2): m.group(1).capitalize()
             r"\\begin\{(theorem|lemma|proposition|corollary|remark)\}[^\n]*?\\label\{([^}]*)\}", tex)}
 # what exists: the set of (kind, number) the paper actually defines
 exists = {(kind[l], num[l]) for l in kind if l in num}
+# every commit hash the paper itself names, so a note cannot point somewhere else
+pinned = set(re.findall(r"\\texttt\{([0-9a-f]{40})\}", tex))
+hashpat = re.compile(r"`([0-9a-f]{7,40})`")
 by_number = {}
 for k, n in exists:
     by_number.setdefault(n, set()).add(k)
@@ -58,6 +69,13 @@ for path in notes:
             why = (f"{n} is {'/'.join(sorted(other))} {n}" if other
                    else f"nothing is numbered {n}")
             hits.append((line, m.group(0), why))
+    for m in hashpat.finditer(text):
+        h = m.group(1)
+        if not any(p.startswith(h) for p in pinned):
+            line = text[:m.start()].count("\n") + 1
+            named = ", ".join(sorted(p[:12] for p in pinned)) or "no commit at all"
+            hits.append((line, h, f"the paper names {named}"))
+    hits.sort()
     name = os.path.relpath(path, ROOT)
     if hits:
         bad += len(hits)
