@@ -1,14 +1,14 @@
 # What is supplied, and what is already known to be open
 
 *Companion note to* **A divisibility obstruction for joining two Moser lattices**
-*(46 pages).* Read this first if you would rather not spend the first hour
+*(24 pages).* Read this first if you would rather not spend the first hour
 rediscovering what we already know.
 
 ## What you have
 
 | | |
 |---|---|
-| the manuscript | `joining-rotations.pdf`, 46 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
+| the manuscript | `joining-rotations.pdf`, 24 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
 | the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public, commit `66d7470f4653` |
 | a transcript | `VERIFICATION.md` — every check we ran, with its raw output |
 
@@ -57,10 +57,10 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   non-4-colourability, i.e. `chi >= 5`. Lemma 19 gives a 5-chromatic induced
   subjoin, with no size bound better than the full union. The table column says
   `chi >= 5`.
-- **The 1920 five-edge interfaces may all be unrealisable.** Parts' record
-  carries 18 cross edges, not 5, and its interface is disjoint from all 1920. The
-  bound is a floor for a relaxation that the one known instance exceeds. We
-  looked for a realising graph on a space of exactly `30 × 8 × 8` and found none.
+- **The interface bound at `theta_4` is in the companion paper**, not here, and
+  its negative is weak: Parts' record carries 18 cross edges, not the minimum 5,
+  and its interface is disjoint from all 1920 minimum ones. We know of no graph
+  realising any of them and have run no systematic search over the halves.
 - **Three of the seven constructions are not ours in substance.** The rational
   spindles follow from Parts' published gadgets without any of this paper's
   machinery, and we say so. After subtracting those and `theta_4` (the record),
@@ -70,9 +70,9 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   rather than report: the one published enumeration on this lattice clips its
   point set to radius 2, and only `theta_4` of the seven has a shell reaching so
   far — which is why `theta_4` is the one it found.
-- **Section 9 is thin relative to its billing.** `N = 7` is settled (it
-  survives, with no half-unit vector, so the search deciding it is the
-  informative kind); `N = 9` is open and is rank 24.
+- **The same criterion on Haugland's lattice** settles `theta_2` and `theta_7`
+  as survivors and leaves `N = 9` open at rank 24; those computations moved to
+  the companion paper with the constructions.
 
 ## Where we have been wrong, in case it bears on how you read the rest
 
@@ -110,5 +110,6 @@ the class of defect to look for.
    33", Theorem 17's sufficiency might be rederivable as a statement about which
    rationals are norms from the genus field, removing the separate appeal to
    `h(V) = 1`. We have not worked it through.
-3. Any 5-chromatic `L ∪ theta_4(S)` realising one of the 1920 interfaces. We
-   could not build one and do not know whether one exists.
+3. Any 5-chromatic `L ∪ theta_4(S)` realising one of the 1920 minimum
+   interfaces the companion paper enumerates. We could not build one and do not
+   know whether one exists.

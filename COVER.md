@@ -1,6 +1,6 @@
 # Cover note
 
-**A divisibility obstruction for joining two Moser lattices** — 46 pages.
+**A divisibility obstruction for joining two Moser lattices** — 24 pages.
 
 Enclosed:
 
@@ -29,9 +29,12 @@ answer — `R` has a point at squared radius `n/b` in lowest terms iff
 inert in `Q(sqrt-3)`. `V` is the narrow Hilbert class field of `Q(sqrt33)`,
 which makes the local behaviour class field theory rather than case work.
 
-Against the obstruction: seven joining spindles, each with a checked DRAT
-certificate; an infinite chained family at `a = 64n^2/9`; eleven further
-exclusions by a periodic refinement; and an exact interface bound at `theta_4`.
+Against the obstruction: infinitely many spindles join, by chaining a gadget of
+Parts' (Lemma 19); eleven further integer candidates die to a periodic
+refinement; and seven rotations carry explicit unions, each with a checked DRAT
+certificate in the archive. The constructions themselves, and the interface
+bound at `theta_4`, are in a companion paper; this one keeps the arithmetic and
+the law.
 
 ## What this does not do
 

@@ -166,9 +166,9 @@ project.
 ```
 ok   no unresolved references
 note: 2 placeholder(s) still to fill:
-    2561:[ARCHIVAL DOI TO BE SUPPLIED]
-    2595:[AFFILIATION TO BE SUPPLIED]
-     46 pages
+    1493:[ARCHIVAL DOI TO BE SUPPLIED]
+    1526:[AFFILIATION TO BE SUPPLIED]
+     24 pages
 ```
 
 The two placeholders are ours to fill and are the only ones left.
