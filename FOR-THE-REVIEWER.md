@@ -57,8 +57,9 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   non-4-colourability, i.e. `chi >= 5`. Lemma 21 gives a 5-chromatic induced
   subjoin, with no size bound better than the full union. The table column says
   `chi >= 5`.
-- **The interface bound at `theta_4` is in the companion paper**, not here, and
-  its negative is weak: Parts' record carries 18 cross edges, not the minimum 5,
+- **The interface bound at `theta_4` is not in this paper** — it is left for a
+  companion, and `scripts/interface_matchings.py` in the archive computes it.
+  Its negative is weak: Parts' record carries 18 cross edges, not the minimum 5,
   and its interface is disjoint from all 1920 minimum ones. We know of no graph
   realising any of them and have run no systematic search over the halves.
 - **Three of the seven constructions are not ours in substance.** The rational
@@ -71,8 +72,8 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   point set to radius 2, and only `theta_4` of the seven has a shell reaching so
   far — which is why `theta_4` is the one it found.
 - **The same criterion on Haugland's lattice** settles `theta_2` and `theta_7`
-  as survivors and leaves `N = 9` open at rank 24; those computations moved to
-  the companion paper with the constructions.
+  as survivors and leaves `N = 9` open at rank 24; those computations are
+  `scripts/hept_*.py` in the archive, and are described in a companion paper.
 
 ## Where we have been wrong, in case it bears on how you read the rest
 
@@ -111,5 +112,5 @@ the class of defect to look for.
    rationals are norms from the genus field, removing the separate appeal to
    `h(V) = 1`. We have not worked it through.
 3. Any 5-chromatic `L ∪ theta_4(S)` realising one of the 1920 minimum
-   interfaces the companion paper enumerates. We could not build one and do not
+   interfaces `scripts/interface_matchings.py` enumerates. We could not build one and do not
    know whether one exists.

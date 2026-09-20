@@ -33,8 +33,9 @@ Against the obstruction: infinitely many spindles join, by chaining a gadget of
 Parts' (Lemma 20); eleven further integer candidates die to a periodic
 refinement; and seven rotations carry explicit unions, each with a checked DRAT
 certificate in the archive. The constructions themselves, and the interface
-bound at `theta_4`, are in a companion paper; this one keeps the arithmetic and
-the law.
+bound at `theta_4`, are left for a companion paper; this one keeps the arithmetic
+and the law, and depends on that paper for nothing — every computation behind
+the table is in the archive at the pinned commit.
 
 ## What this does not do
 
