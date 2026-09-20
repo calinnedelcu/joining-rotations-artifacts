@@ -112,9 +112,20 @@ vectors
   \qquad \theta_3 = \arccos\tfrac56,
 \]
 the half-angle $\varphi = e^{i\theta_3/2} = \tfrac{\sqrt{33}}{6} +
-\tfrac{\sqrt3}{6}i$ being needed for the twelve with $j$ odd
-. It is dense in the plane, and it is a \emph{group} and
-not a ring---of the $900$ products of pairs of unit vectors only $684$ lie in it.
+\tfrac{\sqrt3}{6}i$ being needed for the twelve with $j$ odd.
+
+\emph{Two groups carry this name, and this paper is about the larger one.} The
+recent literature---\cite{Engel}, \cite{Ruhland}, \cite{Ducz}---writes
+$M = \Z\langle 1, \omega_1, \omega_3, \omega_1\omega_3 \rangle$, of rank $4$
+with $18$ unit vectors, and calls that the Moser lattice. The group the record
+is built in is the larger $\Lat$ above: it contains $M$ with index $9$ and has
+$30$ unit vectors, because $\varphi \notin M$ and adjoining it is exactly what
+supplies the twelve with $j$ odd. Where the distinction matters we write $M$ for
+the index-$9$ subgroup; a reader coming from \cite{Engel} or \cite{Ruhland}
+should read every statement here as being about the supergroup.
+
+$\Lat$ is dense in the plane, and it is a \emph{group} and not a ring---of the
+$900$ products of pairs of unit vectors only $684$ lie in it.
 But $3\Lat$ is a ring, and is the maximal order of the field $\Lat$ spans:
 \[
   \Lat = \tfrac13\,\Ok_V, \qquad V = \Q(\sqrt{33},\, i\sqrt3),
@@ -217,15 +228,28 @@ coordinates inside one fixed lattice; the divisibility here is a condition on th
 four of \cite{Voronov}. What is claimed below is the arithmetic, the law, and the
 constructions of Section~\ref{sec:seven}.
 
-On that claim we can be specific rather than merely careful. Six papers work in
-or on this lattice---\cite{Ducz}, \cite{Parts}, \cite{Voronov},
-\cite{Haugland}, \cite{Engel} and \cite{Ruhland}---and between them their full
-texts contain no occurrence of \emph{maximal order}, \emph{ring of integers},
-\emph{prime ideal} or \emph{number field}. The Polymath16 threads do carry ring
-and field language---$\Z[\omega_1,\omega_3]$, and $\Q[\sqrt{-p},\sqrt{-q}]$ in
-Gibbs' factorisation of unit-modulus elements---but no ideal theory: no maximal
-order, no splitting of a prime, no integral closure, which is the structure
-Proposition~\ref{prop:order} supplies. The squared-distance spectrum that
+That claim deserves a comparison and not a keyword search, because the
+arithmetic framing is not new even where the results are. The Polymath16
+material sets the Moser \emph{ring} inside $\Q(\sqrt{-3},\sqrt{-11})$ and writes
+it as $\Z[\tfrac{1+i\sqrt3}{2}, \tfrac{1+\sqrt{33}}{2}, \tfrac13]$; in
+particular $\Ok = \Z[\tfrac{1+\sqrt{33}}{2}]$, the ring
+Theorem~\ref{thm:primes} works over, is already there, as is the observation
+that unit-modulus elements are what generate edges. Gibbs factors such elements
+through $\Q[\sqrt{-p},\sqrt{-q}]$. We claim none of that.
+
+What we add to it is ideal-theoretic and is what
+Proposition~\ref{prop:order} states: that $3\Lat$ is the \emph{maximal} order of
+$V$, not merely an order inside it; that $2$ splits in $F$ and both primes above
+it are inert in $V$, so $\Lat/2\Lat \cong \F_4 \times \F_4$ and the two
+colourings are the two coordinate projections; and that occupancy of a shell is
+a relative-norm condition with the closed-form answer of
+Theorem~\ref{prop:shells}. Of the six papers working on this
+lattice---\cite{Ducz}, \cite{Parts}, \cite{Voronov}, \cite{Haugland},
+\cite{Engel}, \cite{Ruhland}---none contains the words \emph{maximal order},
+\emph{ring of integers}, \emph{prime ideal} or \emph{number field} anywhere in
+its full text, and we have found no statement of the distance spectrum in closed
+form. The Polymath16 threads are long and partly informal, so this is a
+comparison of what we could read, not a certified negative. The squared-distance spectrum that
 is classical here is the triangular lattice's, where the attainable values are
 the Loeschian numbers $a^2+ab+b^2$; we have found no statement, in those papers
 or in the Polymath16 material, of the corresponding set for $\Lat$, which is
@@ -298,6 +322,39 @@ If $\theta_a \in V$ then $\Lam_a = \Lat + \theta_a(\Lat)$ has rank $4$; otherwis
 it has rank exactly $8$ and Theorem~\ref{thm:law} applies. No intermediate rank
 occurs.
 \end{proposition}
+\begin{proof}
+The chart \eqref{eq:chart} with rational $A,B,C,D$ gives $V$ the $\Q$-basis
+$1, \sqrt{33}, i\sqrt3, i\sqrt{11}$. Since $i\sqrt{11} = (i\sqrt3)\sqrt{33}/3$
+and $(i\sqrt3)^2 = -3$, this is $\Q(\sqrt{33})(i\sqrt3)$, of degree $2$ over
+$\Q(\sqrt{33})$ and $4$ over $\Q$; in particular $V$ is a \emph{field}.
+
+Now $\theta_a = c + is$ with $c = (2a-1)/(2a) \in \Q$ and
+$s = \sqrt{4a-1}/(2a)$, so $\theta_a \in V$ if and only if $is \in V$, that is
+$\sqrt{4a-1} \in \Q\sqrt3 + \Q\sqrt{11}$. Writing
+$\sqrt{4a-1} = p\sqrt3 + q\sqrt{11}$ and squaring gives
+$4a-1 = 3p^2 + 11q^2 + 2pq\sqrt{33}$, so $pq = 0$ and $4a-1$ is $3p^2$ or
+$11q^2$, with $p, q$ rational. When $a$ is an integer the rational $k$ is forced
+to be one: if $4a-1 = 3(u/v)^2$ in lowest terms then $v^2 \mid 3$, so $v = 1$;
+and then $k$ is odd besides, since $4a-1 \equiv 3 \pmod 4$ while $3k^2$ and
+$11k^2$ are $0$ mod $4$ for even $k$. For non-integer $a$ the rational form is
+the one that bites: $a = 5/9, 7/3, 13/3, 71/9, 31/3$ and $43/3$ all have
+$4a-1 \in 3\Q^2 \cup 11\Q^2$, all have rank $4$, and all have a non-empty shell,
+so they are genuinely excluded from Theorem~\ref{thm:law} and not vacuously. Both
+branches occur: $7/3$, $13/3$, $31/3$, $43/3$ are $3k^2$ with $k \in \tfrac13\Z$,
+while $5/9$ and $71/9$ are $11k^2$---$4a-1 = 11/9$ and $275/9$ at $k = 1/3$ and
+$5/3$. An earlier version of this list ran only the $3k^2$ branch at non-integer
+$a$ and so missed the second pair; it also included $1/3$, which is below the
+normalisation of Section~\ref{sec:intro} and whose representative
+$a/(4a-1) = 1$ is the integer already listed above.
+
+If $\theta_a \in V$ then multiplication by it is a bijection of the field $V$, so
+$\theta_a V = V$ and $\Lam_a \subset V$ has rank $4$. If $\theta_a \notin V$,
+suppose $w \ne 0$ lay in $V \cap \theta_a V$, say $w = \theta_a v$ with
+$v \in V \setminus \{0\}$. Then $\theta_a = wv^{-1} \in V$, because $V$ is a
+field---a contradiction. So $V \cap \theta_a V = 0$ and
+$\dim_\Q(V + \theta_a V) = 4 + 4 = 8$.
+\end{proof}
+
 
 \subsection*{One symmetry, and the normalisation it forces}
 $\Lat$ is carried to itself by complex conjugation and by $-1$, so for any
