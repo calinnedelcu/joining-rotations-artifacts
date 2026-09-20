@@ -42,13 +42,13 @@ TARGETS = {
     # The two largest, unminimised, attempted so the outcome can be reported
     # rather than guessed.  Give them a wall-clock cap: what a referee needs to
     # know is the instance size and whether it finishes, not a machine left on.
-    "theta28":   dict(primes=(3, 11, 37),  pts="out/join28.pts",
+    "theta28":   dict(primes=(3, 11, 37),  pts="graphs/join28.pts",
                       split=False, cap=7200, what="the full-ball theta_28 union"),
-    "theta36":   dict(primes=(3, 11, 13),  pts="out/join36.pts",
+    "theta36":   dict(primes=(3, 11, 13),  pts="graphs/join36.pts",
                       split=False, cap=7200, what="the full-ball theta_36 union"),
-    "alpha64_3": dict(primes=(3, 11, 23),  pts="out/join64_3.pts",
+    "alpha64_3": dict(primes=(3, 11, 23),  pts="graphs/join64_3.pts",
                       split=False, cap=7200, what="the full-ball alpha_64/3 union"),
-    "alpha256_9": dict(primes=(3, 11, 1015), pts="out/join256_9.pts",
+    "alpha256_9": dict(primes=(3, 11, 1015), pts="graphs/join256_9.pts",
                       split=False, cap=7200, what="the full-ball alpha_256/9 union"),
 }
 
