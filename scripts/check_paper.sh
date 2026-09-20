@@ -34,5 +34,34 @@ else
   echo "ok   no placeholders"
 fi
 
-echo "     $(pdfinfo "$PDF" | awk '/^Pages/{print $2}') pages"
+PAGES=$(pdfinfo "$PDF" | awk '/^Pages/{print $2}')
+echo "     $PAGES pages"
+
+# Does the shipped source actually produce the shipped PDF?  A referee compiled
+# the pinned .tex and got 42 pages against a 24-page submission, because the
+# source had been left six weeks behind while the PDF was kept current -- and
+# the paper it produced still contained a proof the PDF had lost.  Page count
+# and placeholder checks cannot see that; compiling can.
+TEX=${PDF%.pdf}.tex
+if [ -f "$TEX" ] && command -v tectonic >/dev/null 2>&1; then
+  B=$(mktemp -d); trap 'rm -rf "$B" "$T"' EXIT
+  cp -R "$(dirname "$TEX")"/* "$B"/ 2>/dev/null
+  if (cd "$B" && tectonic -X compile "$(basename "$TEX")" >/dev/null 2>&1); then
+    P2=$(pdfinfo "$B/$(basename "$PDF")" | awk '/^Pages/{print $2}')
+    pdftotext "$B/$(basename "$PDF")" "$B/src.txt" 2>/dev/null
+    if [ "$P2" != "$PAGES" ]; then
+      echo "FAIL: the source compiles to $P2 pages, the shipped PDF has $PAGES"
+      fail=1
+    elif ! diff -q <(tr -s '[:space:]' ' ' < "$T") <(tr -s '[:space:]' ' ' < "$B/src.txt") >/dev/null 2>&1; then
+      echo "note: source and PDF agree on $PAGES pages but differ in text"
+    else
+      echo "ok   the shipped source reproduces the shipped PDF"
+    fi
+  else
+    echo "note: the source did not compile here; source/PDF agreement unchecked"
+  fi
+else
+  echo "note: no .tex beside the PDF, or no tectonic; source/PDF agreement unchecked"
+fi
+
 exit $fail

@@ -24,6 +24,7 @@ quoted in `scripts/voronov_rotations.py`; no graph data of theirs is included.
 
 Nothing in this archive is derived from Haugland's or Dúcz's coordinate files.
 
-**Licence.** Not yet chosen. Until one is added, the scripts and derived data here
-are the authors' own work and all rights are reserved; the four files above remain
-subject to whatever terms their original publication carries.
+**Licence.** MIT for the code, CC BY 4.0 for the paper, the certificates and the
+data; `LICENSES.md` gives the split. The four files above remain subject to
+whatever terms their original publication carries and are relicensed by nothing
+here.

@@ -3,7 +3,7 @@
 Two finished papers, both typeset and both compiling:
 
 * **`joining-rotations.tex`** -- which rotations join two Moser lattices into a
-  5-chromatic graph. 39 pages including one appendix, 8 figures.
+  5-chromatic graph. 25 pages, 3 figures, no appendix.
 * **`v5-at-least-29.tex`** -- the order of a 5-chromatic unit-distance graph is
   at least 29, improving the published 28. 3 pages, no figures, independent of
   the other.
@@ -33,7 +33,7 @@ program than the one that compiled the document.
 tectonic -X compile joining-rotations.tex --outdir /tmp/texout
 ```
 
-**Both compile clean** -- 39 pages with 8 figures, and 3 pages, no warnings
+**Both compile clean** -- 25 pages with 3 figures, and 3 pages, no warnings
 from the engine on either.
 
 ## Why this format

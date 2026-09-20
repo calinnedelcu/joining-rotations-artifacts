@@ -50,8 +50,8 @@ Regenerate one from the coordinates, solver and all:
 
     .venv/bin/python scripts/certify.py theta36
 
-The four largest CNFs are 140-160 MB each and are regenerated rather than
-stored; `certify.py` writes them next to the proof.
+The four largest CNFs are 140-170 MB raw and ship gzipped, as `.cnf.gz`
+beside their proofs; `check_drat.sh` unpacks either form.
 
 ## The encoding, and the one reduction in it
 
