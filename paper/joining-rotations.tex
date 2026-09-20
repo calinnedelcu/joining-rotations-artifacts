@@ -1414,6 +1414,18 @@ natural density zero. The measured densities to $N = 10^6$, the Mertens estimate
 for the rate, and the cautions about comparing a finite count with an asymptotic
 bound are in the archive, with the script that produces them.
 
+The rule that produced every row is deterministic and is stated here so that the
+table can be read, even though the constructions themselves belong to the
+companion paper. Each half is a \emph{whole ball}: all points of $\Lat$ within a
+radius, at the smallest depth in the thirty unit vectors that reaches the shell
+at $\sqrt a$, with the two halves glued at the origin and the second turned by
+$\theta_a$. No vertex was chosen, no search was run over subsets, and no
+parameter was tuned---which is why the vertex counts are large, and why they are
+a property of that rule rather than of the rotation. Two rows were afterwards
+minimised, and the archive's \texttt{scripts/ball\_params.py} recovers each
+row's depth and radius from the shipped coordinates rather than from a build
+log, so the table can be checked against the graphs instead of trusted.
+
 \begin{center}
 \begin{tabular}{lllrrr}
 \hline
