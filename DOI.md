@@ -8,6 +8,13 @@ needs the owner's Zenodo account.
    repository **on**. Zenodo then watches it for releases.
 3. Cut a release here (`gh release create v1.1 --verify-tag`, or the web UI).
    Zenodo archives that tag and mints a DOI within a minute or two.
+
+   **The order matters.** Zenodo picks up releases made *after* the repository
+   is switched on; a release cut before step 2 is not archived and gets no DOI,
+   and the tag name is then used up. So do not cut the release early. (Zenodo's
+   own documentation does not state this outright, which is why it is worth
+   saying: their GitHub guide assumes throughout that the repository is already
+   enabled.)
 4. Two DOIs appear: a **concept DOI** that always resolves to the newest
    version, and a **version DOI** fixed to this release. Put the concept DOI in
    the paper — it is the one that stays right when the archive is updated.
