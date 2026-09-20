@@ -33,8 +33,11 @@ candidates being the lattice points with at least 4 neighbours in it.
 | 517, `galois3` core 491, bound 17 | 601 candidates | **UNSAT** -- no completion of 17 | minutes |
 | 517, `rot120` core 505, bound 3 | 630 candidates | **UNSAT** -- no completion of 3 | 9 master calls |
 
-The refuted instances are written as DIMACS to `out/master_core*.cnf` and can be
-rechecked with `cadical`, or with `--lrat` and cake_lpr.
+The refuted instances are no longer verdicts. Ten of them -- the five seam cores
+and the five part seams -- now ship DRAT proofs in `proofs/seams/`, each checked
+by `drat-trim`, with the instance and the checker's log beside it;
+`scripts/certify_seams.py` regenerates any of them. The largest is
+`master_ps_L_4` at 5.2 million proof lines, verified in 80 seconds.
 
 These close the region immediately around the record: the point of the seam is
 that it makes each question small enough to *settle* rather than run forever.
