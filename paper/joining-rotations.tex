@@ -62,9 +62,11 @@ plane, Moser lattice, real quadratic field}
 
 \begin{abstract}
 Write $\Lat$ for the Moser lattice and $\theta_a$ for the rotation with
-$\cos\theta_a = (2a-1)/(2a)$, so that $a$ is the squared radius at which
+$\cos\theta_a = (2a-1)/(2a)$, rational $a > \tfrac14$, so that $a$ is the squared
+radius at which
 $\theta_a$ pairs a point with its own image. We prove a divisibility obstruction:
-if the joint lattice $\Lat + \theta_a(\Lat)$ has rank eight and $4 \nmid a$, it
+if the joint lattice $\Lat + \theta_a(\Lat)$ has rank eight and $v_2(a) < 2$---for
+integer $a$, $4 \nmid a$---it
 carries a $4$-colouring by a group homomorphism, so no subset of it is
 5-chromatic at any size, and no 5-chromatic union $L \cup \theta_a(S)$ exists for
 any $L, S \subseteq \Lat$. The restriction to $\Lat$ is real and not a
@@ -165,8 +167,9 @@ unit apart. Section~\ref{sec:ball} fixes the normalisation that makes $a$ well
 defined; $\theta_4$ is a spindle and is Heule's rotation.
 
 \begin{theorem}[the divisibility law]\label{thm:law}
-Let $a$ be a positive rational and suppose the joint lattice
-$\Lam_a = \Lat + \theta_a(\Lat)$ has rank~$8$---which by
+Let $a > \tfrac14$ be rational, so that $\theta_a$ is a rotation, and read
+$4 \mid a$ as $v_2(a) \ge 2$---its meaning for integer $a$. Suppose the joint
+lattice $\Lam_a = \Lat + \theta_a(\Lat)$ has rank~$8$---which by
 Proposition~\ref{prop:rank} is every $a$ except those with $4a-1 = 3k^2$ or
 $11k^2$ for a rational $k$. If $4 \nmid a$ then $\Lam_a$ admits a homomorphism
 $4$-colouring. If $4 \mid a$ and the shell of $\Lat$ at radius $\sqrt a$ is
@@ -202,7 +205,8 @@ edge is a unit vector of $\Lam_a$, of which there are finitely many, exactly
 enumerable.
 
 Theorem~\ref{thm:law} is the application. It is one-sided and its reach is
-bounded in a way worth stating at once: it kills three rational $a$ in four, and
+bounded in a way worth stating at once: it kills every $a$ with $v_2(a) < 2$,
+three integers in four, and
 its own second half proves that at $4 \mid a$ with an occupied shell no
 homomorphism colouring exists at all---so the method is silent exactly where the
 working rotations live. It is silent outside the spindle family too, four of the
@@ -211,12 +215,7 @@ five rotations known to work having irrational cosine. Section
 refinement, and Section~\ref{sec:seven} exhibits seven joining spindles, each
 with a DRAT certificate a referee can check; Lemma~\ref{lem:chain} chains a
 gadget of Parts' into a join at $a = 64n^2/9$ for every $n$, so infinitely many
-spindles join. The record of $509$ is untouched, and nothing here brings it
-closer.
-
-The restriction to $\Lat$ is real. $\Lat$ is one member of a nested family
-(Section~\ref{sec:notclaimed}), and Heule's $553$-vertex part already lives in
-the next one up, so a join built there is outside everything proved below.
+spindles join.
 
 \subsection*{What is not new}
 
@@ -253,9 +252,10 @@ lattice---\cite{Ducz}, \cite{Parts}, \cite{Voronov}, \cite{Haugland},
 its full text. The classical spectrum here is the triangular lattice's, the
 Loeschian numbers $a^2+ab+b^2$; we have found no statement, in those papers or
 in the Polymath16 material, of the corresponding set for the rank-$4$ lattice
-$\Lat$, whose spectrum is Theorem~\ref{prop:shells}. That is evidence and not proof: this
-literature is partly distributed across blog comments and data files---Speyer's
-is one---and a negative over it cannot be certified.
+$\Lat$, whose spectrum is Theorem~\ref{prop:shells}. That is evidence and not proof, and it is
+evidence as searched in September 2026: this literature is partly distributed
+across blog comments and data files---Speyer's is one---and a negative over it
+cannot be certified.
 
 \begin{figure}[ht]
 \centering
@@ -582,7 +582,8 @@ holds automatically.
 Squares modulo $16$ depend only on their bases modulo $8$, so both hypotheses and
 both conclusions are determined by $(A,B,C,D)$ modulo $8$, and $8^4 = 4096$
 classes decide the statement. Of those, $320$ satisfy $16 \mid S$ while failing
-\eqref{eq:cong}, and not one of the $320$ has $AB+CD \equiv 0 \pmod 8$.
+\eqref{eq:cong}, and not one of the $320$ has $AB+CD \equiv 0 \pmod 8$
+(\texttt{audit\_numbers.py}).
 \end{proof}
 
 If $\lvert z\rvert^2 = a$ is a positive integer then $S = 144a$, so $16 \mid S$
@@ -618,8 +619,8 @@ It contains $1$, because $\tfrac13 \in \Lat$ by \eqref{eq:chart} at $(4,0,0,0)$,
 and it is closed under multiplication: the sixteen products $b_ib_j$ reduce to
 integer combinations of the $b_k$ by the rules $\sqrt3\sqrt{11} = \sqrt{33}$,
 $\sqrt3\sqrt{33} = 3\sqrt{11}$ and $\sqrt{11}\sqrt{33} = 11\sqrt3$. So $3\Lat$ is
-an order in $V$. (The same closure holds on all $900$ products of unit vectors,
-where $\Lat$ itself fails: only $684$ of them return.)
+an order in $V$ (\texttt{moser\_is\_ov.py}). (The same closure holds on all $900$
+products of unit vectors, where $\Lat$ itself fails: only $684$ of them return.)
 
 For the discriminant, $\Tr_{V/\Q}(x) = 4x_1$ on these coordinates, since the four
 embeddings negate $\sqrt{33}$ and $i\sqrt3$ independently and kill every other
@@ -708,10 +709,11 @@ where $[\Lat : 2\Lat] = 16$ is four times too big.
 \begin{theorem}[the colourings are prime reductions]\label{thm:primes}
 The rational prime $2$ splits in $\Q(\sqrt{33})$ as $-\pi_1\pi_2$ with
 $\pi_{1,2} = (5 \pm \sqrt{33})/2$. The lattice $\Lat$ is a module over
-$\Ok = \Z[(1+\sqrt{33})/2]$, and the two integral geometric $4$-colourings of
-$\Lat$---there are exactly two, as the proof below counts---are the reductions
-modulo $\pi_1\Lat$ and $\pi_2\Lat$. In particular there are two of them because $2$ splits into two
-primes.
+$\Ok = \Z[(1+\sqrt{33})/2]$. Call a proper $4$-colouring of $\Lat$
+\emph{integral} when its classes are cosets of a subgroup and \emph{geometric}
+when $\Lat$'s rotations permute them. The two such colourings are the reductions
+modulo $\pi_1\Lat$ and $\pi_2\Lat$: two kernels, so two colourings up to
+permutation of the colours, and two because $2$ splits.
 \end{theorem}
 
 \begin{proof}[Proof of Theorem \ref{thm:primes}]
@@ -792,8 +794,9 @@ coefficient of $b_{i+1}$. Then
 \]
 the nine unit classes are the nine integers in neither list, and a sweep over all
 $35$ two-dimensional subspaces of $\F_2^4$---the enumeration the argument above
-replaces---returns those two and no others. (The masks depend on the basis and the
-bit order; both are fixed here so the numbers can be checked.)
+replaces---returns those two and no others (\texttt{two\_colourings.py}). (The
+masks depend on the basis and the bit order; both are fixed here so the numbers
+can be checked.)
 
 Stability is the wrong invariant, and it is worth saying which one fails, because
 matching the $\Ok$-stable subgroups against D\'ucz's two is the natural first move
@@ -835,9 +838,6 @@ proof does not give one. Note also
 $\pi_1\Lat \cap \pi_2\Lat = \pi_1\pi_2\Lat = 2\Lat$: both colours vanish exactly
 on $2\Lat$.
 
-the archive's drawing draws them.
-
-
 \section{Proof of the divisibility law}\label{sec:proof}
 
 Assume $\Lam = \Lat + \theta_a(\Lat)$ has rank $8$, so
@@ -869,7 +869,7 @@ them a \emph{cross} unit vector $u = r + \theta(s)$, with $r,s \in \Lat$ both
 non-zero, destroys. Figure~\ref{fig:orbits} shows the two orbits these fall into.
 
 The five steps deliver, in order: that a cross unit vector has its two parts
-parallel, $s = \lambda r$ with $\lambda$ a rational scalar (Step 1); that
+parallel, $s = \lambda r$ with $\lambda$ a real scalar (Step 1); that
 $\lambda = -1$ is the shell, the only case carrying geometric information
 (Step 2); that a shell point lies in $2\Lat$ exactly when $4 \mid a$, which is
 where the divisibility enters (Step 3); that every other $\lambda$ constrains
@@ -1043,7 +1043,8 @@ $v \in \pi^k\Lat$.
 First, $9\lvert x \rvert^2 \in \Ok$ for every $x \in \Lat$---Lemma \ref{lem:A} is
 its rational case---because $144\lvert\,\cdot\,\rvert^2$ is a quadratic form with
 values in $\Ok$, and both its values and its polarisations on the $30$ unit
-vectors are divisible by $16$ there: $30$ checks and $\binom{30}{2} = 435$. So
+vectors are divisible by $16$ there: $30$ checks and $\binom{30}{2} = 435$
+(\texttt{step5\_signs.py}). So
 $v_\pi\big(144\lvert x\rvert^2\big) \ge 4 = v_\pi(144)$ throughout $\Lat$.
 
 Now write $v = \pi^k v_1$ with $\pi \nmid v_1$. Since $\pi$ is real,
@@ -1084,7 +1085,7 @@ If $4 \nmid a$ then neither prime divides $v$. If moreover $a$ is even then
 $\pi_i$ divides exactly one of $r = \beta v$ and $s = \alpha v$, so by
 \eqref{eq:colour} exactly one of $\gamma_i(r), \gamma_i(s)$ vanishes and
 $\varphi(u) = 0 + c$ with $c \ne 0$: the vector imposes no condition on a
-candidate colouring both summands the same way---which is all Step 6 asks
+candidate colouring both summands the same way---which is all Step 5 asks
 for---for every $\lambda$, rational or not.
 \end{corollary}
 
@@ -1630,8 +1631,8 @@ the archive settles and what it does not. Its code and data stand at commit
 \texttt{c2181150b8dbd4b90d77d72e5cddec34385744eb}.
 \texttt{audit\_numbers.py} re-derives the paper's numbers from the definitions in
 three minutes on the standard library alone, sharing no code with the rest;
-\texttt{check\_emptyshell.py} and \texttt{check\_periodic.py} validate the twenty
-witnesses from their JSON alone;
+\texttt{check\_emptyshell.py} and \texttt{check\_periodic.py} check the twenty
+witnesses against their JSON;
 \texttt{check\_drat.sh} verifies the eight DRAT certificates---every construction
 of the companion paper, the gadget Lemma~\ref{lem:chain} rests on, and Parts'
 record---in ten minutes, \texttt{drat-trim} deliberately not vendored; and

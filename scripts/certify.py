@@ -52,9 +52,22 @@ TARGETS = {
                       split=False, cap=7200, what="the full-ball alpha_256/9 union"),
 }
 
-name = sys.argv[1] if len(sys.argv) > 1 else "gadget367"
+# --emit-only stops after the CNF, with no solver and no proof.  That is what
+# binds a certificate to a graph: the CNF is a deterministic function of the
+# coordinate file and the field, so rebuilding it and comparing bytes decides
+# whether the shipped proof is a proof about the shipped graph.  A referee asked
+# for this after observing that check_drat.sh checks a stored CNF against a
+# stored proof and never looks at the coordinates -- and this project has
+# already shipped one certificate for someone else's graph.
+args = [x for x in sys.argv[1:]]
+emit_only = "--emit-only" in args
+if emit_only: args.remove("--emit-only")
+outdir = None
+if "--out" in args:
+    i = args.index("--out"); outdir = args[i + 1]; del args[i:i + 2]
+name = args[0] if args else "gadget367"
 cfg = TARGETS[name]
-out = os.path.join(ROOT, "proofs")
+out = outdir or os.path.join(ROOT, "proofs")
 os.makedirs(out, exist_ok=True)
 cnf_path = os.path.join(out, f"{name}.cnf")
 drat_path = os.path.join(out, f"{name}.drat")
@@ -127,8 +140,13 @@ body = f"p cnf {n*k} {len(cls)}\n" + "".join(
 with open(cnf_path, "w") as f:                 # plain for now: both tools need a path
     f.write(body)
 big_cnf = len(body) > 8 << 20
-log(f"CNF: {n*k} variables, {len(cls)} clauses -> proofs/{name}.cnf"
+log(f"CNF: {n*k} variables, {len(cls)} clauses -> {cnf_path}"
     + ("  (will be gzipped once checked)" if big_cnf else ""))
+if emit_only:
+    import hashlib
+    log(f"sha256 {hashlib.sha256(body.encode()).hexdigest()}")
+    log(f"emit-only: stopping before the solver  ({time.time()-t0:.0f}s)")
+    raise SystemExit(0)
 
 t = time.time()
 cmd = [CADICAL, "--no-binary", cnf_path, drat_path]

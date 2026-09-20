@@ -27,7 +27,25 @@ CC BY 4.0 for the paper, the certificates and the data.
    Section 7 from their JSON alone, computing lengths from the multiquadratic
    field's multiplication table and importing nothing from this project. Seconds.
 3. **`scripts/check_periodic.py`** — the same for the eleven periodic-kill
-   witnesses. Seconds.
+   witnesses. Seconds. **Read its contract before you rely on it.** A witness
+   names a rotation, a modulus, two colourings of `Lambda/m*Lambda`, and the
+   residue pairs that occur among cross pairs; the validator checks that the two
+   colourings are proper, agree at the shared origin, and disagree on every
+   listed pair. It does **not** check that the listed pairs are all the pairs
+   that occur — re-deriving that needs the lattice, so it is the producer's
+   enumeration, and the script's own header says so. Completeness therefore
+   rests on `scripts/join_filter_residues.py`, which enumerates the occurring
+   pairs exactly, with no ball and no radius, from the joint lattice's unit
+   vectors. Until this release the one-command suite ran that producer for two
+   of the eleven; it now runs all eleven, at `m = 8` for `a = 48` and `80`,
+   about three minutes in total. Regenerating them returns the shipped JSON
+   byte for byte.
+
+   The independent corroboration, if you would rather not take either script's
+   word: the same two rotations were also run directly on a ball holding the
+   whole shell — `theta_12`, **0** monochromatic edges out of 867054;
+   `theta_20`, **0** out of 2076192. That is a different method reaching the
+   same verdict, and it is in `results/BALL-FREE-TYPE-M.md`.
 4. **`scripts/check_drat.sh`** — verifies all eight proof certificates. Fetch
    `drat-trim` yourself (the script deliberately does not vendor it: a checker
    you got from the people whose proof you are checking is not a check) and

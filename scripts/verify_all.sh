@@ -58,12 +58,35 @@ run prove_law_dir     900 scripts/prove_law_direction.py
 run hept_halfunit     600 scripts/hept_halfunit.py 1
 # --- and the long ones ------------------------------------------------------
 run voronov          1800 scripts/voronov_rotations.py
+# All eleven periodic exclusions, not the two that used to stand for them.  Three
+# referees in a row made the same point: the lightweight validator checks a
+# witness against its own pair list and says so in its header, so completeness
+# rests on the generator -- and the suite ran the generator twice out of eleven.
+# Nine of the eleven take seconds; 48 and 80 need m = 8 and take about 80.
 run join_filter12    1800 scripts/join_filter_residues.py 12
 run join_filter20    1800 scripts/join_filter_residues.py 20
+run join_filter44    1800 scripts/join_filter_residues.py 44
+run join_filter52    1800 scripts/join_filter_residues.py 52
+run join_filter60    1800 scripts/join_filter_residues.py 60
+run join_filter76    1800 scripts/join_filter_residues.py 76
+run join_filter84    1800 scripts/join_filter_residues.py 84
+run join_filter92    1800 scripts/join_filter_residues.py 92
+run join_filter100   1800 scripts/join_filter_residues.py 100
+run join_filter48    1800 scripts/join_filter_residues.py 48 --modulus 8
+run join_filter80    1800 scripts/join_filter_residues.py 80 --modulus 8
 run rho_unit_family  1800 scripts/rho_unit_family.py
 run prove_step5      5400 scripts/prove_step5.py
 run z4_relation      9000 scripts/z4_relation.py 100
 run lambda_sweep    10800 scripts/lambda_sweep.py
+
+# --- the certificates' graphs, before the certificates ----------------------
+# check_drat.sh checks a stored CNF against a stored proof and never looks at
+# the coordinates, so it cannot tell a proof about our graph from a proof about
+# someone else's -- which this project has shipped once already.  This rebuilds
+# each CNF from the shipped points through certify.py's own code path and
+# compares bytes.  No solver.  The four full-ball instances are 140-170 MB and
+# take minutes; the three small ones take seconds.
+run check_binding    5400 scripts/check_binding.py
 
 # --- the proof certificates -------------------------------------------------
 # drat-trim is deliberately not vendored, so this entry reports SKIP rather

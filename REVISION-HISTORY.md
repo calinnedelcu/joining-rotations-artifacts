@@ -7,6 +7,10 @@ each change, including three errors of ours that the reports found. A reader
 coming to the paper fresh does not need it — `FOR-THE-REVIEWER.md` is the
 orientation note.
 
+Numbered references below are to the **current** paper, not to the draft each
+entry was written against; where a renumbering left an object with no current
+number, the object is named instead. `scripts/check_notes.py` checks them.
+
 We are grateful for the report, and particularly for the reviewer who
 reimplemented the lattice from the chart and the congruences rather than running
 our code. Three of the findings were errors on our side that we had not seen,
@@ -50,7 +54,7 @@ clauses; the augmented instance is satisfiable exactly when the graph is
 4-colourable. It is not a nicety. Without it the 367-vertex gadget passed 580 MB
 of proof without terminating; with it the whole run takes 75 seconds.
 
-**2. Lemma 18's UNSAT was undisclosed and uncertified.** Fixed. The reviewer was
+**2. Lemma 20's UNSAT was undisclosed and uncertified.** Fixed. The reviewer was
 right that this was the more serious of the two certificate gaps: the entire
 `a = 64n^2/9` family rests on Parts' gadget having no 4-colouring that separates
 its terminals, and that instance was not even on our list of things needing a
@@ -66,7 +70,7 @@ Theorem 1, together with "spindle" and the `theta_a` / `alpha_a` convention.
 
 **5. `chi >= 5` presented as `chi = 5`.** The table column is now "vertices
 (`chi >= 5`)", the contributions list is qualified at first mention rather than
-twenty pages in, and a sentence after Lemma 19 says the guaranteed 5-chromatic
+twenty pages in, and a sentence after Lemma 21 says the guaranteed 5-chromatic
 subjoin carries no size bound better than the full union.
 
 **6. The empty-shell verdicts were the least-checked claims.** Fixed, and in a
@@ -81,7 +85,8 @@ table and importing nothing from this project. Nine witnesses, zero bad.
 
 **7. "That is the only outcome consistent with their being 5-chromatic, and it
 is not automatic."** Deleted. `theta_4`'s survival is forced by our own
-Proposition 25, and the text now says which of the five are informative and
+the companion paper's unit-triangle proposition, and the text now says which of
+the five are informative and
 which is not.
 
 **8. Two pages of self-errata.** Cut to the disclosures a reader needs to trust
@@ -120,9 +125,9 @@ abstract and the contributions list, with the proof saying in terms that the
 argument does not use it; the density comparison restated as asymptotic-versus-
 finite with the near-coincidence of the two sets below `10^6` made explicit;
 "the 59 **positive** squared radii"; "four rational conditions where `q` is one";
-Lemma 9 naming congruence (ii) and showing the halving step; Lemma 15 noting
+the lemma naming congruence (ii) and showing the halving step; the lemma noting
 that the `pi_2` case is the `sigma`-image and that every congruence used is
-insensitive to the sign; the Section 9 table headed "shell size" with `126` in
+insensitive to the sign; the table headed "shell size" with `126` in
 place of the em dash; a five-line proof skeleton opening Section 5; the
 modulus-selection rule stated before the results in Section 7; the richness
 comparison given its missing caveat; the three-hour `verify_all.sh` budget in
@@ -177,8 +182,9 @@ sufficient and not necessary** — what the second half needs is a half-unit
 vector, which an occupied shell always supplies and an empty one sometimes
 supplies anyway. **Section 7's three survivors are explained**: `a = 24`, `72`
 and `88` each carry exactly twelve, which is why no homomorphism colouring
-exists there, and it is our own Proposition 5 doing the work rather than anything
-in that section. And **the census in Remark 6 was wrong**: nineteen integer
+exists there, and it is our own half-unit proposition doing the work rather than
+anything in that section. And **the census in the closed-form section was
+wrong**: nineteen integer
 spindles below 100 have a half-unit vector, not sixteen. We confirm the
 reviewer's diagnosis of the cause, and it is worth stating because it is the same
 species of blind spot the paper already confesses to elsewhere — the sweep's
@@ -198,7 +204,8 @@ correct. The defect was the domain, not the method.
 ## Two items still open
 
 - **The DOI and the affiliation.** Ours to supply, not yet supplied.
-- **Section 9's `N = 7`.** The report objected, fairly, that ninety minutes is
+- **Haugland's lattice at `N = 7`.** The report objected, fairly, that ninety
+  minutes is
   not a budget that justifies stopping. It is now running on a ten-hour budget;
   whatever it returns, the paper will report a threshold worth the name rather
   than the one it had.

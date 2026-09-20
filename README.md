@@ -13,13 +13,13 @@ table is the honest answer, and it is deliberately the first thing in the file.
 | every number in the paper | `scripts/audit_numbers.py`, PASS. One block is **read** from `results/JOIN-CLASSIFICATION.json`, not re-derived, and the script says so as it runs |
 | `R = (1/3) O_V`, `R/2R = F_4 x F_4`, Theorems 4 and 16 | `scripts/moser_is_ov.py`, PASS. Its second half needs `cypari`; without it the script **skips** that stage |
 | the seven constructions, chi >= 5 | coordinates in `graphs/`, and **all seven now ship a checked DRAT certificate** in `proofs/` -- `scripts/check_drat.sh` re-verifies the eight proofs (the seven plus Parts' 509 record) in about ten minutes, each reporting `s VERIFIED` |
-| chi = 5 for a full union | **not established** for any of the seven, and the paper says so. Lemma 19 gives `chi = 5` for a minimal induced subjoin of any of them; the vertex-critical 1408 has it outright |
+| chi = 5 for a full union | **not established** for any of the seven, and the paper says so. Lemma 21 gives `chi = 5` for a minimal induced subjoin of any of them; the vertex-critical 1408 has it outright |
 | the eleven periodic exclusions | **all 11** have a witness in `results/periodic/`, named for its modulus. Nine die at `m = 4`; `theta_48` and `theta_80` are degenerate at `m = 4` and `m = 6` and die at `m = 8`. `scripts/check_periodic.py` re-validates all eleven from the JSON alone, importing no project code: 11 witnesses, 0 bad |
 | `a = 64` joins | `proofs/gadget367.*` certifies the premise -- Parts' gadget has no 4-colouring separating its terminals -- and `scripts/gadget_chain.py n`, PASS at n = 1, 2, 3 in 40s each. The check is structural, not a solve: the gadget's monochromatic-pair property on 367 vertices, plus all six copies present intact (1822/1822 edges) inside the union. `GADGET_CHAIN_SOLVE=1` adds the redundant direct solve, which agrees at n = 1 in 450s and does not finish at n = 3 |
 | the ball behind each construction | `scripts/ball_params.py`, measured from the shipped coordinates |
 | kinds of joining edge | `scripts/cross_kinds.py`, PASS |
 | the 5-cross-edge bound and the 1920 sets | `scripts/interface_bound_exact.py`, `interface_matchings.py`. The 1920 solve a **restricted hitting-set problem**; no 5-chromatic graph with five cross edges is claimed |
-| the whole suite from a clean extraction | run in full: **35 of 35 PASS**, no FAIL and no TIMEOUT; `check_notes` was added afterwards as the 36th and passes |
+| the whole suite from a clean extraction | run in full: **35 of 35 PASS**, no FAIL and no TIMEOUT. The suite has grown to 45 entries since that run: `check_notes`, and the nine periodic regenerations that used to be represented by two. Each was run on its own and passes |
 
 This archive is deposited at Zenodo under the concept DOI
 [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504),
@@ -28,7 +28,7 @@ which resolves to the newest version.
 The certificate gap is closed. A reviewer asked why the only proof here was for
 someone else's graph while our own claims were solver verdicts, and was right.
 `proofs/` now holds eight DRAT proofs -- every construction of the paper's
-Section 6, the monochromatic-pair property Lemma 18 rests on, and Parts' record
+Section 6, the monochromatic-pair property Lemma 20 rests on, and Parts' record
 -- each with its `drat-trim` log. At 415 MB of compressed proof they are most of
 this repository, and a shallow clone runs to about 900 MB; they are also the
 point of it. If you would rather test the pipeline before pulling that, the
@@ -57,19 +57,19 @@ in one line rather than by a search log.
 * **`a = 64` is settled**, by `scripts/gadget_chain.py`: Parts' 367-vertex
   monochromatic-pair gadget lies wholly in R, chaining three copies puts its
   terminals 8 apart, and the join with the theta_64 image is not 4-colourable.
-  Lemma 18 in the paper. The same lemma gives the infinite family a = 64n^2/9.
+  Lemma 20 in the paper. The same lemma gives the infinite family a = 64n^2/9.
 * **Periodic witnesses are written and self-checked.** `join_filter_residues.py`
   used to call `solve()` and discard the model, so the colourings the paper
   promised were never saved. Each `results/periodic/*.json` now holds both
   colourings and every occurring residue pair, and the script re-checks what it
   wrote: both proper on Lambda/mLambda, agreeing at the shared origin,
   disagreeing on every occurring pair.
-* **`data/parts/`** ships the two gadgets Lemma 18 uses, so the chaining is
+* **`data/parts/`** ships the two gadgets Lemma 20 uses, so the chaining is
   checkable from this archive alone.
 
 * **`R = (1/3) O_V`.** The Moser lattice is one third of the maximal order of
   `Q(sqrt33, i sqrt3)`. That turns the shell criterion from a conjecture into
-  Theorem 16 (see *Status* below) and gives Theorem 4 a structural proof:
+  Theorem 18 (see *Status* below) and gives Theorem 9 a structural proof:
   `R/2R = F_4 x F_4`, a unit vector is invertible at both primes, and a plane
   missing all nine such classes is a union of two subgroups, hence is one of them.
   New script `scripts/moser_is_ov.py`.
@@ -103,7 +103,7 @@ standard library only. From this directory:
 
     python3 -m venv .venv && .venv/bin/pip install python-sat
     .venv/bin/python scripts/audit_numbers.py        # no solver needed
-    bash scripts/verify_all.sh                       # all 36 entries
+    bash scripts/verify_all.sh                       # all 45 entries
 
 `verify_all.sh` uses `.venv/bin/python` when there is one and the `python3` on
 PATH otherwise, says which it picked, and warns if `python-sat` is missing; set
@@ -123,28 +123,28 @@ them in sequence. `lambda_sweep`, `z4_relation`, `prove_step5` and
 | paper | claim | command | log |
 |---|---|---|---|
 | all | every number re-derived from the definitions, sharing no code with `hn/` | `scripts/audit_numbers.py` | `logs/audit_numbers.log` |
-| Prop 8, Thm 4, Thm 16 | **`R = (1/3) O_V`**: the maximal order, `R/2R = F_4 x F_4`, the nine unit classes, the two planes, and every ingredient of the shell criterion | `scripts/moser_is_ov.py` | `logs/moser_is_ov.log` |
+| Prop 8, Thm 9, Thm 18 | **`R = (1/3) O_V`**: the maximal order, `R/2R = F_4 x F_4`, the nine unit classes, the two planes, and every ingredient of the shell criterion | `scripts/moser_is_ov.py` | `logs/moser_is_ov.log` |
 | Thm 1 | steps 4 and 5 over every rank-8 spindle to `a = 80` | `scripts/lambda_sweep.py` | run it |
 | Thm 1 | 552 cross vectors to `a = 60`: the contrapositive and the trichotomy | `scripts/prove_step5.py` | `logs/prove_step5.log` |
 | App A | the odd case on both signs of lambda; the valuation lemma | `scripts/step5_signs.py` | `logs/step5_signs.log` |
 | Thm 1 | the congruence reduction behind step 3 | `scripts/prove_law_direction.py` | `logs/prove_law_direction.log` |
-| Thm 4 | the same count by enumeration -- 35 subgroups, 2 survive -- and the two identified by testing `gamma_i(x) = 0` iff `pi_i` divides `x` on a ball | `scripts/two_colourings.py` | `logs/two_colourings.log` |
-| Prop 3 | rank 4 exactly at `4a-1 = 3k^2` or `11k^2` | `scripts/rank8_condition.py` | `logs/rank8_condition.log` |
-| Prop 5 | the odd relation holds at every spindle with a half-unit vector | `scripts/z4_relation.py 100` | `logs/z4_relation.log` |
-| Thm 16 | the closed criterion against the form, every `a <= 400` | `scripts/shell_criterion.py 400` | `logs/shell_criterion.log` |
+| Thm 9 | the same count by enumeration -- 35 subgroups, 2 survive -- and the two identified by testing `gamma_i(x) = 0` iff `pi_i` divides `x` on a ball | `scripts/two_colourings.py` | `logs/two_colourings.log` |
+| Prop 4 | rank 4 exactly at `4a-1 = 3k^2` or `11k^2` | `scripts/rank8_condition.py` | `logs/rank8_condition.log` |
+| Prop 6 | the odd relation holds at every spindle with a half-unit vector | `scripts/z4_relation.py 100` | `logs/z4_relation.log` |
+| Thm 18 | the closed criterion against the form, every `a <= 400` | `scripts/shell_criterion.py 400` | `logs/shell_criterion.log` |
 | §6 | which shells are non-empty | `scripts/shells.py 100` | `logs/shells.log` |
 | §6 | `theta_16`'s union rebuilt from the recipe and re-verified | `scripts/build_join16.py` | `logs/build_join16.log` |
 | §6 | **kinds of joining edge**: 2/4/3/2 for the integer spindles, 1 for each rational one, and 2 for each of the five rotations already known -- so eight are type M | `scripts/cross_kinds.py` | `logs/cross_kinds.log` |
 | §7 | the periodic filter, every occurring residue pair | `scripts/join_filter_residues.py 12` and `20` | run it |
-| §8 | the five-cross-edge bound, from a ball | `scripts/interface_bound.py 4 --depth 4 --radius 2.53 --model shared` | run it |
-| §8 | the same bound with **no ball**, from Proposition 20 | `scripts/interface_bound_exact.py 4` (also 16, 28, 36) | `logs/interface_bound_exact_*.log` |
-| Thm 21-23 | the 1920 minimum interfaces, their shape and factorisation | `scripts/interface_matchings.py` | `logs/interface_matchings.log` |
-| §9 | `L_1` to `L_4`: rank 12, joint rank 24, covolume 1/7 each step | `scripts/hept_rank.py` | `logs/hept_rank.log` |
-| §9 | `theta_1` dead and `theta_2` surviving in `L_1` | `scripts/hept_classify.py 1 2` | `logs/hept_classify.log` |
-| §9 | `theta_4`'s free pass there: 210 units, 42 in `2*Lambda` | `scripts/hept_halfunit.py 1` | run it |
-| Prop 25 | both lattices carry a unit triangle | `scripts/blind_spot.py` | `logs/blind_spot.log` |
-| §10 | the nested family: index `9^(J-2)`, units `6(2J+1)` | `scripts/finer_lattices.py` | `logs/finer_lattices.log` |
-| §10 | both filters blind to the whole family `rho*u` | `scripts/rho_unit_family.py` | run it |
+| companion | the five-cross-edge bound, from a ball | `scripts/interface_bound.py 4 --depth 4 --radius 2.53 --model shared` | run it |
+| companion | the same bound with **no ball**, from the companion's ball-free proposition | `scripts/interface_bound_exact.py 4` (also 16, 28, 36) | `logs/interface_bound_exact_*.log` |
+| companion | the 1920 minimum interfaces, their shape and factorisation | `scripts/interface_matchings.py` | `logs/interface_matchings.log` |
+| §8 | `L_1` to `L_4`: rank 12, joint rank 24, covolume 1/7 each step | `scripts/hept_rank.py` | `logs/hept_rank.log` |
+| §8 | `theta_1` dead and `theta_2` surviving in `L_1` | `scripts/hept_classify.py 1 2` | `logs/hept_classify.log` |
+| §8 | `theta_4`'s free pass there: 210 units, 42 in `2*Lambda` | `scripts/hept_halfunit.py 1` | run it |
+| companion | both lattices carry a unit triangle | `scripts/blind_spot.py` | `logs/blind_spot.log` |
+| §8 | the nested family: index `9^(J-2)`, units `6(2J+1)` | `scripts/finer_lattices.py` | `logs/finer_lattices.log` |
+| §8 | both filters blind to the whole family `rho*u` | `scripts/rho_unit_family.py` | run it |
 | §1 | the five known rotations, and that we kill none | `scripts/voronov_rotations.py` | run it |
 
 ## The graphs
@@ -203,7 +203,7 @@ Nothing in the current draft is stated as a conjecture.
 
 **The shell criterion changed status.** In the previous version of this archive it
 was labelled a conjecture -- local conditions proved necessary, integral sufficiency
-unproved, checked exhaustively only to `a <= 400`. It is now **Theorem 16**, and
+unproved, checked exhaustively only to `a <= 400`. It is now **Theorem 18**, and
 proved: `3R` is the maximal order of `V = Q(sqrt33, i sqrt3)` (Proposition 8), so
 `|z|^2` is the relative norm `N_{V/F}`, `h(F) = h(V) = 1`, and `F`'s totally
 positive fundamental unit is a relative norm -- `eta = i(2 sqrt3 - sqrt11)` has
