@@ -103,8 +103,15 @@ the class of defect to look for.
 ## What we would most value
 
 1. Whether the identification `3R = O_V` and the shell classification
-   (Theorem 18) are new. We believe so and have not found them, but this
-   literature is partly distributed across blog comments and data files.
+   (Theorem 18) are new. We have checked what can be checked: the four papers
+   working in or on this lattice — Dúcz `arXiv:2606.12325`, Parts
+   `arXiv:2010.12665`, Voronov et al. `arXiv:2106.11824`, and `arXiv:1908.03880`
+   — contain, in their full texts, **no occurrence** of "maximal order", "ring of
+   integers", "prime ideal" or "number field". The classical spectrum here is the
+   triangular lattice's (the Loeschian numbers); we found no closed-form spectrum
+   for `R`, which is rank 4. That is evidence, not proof: the literature includes
+   blog comments and data files, and a negative over it cannot be certified.
+   If you know of a precedent we would want to hear it.
 2. Whether the narrow-class-field framing of Sections 4 and 6 can be pushed
    further than we push it — we use it to explain, not to prove. One candidate:
    since "obstructed" is "`p` lies in the non-principal genus of discriminant
