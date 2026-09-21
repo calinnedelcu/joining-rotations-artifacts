@@ -115,6 +115,33 @@ def parts_files_counted():
            f"PROVENANCE.md names {have}")
 
 
+def zenodo_metadata_is_current():
+    """.zenodo.json is the deposit's public description; it goes stale silently.
+
+    The live v1.19 record said the suite runs "all 36 recorded claims" when it
+    ran 47 -- the same species of drift as every other sentence about the
+    tooling, and on the one page a stranger reads first.  Nothing was checking
+    it, because it is not prose in the manuscript or the notes.
+    """
+    import json as _json
+    zj = os.path.join(ROOT, ".zenodo.json")
+    sh = os.path.join(ROOT, "scripts", "verify_all.sh")
+    if not (os.path.exists(zj) and os.path.exists(sh)):
+        return skip("the Zenodo description's suite count", ".zenodo.json or verify_all.sh not here")
+    try:
+        desc = _json.load(open(zj, encoding="utf-8")).get("description", "")
+    except ValueError as e:
+        return record(".zenodo.json is valid JSON", False, str(e)[:60])
+    m = re.search(r"runs all (\d+) recorded claims", desc)
+    if not m:
+        return skip("the Zenodo description's suite count", "no count stated there")
+    n = int(m.group(1))
+    have = sum(1 for line in open(sh, encoding="utf-8")
+               if re.match(r"\s*(run|sh_run)\s", line) and "()" not in line)
+    record(f".zenodo.json says {n} suite entries", n == have,
+           f"verify_all.sh registers {have}")
+
+
 def suite_entries_counted():
     readme = os.path.join(ROOT, "README.md")
     sh = os.path.join(ROOT, "scripts", "verify_all.sh")
@@ -313,6 +340,7 @@ def main():
     witnesses_counted()
     parts_files_counted()
     suite_entries_counted()
+    zenodo_metadata_is_current()
     certificates_are_verified()
     pin_contains_the_code()
     rational_spindles_come_from_the_gadgets()
