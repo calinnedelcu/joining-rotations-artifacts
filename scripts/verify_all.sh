@@ -79,6 +79,14 @@ run prove_step5      5400 scripts/prove_step5.py
 run z4_relation      9000 scripts/z4_relation.py 100
 run lambda_sweep    10800 scripts/lambda_sweep.py
 
+# --- the claims the paper makes about this repository -----------------------
+# Four review rounds found the same species of defect: a sentence saying what a
+# script does or what the archive holds, overtaken by a change to the script or
+# the archive, with nothing comparing the two.  check_paper.sh tests the PDF and
+# check_notes.py tests cross-references; neither can see "this checker verifies
+# properness" or "eight certificates".  This runs them.
+run check_claims      1800 scripts/check_claims.py
+
 # --- the certificates' graphs, before the certificates ----------------------
 # check_drat.sh checks a stored CNF against a stored proof and never looks at
 # the coordinates, so it cannot tell a proof about our graph from a proof about

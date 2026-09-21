@@ -241,15 +241,19 @@ material sets the Moser \emph{ring} inside $\Q(\sqrt{-3},\sqrt{-11})$ and writes
 it as $\Z[\tfrac{1+i\sqrt3}{2}, \tfrac{1+\sqrt{33}}{2}, \tfrac13]$; Speyer
 \cite{Speyer} gives it as the elements integral over $\Z[\tfrac13]$, names the
 ring $\Ok = \Z[\tfrac{1+\sqrt{33}}{2}]$ that Theorem~\ref{thm:primes} works over,
-and takes the norm $N(u) = u\bar u$ from one to the other, colouring by the
-norm-$1$ elements. Gibbs factors unit-modulus elements through
-$\Q[\sqrt{-p},\sqrt{-q}]$. We claim none of that.
+takes the norm $N(u) = u\bar u$ from one to the other, splits the ring modulo
+$2^k$ into two factors and colours by one of the two projections. That splitting
+at $k = 1$ is $\F_4 \times \F_4$, and $3$ is a unit modulo $2$, so both it and
+the projections carry over to $\Lat$ unchanged: they are his, not ours. Gibbs
+factors unit-modulus elements through $\Q[\sqrt{-p},\sqrt{-q}]$. We claim none
+of that.
 
-What we add is ideal-theoretic, and is what Proposition~\ref{prop:order} states: that $3\Lat$ is the \emph{maximal} order of
-$V$, not merely an order inside it; that $2$ splits in $F$ and both primes above
-it are inert in $V$, so $\Lat/2\Lat \cong \F_4 \times \F_4$ and the two
-colourings are the two coordinate projections; and that occupancy of a shell is
-a relative-norm condition with the closed-form answer of
+What we add is ideal-theoretic, and is what Proposition~\ref{prop:order} states:
+that $3\Lat$ is the \emph{maximal} order of $V$, not merely an order inside it,
+which is what makes the two factors the reductions modulo the two primes above
+$2$ rather than a coordinate choice; that Theorem~\ref{thm:primes} counts them,
+so that there are \emph{exactly} two and no third; and that occupancy of a shell
+is a relative-norm condition with the closed-form answer of
 Theorem~\ref{prop:shells}. Of the six papers working on this
 lattice---\cite{Ducz}, \cite{Parts}, \cite{Voronov}, \cite{Haugland},
 \cite{Engel}, \cite{Ruhland}---none contains the words \emph{maximal order},
@@ -1638,7 +1642,9 @@ Every computation here is carried out by a script in the archive,
 the archive settles and what it does not. Its code and data stand at commit
 \texttt{b7017ef3a852355921b911132fceb44f5f35462e}.
 \texttt{audit\_numbers.py} re-derives the paper's numbers from the definitions in
-three minutes on the standard library alone, sharing no code with the rest;
+three minutes on the standard library alone, sharing no code with the rest---bar
+the nine empty-shell verdicts, which \texttt{empty\_shell\_status.py} derives and
+it checks against;
 \texttt{check\_emptyshell.py} and \texttt{check\_periodic.py} check the twenty
 witnesses against their JSON;
 \texttt{check\_drat.sh} verifies the eight DRAT certificates---every construction

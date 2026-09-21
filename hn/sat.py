@@ -11,7 +11,12 @@ fresh solver launch.  Parts paid a full restart on every one of millions of
 queries; this is where most of the available speedup lives.
 """
 from __future__ import annotations
-from pysat.solvers import Solver
+
+# pysat is imported where a solver is actually launched, not here.  Importing
+# anything from hn executes this module, so an eager import made `certify.py
+# --emit-only` -- which runs no solver at all -- fail on a clean interpreter,
+# and with it `check_binding.py`, which is in the checking path the notes
+# promise needs no SAT solver.  One use, one lazy import.
 
 DEFAULT_SOLVER = "cadical153"
 
@@ -27,6 +32,7 @@ class Colouring:
         for a, b in edges:
             for c in range(k):
                 cls.append([-self.var(a, c), -self.var(b, c)])
+        from pysat.solvers import Solver
         self.solver = Solver(name=solver, bootstrap_with=cls)
 
     def var(self, v, c):

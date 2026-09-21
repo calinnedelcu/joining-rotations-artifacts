@@ -28,11 +28,21 @@ CC BY 4.0 for the paper, the certificates and the data.
    field's multiplication table and importing nothing from this project. Seconds.
 3. **`scripts/check_periodic.py`** — the same for the eleven periodic-kill
    witnesses. Seconds. **Read its contract before you rely on it.** A witness
-   names a rotation, a modulus, two colourings of `Lambda/m*Lambda`, and the
-   residue pairs that occur among cross pairs; the validator checks that the two
-   colourings are proper, agree at the shared origin, and disagree on every
-   listed pair. It does **not** check that the listed pairs are all the pairs
-   that occur — re-deriving that needs the lattice, so it is the producer's
+   names a rotation, a modulus, the rank, the residue classes of the lattice's
+   unit vectors, two colourings of `Lambda/m*Lambda`, and the residue pairs that
+   occur among cross pairs; the validator checks that each colouring is proper
+   — no two residues a unit step apart share a colour — that they agree at the
+   shared origin, and that they disagree on every listed pair.
+
+   Until this release it did **not** check properness, and could not: the unit
+   steps were not in the file. A referee corrupted a witness into a
+   monochromatic unit edge and it still printed `ok`. The producer had always
+   asserted properness at generation, so no shipped verdict was wrong, but the
+   standalone checker was not the checker described here. The witnesses now
+   carry their unit steps, the check is real, and
+   `python3 scripts/check_periodic.py --selftest` corrupts a copy in front of
+   you and shows it refused. It still does **not** check that the listed pairs
+   are all the pairs that occur — re-deriving that needs the lattice, so it is the producer's
    enumeration, and the script's own header says so. Completeness therefore
    rests on `scripts/join_filter_residues.py`, which enumerates the occurring
    pairs exactly, with no ball and no radius, from the joint lattice's unit
@@ -40,6 +50,9 @@ CC BY 4.0 for the paper, the certificates and the data.
    of the eleven; it now runs all eleven, at `m = 8` for `a = 48` and `80`,
    about three minutes in total. Regenerating them returns the shipped JSON
    byte for byte.
+
+   A witness that carries no unit steps is now refused rather than passed, so
+   an unverifiable file cannot be mistaken for a verified one.
 
    The independent corroboration, if you would rather not take either script's
    word: the same two rotations were also run directly on a ball holding the
@@ -81,11 +94,15 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   Its negative is weak: Parts' record carries 18 cross edges, not the minimum 5,
   and its interface is disjoint from all 1920 minimum ones. We know of no graph
   realising any of them and have run no systematic search over the halves.
-- **Three of the seven constructions are not ours in substance.** The rational
-  spindles follow from Parts' published gadgets without any of this paper's
-  machinery, and we say so. After subtracting those and `theta_4` (the record),
-  the new constructive content is `theta_16`, `theta_28`, `theta_36`.
-- **Priority for those three is a statement about our search**, not a proof. We
+- **Two of the seven constructions are not ours in substance.** `theta_64/9` and
+  `theta_256/9` are the cases `n = 1` and `n = 2` of Lemma 20 applied to Parts'
+  367-vertex gadget, and follow from it without any of this paper's machinery.
+  A referee caught us crediting a third, `theta_64/3`, to the same chaining: the
+  family is `a = 64n^2/9`, so `64/3` would need `n^2 = 3` and is not in it.
+  After subtracting the two and `theta_4` (the record), the new constructive
+  content is `theta_16`, `theta_28`, `theta_36` and `theta_64/3` -- four, and
+  the error was ours in our own disfavour.
+- **Priority for those four is a statement about our search**, not a proof. We
   searched the obvious places to September 2026. One absence we can explain
   rather than report: the one published enumeration on this lattice clips its
   point set to radius 2, and only `theta_4` of the seven has a shell reaching so

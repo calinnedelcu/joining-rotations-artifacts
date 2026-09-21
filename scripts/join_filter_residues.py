@@ -214,7 +214,13 @@ if killed:
     os.makedirs(out, exist_ok=True)
     path = os.path.join(out, f"{J.name.replace('/', '_')}_m{m}.json")
     with open(path, "w") as f:
+        # The unit steps go in the file.  Without them a reader holding only the
+        # JSON cannot test that either colouring is proper -- properness is a
+        # statement about unit edges inside each half, and those live in the
+        # lattice, not in the colour arrays.  A referee corrupted a witness into
+        # a monochromatic unit edge and the standalone checker still passed it.
         json.dump({"rotation": J.name, "modulus": m, "residue_classes": n_cos,
+                   "rank": r, "unit_steps": sorted(S),
                    "colouring_L": tabL, "colouring_S": tabS,
                    "occurring_pairs": sorted(set(occurring))}, f)
     log(f"  witness written to results/periodic/{os.path.basename(path)}: "

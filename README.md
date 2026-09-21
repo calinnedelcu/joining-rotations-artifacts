@@ -19,7 +19,8 @@ table is the honest answer, and it is deliberately the first thing in the file.
 | the ball behind each construction | `scripts/ball_params.py`, measured from the shipped coordinates |
 | kinds of joining edge | `scripts/cross_kinds.py`, PASS |
 | the 5-cross-edge bound and the 1920 sets | `scripts/interface_bound_exact.py`, `interface_matchings.py`. The 1920 solve a **restricted hitting-set problem**; no 5-chromatic graph with five cross edges is claimed |
-| the whole suite from a clean extraction | run in full: **35 of 35 PASS**, no FAIL and no TIMEOUT. The suite has grown to 45 entries since that run: `check_notes`, and the nine periodic regenerations that used to be represented by two. Each was run on its own and passes |
+| the whole suite from a clean extraction | run in full: **35 of 35 PASS**, no FAIL and no TIMEOUT. The suite has grown to 47 entries since that run: `check_notes`, the nine periodic regenerations that used to be represented by two, `check_binding`, and `check_claims`. Each was run on its own and passes |
+| the claims this archive makes about itself | `scripts/check_claims.py` reads each number out of the manuscript and compares it with the filesystem, and executes each claimed behaviour: **14 of 14** |
 
 This archive is deposited at Zenodo under the concept DOI
 [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504),
@@ -103,7 +104,7 @@ standard library only. From this directory:
 
     python3 -m venv .venv && .venv/bin/pip install python-sat
     .venv/bin/python scripts/audit_numbers.py        # no solver needed
-    bash scripts/verify_all.sh                       # all 45 entries
+    bash scripts/verify_all.sh                       # all 47 entries
 
 `verify_all.sh` uses `.venv/bin/python` when there is one and the `python3` on
 PATH otherwise, says which it picked, and warns if `python-sat` is missing; set
