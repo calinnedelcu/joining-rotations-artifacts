@@ -171,7 +171,7 @@ theta_92      4      256     69  ok
 ```
 
 The three that survive carry a vector of length 1/2 rather than a search log:
-by Proposition 5 that is a one-line proof that no homomorphism onto a group of
+by Proposition 6 that is a one-line proof that no homomorphism onto a group of
 order 4 avoids the unit vectors. The checker computes those lengths itself, from
 the multiquadratic field's own multiplication table, importing nothing from this
 project.

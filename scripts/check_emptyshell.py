@@ -91,7 +91,10 @@ for path in FILES:
         L = sqlen(h, pr)
         if L != Fraction(1, 4):
             errs.append(f"the claimed half-unit vector has squared length {L}, not 1/4")
-        wit = f"a vector of length 1/2 -> Proposition 5"
+        # Proposition 6, not 5: Proposition 5 needs a = 4m^2, and 24, 72, 88
+        # are not of that form.  Proposition 6 is the one that rules out every
+        # homomorphism onto a group of order 4.
+        wit = f"a vector of length 1/2 -> Proposition 6"
     bad += bool(errs)
     print(f"{a:>4} {w['rank']:>5} {len(U):>6} {w['verdict']:>9}  "
           f"{wit if not errs else 'FAILED: ' + '; '.join(errs)}")

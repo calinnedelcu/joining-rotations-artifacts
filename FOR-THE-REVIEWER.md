@@ -122,8 +122,9 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   Theorem 1 gives the Moser ring as `(a + ib√3 + ic√11 + d√33)/(4·3^k)` under
   `a ≡ b ≡ c ≡ d (mod 2)` and `a + b + c − d ≡ 0 (mod 4)`; at `k = 0`, scaled by
   three, that is our chart. The two second congruences differ by `2(a−d)`, which
-  the parity condition kills modulo 4 — checked over all 4096 quadruples mod 8,
-  zero disagreements. So the chart is his, it is cited now, and we no longer
+  the parity condition kills modulo 4 — checked over the 512 quadruples mod 8
+  that satisfy it, zero disagreements. (Over all 4096, without the parity
+  condition, 1024 disagree; the condition is what makes them the same.) So the chart is his, it is cited now, and we no longer
   imply otherwise. Proposition 8 is not his: his ring inverts 3, so it is not a
   finitely generated `Z`-module and not an order in `V`, and nothing there
   identifies the maximal order or proves maximality. Please do check this

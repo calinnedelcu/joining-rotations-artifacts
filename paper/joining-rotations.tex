@@ -129,8 +129,11 @@ recent literature---\cite{Engel}, \cite{Ruhland}, \cite{Ducz}---writes
 $M = \Z\langle 1, \omega_1, \omega_3, \omega_1\omega_3 \rangle$, of rank $4$
 with $18$ unit vectors, and calls that the Moser lattice. The group the record
 is built in is the larger $\Lat$ above: it contains $M$ with index $9$ and has
-$30$ unit vectors, because $\varphi \notin M$ and adjoining it is exactly what
-supplies the twelve with $j$ odd. Where the distinction matters we write $M$ for
+$30$ unit vectors. What separates them is conjugation. $M$ is not stable under
+it---$\omega_3 + \bar\omega_3 = 5/3 \notin M$, so $\bar\omega_3 \notin M$---while
+$\Lat$ is, and the twelve unit vectors outside $M$ are exactly those with $j$
+negative. ($\varphi$ itself lies in $M$: it is
+$-1 + 2\omega_1 + \omega_3 - 2\omega_1\omega_3$.) Where the distinction matters we write $M$ for
 the index-$9$ subgroup; a reader coming from \cite{Engel} or \cite{Ruhland}
 should read every statement here as being about the supergroup.
 
@@ -1426,9 +1429,8 @@ independent, so for any finite set $P$ of obstructed primes containing $2$,
 the $\tfrac16$ being $2$'s own share. Five of the twenty classes mod $33$ are
 obstructed, so those primes have Dirichlet density $\tfrac14$, $\sum 1/p$
 diverges over them, and the product tends to $0$: the integer candidates have
-natural density zero. The measured densities to $N = 10^6$, the Mertens estimate
-for the rate, and the cautions about comparing a finite count with an asymptotic
-bound are in the archive, with the script that produces them.
+natural density zero. The measured densities at $N = 10^2$, $10^3$ and $10^4$ and the Dirichlet
+density of the obstructed primes are checked in \texttt{audit\_numbers.py}.
 
 The rule that produced every row is deterministic and is stated here so that the
 table can be read, even though the constructions themselves belong to the
