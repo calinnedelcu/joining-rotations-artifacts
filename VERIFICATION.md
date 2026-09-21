@@ -10,16 +10,20 @@ the release that deposit was cut from. The paper pins commit
 suite below runs changed after it. A shallow clone is about 900 MB, most of it
 proof.
 
-The transcript was taken at an earlier commit, which differs from the pinned one
-in two scripts and nothing else. `certify.py`, which regenerates the
-certificates, named a build directory that is not shipped; it is not in the
-suite. `check_paper.sh` is: its row in section 1 predates the test that compiles
-the shipped source and compares it to the shipped PDF, and section 5 quotes the
-current script.
+The transcript was taken at an earlier commit. Five scripts and one README have
+changed since, and section 1's table predates all of them: `certify.py`, which
+named a build directory that is not shipped and has since gained `--emit-only`;
+`check_binding.py`, which is new and rebuilds each certified CNF from the
+shipped coordinates; `check_notes.py`, which learned to compare commit hashes;
+`check_paper.sh`, which gained the test that compiles the shipped source against
+the shipped PDF, quoted current in section 5; and `verify_all.sh`, which grew
+from 35 entries to 46 — the binding check, and nine periodic regenerations that
+two rows used to stand for. Each addition was run on its own and passes; what is
+not here is a single transcript of all 46 together.
 
 ---
 
-## 1. The full suite — 35 of 35
+## 1. The suite as it stood at the transcript — 35 of 35
 
     OUT=/tmp/verify JOBS=6 bash scripts/verify_all.sh
 
