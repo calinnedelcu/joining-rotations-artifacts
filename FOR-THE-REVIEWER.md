@@ -99,15 +99,19 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   Its negative is weak: Parts' record carries 18 cross edges, not the minimum 5,
   and its interface is disjoint from all 1920 minimum ones. We know of no graph
   realising any of them and have run no systematic search over the halves.
-- **Two of the seven constructions are not ours in substance.** `theta_64/9` and
-  `theta_256/9` are the cases `n = 1` and `n = 2` of Lemma 20 applied to Parts'
-  367-vertex gadget, and follow from it without any of this paper's machinery.
-  A referee caught us crediting a third, `theta_64/3`, to the same chaining: the
-  family is `a = 64n^2/9`, so `64/3` would need `n^2 = 3` and is not in it.
-  After subtracting the two and `theta_4` (the record), the new constructive
-  content is `theta_16`, `theta_28`, `theta_36` and `theta_64/3` -- four, and
-  the error was ours in our own disfavour.
-- **Priority for those four is a statement about our search**, not a proof. We
+- **Three of the seven constructions are not ours in substance.** Parts'
+  inventory (`data/parts/graphs.txt`) lists two monochromatic-pair gadgets: 367
+  vertices with terminals `8/3` apart, and 421 vertices with terminals `8/sqrt3`
+  apart. Lemma 20 sends the first to `a = 64n^2/9`, giving `theta_64/9` and
+  `theta_256/9` at `n = 1, 2`, and the second to `a = 64n^2/3`, giving
+  `theta_64/3` at `n = 1`. All three follow without any of this paper's
+  machinery. A referee objected that the manuscript named only one gadget and so
+  could not reach `64/3`; the objection was right about the manuscript, which
+  now names both, and we briefly made it worse by moving `theta_64/3` into our
+  own column before checking `graphs.txt`. After subtracting the three and
+  `theta_4` (the record), the new constructive content is `theta_16`,
+  `theta_28`, `theta_36`.
+- **Priority for those three is a statement about our search**, not a proof. We
   searched the obvious places to September 2026. One absence we can explain
   rather than report: the one published enumeration on this lattice clips its
   point set to radius 2, and only `theta_4` of the seven has a shell reaching so

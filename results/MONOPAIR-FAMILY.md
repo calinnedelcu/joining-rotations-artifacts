@@ -1,9 +1,12 @@
 # The joining rotations follow Parts' mono-pair distances
 
 Three of the rational rotations that give 5-chromatic unions spin shells at
-distance **8/3**, **16/3** and **8/sqrt3**. The first two are Parts' mono-pair
+distance **8/3**, **16/3** and **8/sqrt3**. All three come from Parts' mono-pair
 lengths -- the distances at which his gadgets force two points to share a colour
-in every 4-colouring.
+in every 4-colouring. His inventory (`data/parts/graphs.txt`) lists two such
+gadgets, at **8/3** (367 vertices) and **8/sqrt3** (421 vertices); 16/3 is twice
+the first. An earlier version of this file said only the first two were his,
+which is wrong and briefly propagated into the manuscript.
 
 Walking the family outward, squared radius `64n^2/9` for distance `n * 8/3`:
 

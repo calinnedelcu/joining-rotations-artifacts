@@ -15,7 +15,7 @@ travel with it.
 
 ## What is not ours to license
 
-`data/parts/` holds four files taken from Martin Parts' published record
+`data/parts/` holds four files taken from Jaan Parts' published record
 (arXiv:2010.12665); `PROVENANCE.md` names them and says where each came from.
 They are his work, included so that the claims resting on them can be checked,
 and nothing here relicenses them.

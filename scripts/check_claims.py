@@ -226,6 +226,65 @@ def pin_contains_the_code():
            if changed else f"clean since {pin[:12]}")
 
 
+def rational_spindles_come_from_the_gadgets():
+    """'the three rational spindles follow from Parts\' two gadgets by the chaining'.
+
+    Lemma 20 sends a monochromatic pair at distance d to a = n^2 d^2.  So every
+    rational row of the construction table must be n^2 d^2 for a mono-pair
+    distance d in Parts\' own inventory and an integer n.  Nobody was checking
+    this: a referee found the manuscript naming one gadget where it needed two,
+    and the repair went the wrong way -- theta_64/3 was moved into our column on
+    the word of a stale note, when data/parts/graphs.txt lists a second gadget at
+    8/sqrt3 that produces it exactly.
+    """
+    from fractions import Fraction
+    inv = os.path.join(ROOT, "data", "parts", "graphs.txt")
+    t = tex()
+    if t is None or not os.path.exists(inv):
+        return skip("the rational spindles come from Parts' gadgets",
+                    "manuscript or data/parts/graphs.txt not here")
+
+    def sq(tok):                       # square of "8", "3", "r3", "r11"
+        tok = tok.strip()
+        return Fraction(int(tok[1:])) if tok.startswith("r") else Fraction(int(tok)) ** 2
+
+    body = open(inv, encoding="utf-8").read().splitlines()
+    dists, inblock = [], False
+    for line in body:
+        if line.strip().startswith("mono-pair"):
+            inblock = True
+        elif inblock and (not line.strip() or line.lstrip().startswith("non-mono")):
+            break
+        if inblock:
+            m = re.search(r"(r?\d+)\s*/\s*(r?\d+)", line)
+            if m:
+                dists.append(sq(m.group(1)) / sq(m.group(2)))
+    if not dists:
+        return record("Parts' inventory lists mono-pair distances", False,
+                      "none parsed from graphs.txt")
+
+    tab = re.search(r"\\begin\{tabular\}.*?\\end\{tabular\}", t, re.S)
+    rows = re.findall(r"\\theta_\{(\d+)/(\d+)\}", tab.group(0)) if tab else []
+    if not rows:
+        return skip("the rational spindles come from Parts' gadgets",
+                    "no rational rows in the construction table")
+
+    def is_square(k):
+        r = int(k ** 0.5)
+        return any((r + j) ** 2 == k for j in (-1, 0, 1))
+
+    unreached = []
+    for num, den in rows:
+        a = Fraction(int(num), int(den))
+        if not any((a / d).denominator == 1 and int(a / d) >= 1
+                   and is_square(int(a / d)) for d in dists):
+            unreached.append(f"{num}/{den}")
+    record(f"all {len(rows)} rational table rows are n^2 d^2 over Parts' gadgets",
+           not unreached,
+           ", ".join(unreached) if unreached else
+           "distances " + ", ".join(str(d) for d in dists))
+
+
 def certificates_are_verified():
     """'all reporting s VERIFIED' -- the logs must say so, for every proof."""
     logs = sorted(glob.glob(os.path.join(ROOT, "proofs", "*.drat-trim.log")))
@@ -256,6 +315,7 @@ def main():
     suite_entries_counted()
     certificates_are_verified()
     pin_contains_the_code()
+    rational_spindles_come_from_the_gadgets()
     witnesses_are_checkable()
     audit_is_independent()
     periodic_checker_rejects_a_bad_witness()
