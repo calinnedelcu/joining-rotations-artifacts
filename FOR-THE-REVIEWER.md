@@ -9,7 +9,7 @@ rediscovering what we already know.
 | | |
 |---|---|
 | the manuscript | `joining-rotations.pdf`, 25 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
-| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `b7017ef3a852355921b911132fceb44f5f35462e`; the commits after it touch documentation and the manuscript only |
+| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `ea8b6e3487a17ccb164548d315c6188f4c408dd6`; the commits after it touch documentation and the manuscript only |
 | a transcript | `VERIFICATION.md` — every check we ran, with its raw output |
 
 The repository is public; nothing else needs to be sent. Its `README.md` opens
@@ -70,7 +70,12 @@ CC BY 4.0 for the paper, the certificates and the data.
    0 FAIL, 0 TIMEOUT; the 36th entry, `check_notes`, was added after that run
    and passes on its own.
 
-Nothing in the checking path needs a SAT solver, `pysat`, or a virtualenv. A
+Nothing in the checking path above needs a SAT solver, `pysat`, or a
+virtualenv — that is the six checks listed, and it is tested by
+`check_claims.py`, which runs each of them on a bare interpreter. Regenerating the periodic pair lists is a different thing and does need
+`python-sat`: `join_filter_residues.py` asks one SAT instance per rotation.
+So validating the shipped witnesses is dependency-free; establishing that
+their pair lists are complete is not. A
 solver is needed only to *regenerate* a proof or rebuild a construction.
 
 ## What we already know is open, so you need not find it

@@ -193,6 +193,39 @@ def audit_is_independent():
            ("no stored read" if not reads else "disclosed"))
 
 
+def pin_contains_the_code():
+    """'Its code and data stand at commit X' -- so nothing since X may touch them.
+
+    This is the check that was missing.  The pin has now gone stale four times,
+    each time because code changed after the sentence was written, and nothing
+    compared the two.  check_notes.py compares the notes' hash against the
+    paper's; neither looked at what the commit actually holds.
+    """
+    t = tex()
+    if t is None:
+        return skip("the pin holds the current code", "no manuscript source here")
+    m = re.search(r"\\texttt\{([0-9a-f]{40})\}", t)
+    if not m:
+        return skip("the pin holds the current code", "the paper names no commit")
+    pin = m.group(1)
+    code, out = run(["git", "rev-parse", "--git-dir"], timeout=60)
+    if code != 0:
+        return skip("the pin holds the current code", "not a git checkout")
+    code, _ = run(["git", "cat-file", "-e", pin + "^{commit}"], timeout=60)
+    if code != 0:
+        # the manuscript pins a commit of the public archive; the working
+        # repository is a different history and legitimately does not hold it
+        return skip("the pin holds the current code",
+                    pin[:12] + " is not in this checkout -- run this in the archive")
+    code, out = run(["git", "diff", "--name-only", pin, "HEAD", "--",
+                     "scripts/", "hn/", "data/", "graphs/", "proofs/", "results/"],
+                    timeout=120)
+    changed = [l for l in out.splitlines() if l.strip()]
+    record("no code or data has changed since the pin", not changed,
+           f"{len(changed)} file(s) since {pin[:12]}: " + ", ".join(changed[:3])
+           if changed else f"clean since {pin[:12]}")
+
+
 def certificates_are_verified():
     """'all reporting s VERIFIED' -- the logs must say so, for every proof."""
     logs = sorted(glob.glob(os.path.join(ROOT, "proofs", "*.drat-trim.log")))
@@ -222,6 +255,7 @@ def main():
     parts_files_counted()
     suite_entries_counted()
     certificates_are_verified()
+    pin_contains_the_code()
     witnesses_are_checkable()
     audit_is_independent()
     periodic_checker_rejects_a_bad_witness()

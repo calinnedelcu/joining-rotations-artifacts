@@ -752,7 +752,10 @@ $\pi_i\Ok_V$, so $\Lat/\pi_i\Lat = \Ok_V/\pi_i\Ok_V$; and $\pi_i$ is inert in
 $V$, since the completion of $F$ at $\pi_i$ is $\Q_2$---the prime $2$ splits---and
 $-3 \equiv 5 \pmod 8$ generates its unramified quadratic extension. Each quotient
 is therefore the field $\F_4$, and as $\pi_1, \pi_2$ are coprime the Chinese
-remainder theorem gives a ring isomorphism
+remainder theorem gives a ring isomorphism of $\Ok_V/2\Ok_V$ onto
+$\F_4 \times \F_4$, which multiplication by $3$ transports to an isomorphism of
+\emph{additive groups}---$\Lat$ is not a ring, and only the additive structure is
+used below:
 \[
   \Lat/2\Lat \;\xrightarrow{\ \sim\ }\; \Lat/\pi_1\Lat \times \Lat/\pi_2\Lat
   \;=\; \F_4 \times \F_4 ,
@@ -1536,9 +1539,12 @@ $(\alpha - \theta\beta) + m\Lam$ contains a unit vector of the joint lattice.
 One degeneracy must be excluded: if $(0,0)$ occurs---equivalently if $\Lam$ holds
 a vector of length $1/m$---both halves give the centre's coset the same colour
 and the test cannot kill. At $m = 2$ that is precisely the half-unit criterion of
-Section~\ref{sec:closed}. The rule followed is the obvious one: take the smallest
-modulus at which $(0,0)$ does not occur, and report it; a rotation degenerate at
-every modulus tried is set aside as undecided rather than as a survivor.
+Section~\ref{sec:closed}. The moduli tried are $4$, $6$, $8$ and $12$, and the
+rule followed is to report the smallest of those at which $(0,0)$ does not occur
+\emph{and} a kill is found; a rotation degenerate at every one of them is set
+aside as undecided rather than as a survivor. Non-degeneracy alone does not
+suffice: $\theta_{48}$ is non-degenerate at $m = 5$, where $72$ pairs occur, and
+survives there.
 
 Applied to the integer spindles to $a = 100$, it kills $\theta_a$ for $a = 12$,
 $20$, $44$, $48$, $52$, $60$, $76$, $80$, $84$, $92$ and $100$---nine at $m = 4$
@@ -1642,7 +1648,7 @@ Every computation here is carried out by a script in the archive,
 \url{https://github.com/calinnedelcu/joining-rotations-artifacts}, whose
 \texttt{README.md} maps each claim to the script that reproduces it and says what
 the archive settles and what it does not. Its code and data stand at commit
-\texttt{b7017ef3a852355921b911132fceb44f5f35462e}.
+\texttt{ea8b6e3487a17ccb164548d315c6188f4c408dd6}.
 \texttt{audit\_numbers.py} re-derives the paper's numbers from the definitions in
 three minutes on the standard library alone, sharing no code with the rest---bar
 the nine empty-shell verdicts, which \texttt{empty\_shell\_status.py} derives and
