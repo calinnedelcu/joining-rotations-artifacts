@@ -6,7 +6,7 @@ Reproduce any line with the command above it.
 
 Archive: the Zenodo deposit at DOI 10.5281/zenodo.22855504, or the repository at
 the release that deposit was cut from. The paper pins commit
-`cb7880173badcfd33201ba378ee1f2ffb5b991a2` for its code and data, and nothing the
+`ca09179ea0840341b4e26783f91e6f4302584cb8` for its code and data, and nothing the
 suite below runs changed after it. A shallow clone is about 900 MB, most of it
 proof.
 
