@@ -107,6 +107,18 @@ solver is needed only to *regenerate* a proof or rebuild a construction.
   rather than report: the one published enumeration on this lattice clips its
   point set to radius 2, and only `theta_4` of the seven has a shell reaching so
   far — which is why `theta_4` is the one it found.
+- **A referee sent us to a preprint and half of it stuck.** Two reviewers named
+  Gibbs, *Elements of the Moser Spindle Ring* (May 2018), as absent from our
+  bibliography and a likely antecedent for Proposition 8. We read it. Its
+  Theorem 1 gives the Moser ring as `(a + ib√3 + ic√11 + d√33)/(4·3^k)` under
+  `a ≡ b ≡ c ≡ d (mod 2)` and `a + b + c − d ≡ 0 (mod 4)`; at `k = 0`, scaled by
+  three, that is our chart. The two second congruences differ by `2(a−d)`, which
+  the parity condition kills modulo 4 — checked over all 4096 quadruples mod 8,
+  zero disagreements. So the chart is his, it is cited now, and we no longer
+  imply otherwise. Proposition 8 is not his: his ring inverts 3, so it is not a
+  finitely generated `Z`-module and not an order in `V`, and nothing there
+  identifies the maximal order or proves maximality. Please do check this
+  yourself rather than take our reading of someone else's preprint.
 - **The same criterion on Haugland's lattice** settles `theta_2` and `theta_7`
   as survivors and leaves `N = 9` open at rank 24; those computations are
   `scripts/hept_*.py` in the archive, and are described in a companion paper.
