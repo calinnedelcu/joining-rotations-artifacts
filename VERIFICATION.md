@@ -185,7 +185,7 @@ project.
 ```
 ok   no unresolved references
 ok   no placeholders
-     24 pages
+     25 pages
 ok   the shipped source reproduces the shipped PDF
 ```
 

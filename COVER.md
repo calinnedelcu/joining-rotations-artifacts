@@ -1,6 +1,6 @@
 # Cover note
 
-**A divisibility obstruction for joining two Moser lattices** — 24 pages.
+**A divisibility obstruction for joining two Moser lattices** — 25 pages.
 
 Enclosed:
 

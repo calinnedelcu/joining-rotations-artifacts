@@ -1,14 +1,14 @@
 # What is supplied, and what is already known to be open
 
 *Companion note to* **A divisibility obstruction for joining two Moser lattices**
-*(24 pages).* Read this first if you would rather not spend the first hour
+*(25 pages).* Read this first if you would rather not spend the first hour
 rediscovering what we already know.
 
 ## What you have
 
 | | |
 |---|---|
-| the manuscript | `joining-rotations.pdf`, 24 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
+| the manuscript | `joining-rotations.pdf`, 25 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
 | the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `b7017ef3a852355921b911132fceb44f5f35462e`; the commits after it touch documentation and the manuscript only |
 | a transcript | `VERIFICATION.md` — every check we ran, with its raw output |
 
