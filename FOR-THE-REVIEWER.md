@@ -9,7 +9,7 @@ rediscovering what we already know.
 | | |
 |---|---|
 | the manuscript | `joining-rotations.pdf`, 25 pages; `scripts/check_paper.sh` greps the rendered text for `??` and for unfilled placeholders |
-| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `105e3f586d9d12d967ed769ffb31bfbd99bbacb2`; the commits after it touch documentation and the manuscript only |
+| the artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `cb7880173badcfd33201ba378ee1f2ffb5b991a2`; the commits after it touch documentation and the manuscript only |
 | a transcript | `VERIFICATION.md` — every check we ran, with its raw output |
 
 The repository is public; nothing else needs to be sent. Its `README.md` opens

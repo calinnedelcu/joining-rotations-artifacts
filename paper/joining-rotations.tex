@@ -94,8 +94,8 @@ surviving both conditions have natural density zero among the integers.
 Against that, constructions. Chaining a monochromatic-pair gadget of Parts' gives
 a $5$-chromatic join at $a = 64n^2/9$ for every $n$, an infinite family that
 includes the one integer spindle our filters cannot decide. Seven spindles are
-verified to join, four of them---$\theta_{16}$, $\theta_{28}$, $\theta_{36}$ and
-$\theta_{64/3}$---by constructions for which we have found no precedent; each of
+verified to join, three of them---$\theta_{16}$, $\theta_{28}$,
+$\theta_{36}$---by constructions for which we have found no precedent; each of
 the seven ships a DRAT certificate, checked, so that the unions are not
 $4$-colourable is a proof and not a solver's word. A periodic
 refinement kills eleven further integer candidates below $100$. The interface any such
@@ -1460,11 +1460,13 @@ $\theta_{256/9}$ & $503/512$ & $\Q(\sqrt3,\sqrt{11},\sqrt{1015})$ & $6$ & $5.350
 
 The first is Parts' record and was known; the four of \cite{Voronov} are the
 other previously known rotations, and $\theta_4$ is common to both lists. Of the
-six new ones, two follow from Parts' published monochromatic-pair gadgets by the
-chaining below: $\theta_{64/9}$ and $\theta_{256/9}$ are its cases $n = 1$ and
-$n = 2$. The family is $a = 64n^2/9$, so $\theta_{64/3}$ is not in it---that
-would need $n^2 = 3$---and it, $\theta_{16}$, $\theta_{28}$ and $\theta_{36}$
-are the four for which we found no prior construction. Every row carries a DRAT certificate that \texttt{drat-trim}
+six new ones, the three rational spindles follow from Parts' two published
+monochromatic-pair gadgets by the chaining below: his $367$-vertex gadget has
+terminals $8/3$ apart and gives $a = 64n^2/9$, whose cases $n = 1, 2$ are
+$\theta_{64/9}$ and $\theta_{256/9}$; his $421$-vertex one has them $8/\sqrt3$
+apart and gives $a = 64n^2/3$, whose case $n = 1$ is $\theta_{64/3}$. So
+$\theta_{16}$, $\theta_{28}$ and $\theta_{36}$ are the three for which we found
+no prior construction. Every row carries a DRAT certificate that \texttt{drat-trim}
 checks, shipped in the archive at the commit pinned in \emph{Code and data}
 below, so the verdicts here stand on the archive and not on any unpublished
 work: eight proofs, all
@@ -1524,7 +1526,8 @@ $S_H \subseteq S$, and $0 \in V(H)$ by construction.
 Lemma~\ref{lem:chain} applied to Parts' $367$-vertex gadget, whose two terminals
 lie $8/3$ apart, gives a join at $a = 64n^2/9$ for every $n \ge 1$; its premise
 is the gadget's monochromatic-pair property, which is itself one of the eight
-certificates.
+certificates. His inventory lists a second monochromatic pair, at $8/\sqrt3$ on
+$421$ vertices, and the same lemma sends it to $a = 64n^2/3$.
 
 \section{A stronger filter, and what survives it}\label{sec:stronger}
 
@@ -1648,7 +1651,7 @@ Every computation here is carried out by a script in the archive,
 \url{https://github.com/calinnedelcu/joining-rotations-artifacts}, whose
 \texttt{README.md} maps each claim to the script that reproduces it and says what
 the archive settles and what it does not. Its code and data stand at commit
-\texttt{105e3f586d9d12d967ed769ffb31bfbd99bbacb2}.
+\texttt{cb7880173badcfd33201ba378ee1f2ffb5b991a2}.
 \texttt{audit\_numbers.py} re-derives the paper's numbers from the definitions in
 three minutes on the standard library alone, sharing no code with the rest---bar
 the nine empty-shell verdicts, which \texttt{empty\_shell\_status.py} derives and
