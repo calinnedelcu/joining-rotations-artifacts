@@ -104,7 +104,7 @@ standard library only. From this directory:
 
     python3 -m venv .venv && .venv/bin/pip install python-sat
     .venv/bin/python scripts/audit_numbers.py        # no solver needed
-    bash scripts/verify_all.sh                       # all 47 entries
+    bash scripts/verify_all.sh                       # all 48 entries
 
 `verify_all.sh` uses `.venv/bin/python` when there is one and the `python3` on
 PATH otherwise, says which it picked, and warns if `python-sat` is missing; set

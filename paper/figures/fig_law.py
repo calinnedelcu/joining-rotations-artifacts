@@ -15,7 +15,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent))
 import matplotlib.pyplot as plt
 from matplotlib.patches import Rectangle
 from shells import shell_count          # scripts/shells.py, the exact counter
-from style import save, TEXTWIDTH
+from style import save, TEXTWIDTH, scale
 
 HI = 100
 occupied = {a for a in range(1, HI + 1) if shell_count(a)}
@@ -30,10 +30,19 @@ print(f"  occupied {len(occupied)}, 4|a {len(div4)}, candidates {len(cand)}: {ca
 print(f"  empty multiples of 4: {sorted(div4 - occupied)}")
 print(f"  built {len(BUILT)}, dead {len(DEAD)}, undecided {len(OPEN)}")
 
-W, H = TEXTWIDTH, 1.30
+# This one is already as wide as the text block, so unlike the other figures it
+# cannot be enlarged to carry its type to 11pt -- the type has to grow in place
+# and the layout has to make room.  Both label sizes land on 11pt under
+# GEOM_FIGURES and are untouched without it.
+RFS = 7.6 * scale(7.6)          # the three row labels
+TFS = 6.8 * scale(6.8)          # the tick numbers along the bottom
+GROWN = RFS > 7.6
+W = TEXTWIDTH
+H = 1.46 if GROWN else 1.30
 fig = plt.figure(figsize=(W, H))
-LEFT = 0.86 / W
-ax = fig.add_axes([LEFT, 0.20, 1 - LEFT - 0.018, 0.74])
+LEFT = (1.26 if GROWN else 0.86) / W
+BOT = 0.26 if GROWN else 0.20
+ax = fig.add_axes([LEFT, BOT, 1 - LEFT - 0.018, 0.94 - BOT])
 ax.set_xlim(0.2, HI + 0.8)
 ax.set_ylim(-0.55, 2.62)
 ax.axis("off")
@@ -54,12 +63,12 @@ for y, S, lab in ROWS:
             fc = "white"
         ax.add_patch(Rectangle((a - w / 2, y - 0.23), w, h,
                                facecolor=fc, edgecolor=ec, lw=0.4, zorder=2))
-    ax.text(-0.8, y, lab, ha="right", va="center", fontsize=7.6)
+    ax.text(-0.8, y, lab, ha="right", va="center", fontsize=RFS)
 
 for a in range(10, HI + 1, 10):
     ax.plot([a, a], [-0.42, -0.34], lw=0.4, color="black")
-    ax.text(a, -0.50, str(a), ha="center", va="top", fontsize=6.8)
+    ax.text(a, -0.50, str(a), ha="center", va="top", fontsize=TFS)
 ax.plot([1, 1], [-0.42, -0.34], lw=0.4, color="black")
-ax.text(1, -0.50, "1", ha="center", va="top", fontsize=6.8)
+ax.text(1, -0.50, "1", ha="center", va="top", fontsize=TFS)
 
 save(fig, "law")

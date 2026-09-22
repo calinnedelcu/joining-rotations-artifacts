@@ -15,6 +15,33 @@ cd paper/figures && for f in fig_*.py; do ../../.venv/bin/python "$f"; done
 
 Each writes `<name>.pdf` for the paper and `<name>.png` to look at.
 
+**Which ones the paper actually uses.** Three: `spindle`, `law`, `orbits`. The
+other five are from the 46-page draft and are kept because the companion paper
+wants them, not because this one does. The table below numbers all eight as the
+draft did; do not read those numbers as the current figure numbers.
+
+**The Geombinatorics set.** That journal is camera-ready, reproduces
+illustrations without reduction, and asks for 11pt type inside them; ours is set
+at 6.8 to 8.5. Enlarging the type alone would drop big labels onto an unchanged
+drawing, so instead the whole drawing is enlarged by `11/base` -- the picture is
+identical and its type lands on exactly 11pt. `fig_law.py` is the exception: it
+is already as wide as the text block and cannot grow, so there the labels grow
+in place and the layout makes room for them.
+
+```bash
+cd paper/figures && for f in fig_spindle.py fig_law.py fig_orbits.py; do
+  GEOM_FIGURES=1 ../../.venv/bin/python "$f"; done
+```
+
+That writes `figures/geom/`, which `\ifdefined\geombinatorics` in the paper
+points `\graphicspath` at. Same scripts, different output directory: there is no
+second copy of any figure. Without the variable set, every script is exactly
+what it was, because the 10pt build has to keep reproducing the PDF deposited at
+`10.5281/zenodo.22855504`'s companion record, `10.5281/zenodo.22895457`.
+
+Nothing is scaled at inclusion time in that build -- no `width=` key -- because a
+figure scaled down by even 4% carries its 11pt type below the limit silently.
+
 | figure | script | what it draws |
 |---|---|---|
 | 1 | `fig_lattice.py` | the 30 unit vectors, and the depth-2 ball |

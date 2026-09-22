@@ -87,6 +87,15 @@ run lambda_sweep    10800 scripts/lambda_sweep.py
 # properness" or "eight certificates".  This runs them.
 run check_claims      1800 scripts/check_claims.py
 
+# --- the bibliography, against the sources it names -------------------------
+# Two entries were wrong for two days: one named a person who is not an author
+# of the paper it cited, the other carried a different paper's title.  Every
+# check above reads this repository; none of them opens an arXiv identifier, and
+# neither did three rounds of referees.  This asks arXiv about each one and
+# compares title and surnames.  Needs the network; with none it says so and
+# passes, which is why it prints what it could not check rather than a count.
+run check_bibliography 600 scripts/check_bibliography.py
+
 # --- the certificates' graphs, before the certificates ----------------------
 # check_drat.sh checks a stored CNF against a stored proof and never looks at
 # the coordinates, so it cannot tell a proof about our graph from a proof about

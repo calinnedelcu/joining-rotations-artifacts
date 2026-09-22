@@ -15,7 +15,7 @@ sys.path.insert(0, str(HERE))
 
 import matplotlib.pyplot as plt
 from matplotlib.collections import LineCollection
-from style import save
+from style import save, scale
 
 CACHE = HERE / "crossedges.json"
 
@@ -60,18 +60,23 @@ assert len(E) == 126 and [len(kinds[k]) for k in ("origin", "reference", "auxili
 for p, q, _ in E:
     assert abs(math.hypot(p[0] - q[0], p[1] - q[1]) - 1) < 1e-9
 
-S = 3.30
+# Same enlargement as the other figures: the picture is untouched, its 7.6pt
+# type is carried to 11pt, and K is 1.0 for the default build.
+FS = 7.6
+K = scale(FS)
+FS *= K
+S = 3.30 * K
 fig = plt.figure(figsize=(S, S))
 ax = fig.add_axes([0, 0, 1, 1]); ax.set_aspect("equal"); ax.axis("off")
 
 R11, R3 = math.sqrt(11) / 2, math.sqrt(3) / 6
 for r, ls in ((1.0, ":"), (R11 - R3, ":"), (R11 + R3, ":"), (2.0, "-")):
-    ax.add_artist(plt.Circle((0, 0), r, fill=False, ec="0.70", lw=0.35,
+    ax.add_artist(plt.Circle((0, 0), r, fill=False, ec="0.70", lw=0.35 * K,
                              ls=ls, zorder=0))
 
-STYLE = {"origin": dict(lw=0.30, color="0.62"),
-         "reference": dict(lw=0.50, color="0.10"),
-         "auxiliary": dict(lw=0.50, color="0.10")}
+STYLE = {"origin": dict(lw=0.30 * K, color="0.62"),
+         "reference": dict(lw=0.50 * K, color="0.10"),
+         "auxiliary": dict(lw=0.50 * K, color="0.10")}
 for k in ("origin", "auxiliary", "reference"):
     ax.add_collection(LineCollection([(e[0], e[1]) for e in kinds[k]],
                                      zorder=2, **STYLE[k]))
@@ -85,19 +90,19 @@ def nearest(kind, deg):
 
 for kind, lab, deg in (("reference", "reference", 8), ("auxiliary", "auxiliary", 152)):
     p, q, _ = nearest(kind, deg)
-    ax.plot([p[0], q[0]], [p[1], q[1]], lw=1.7, color="black", zorder=5,
+    ax.plot([p[0], q[0]], [p[1], q[1]], lw=1.7 * K, color="black", zorder=5,
             solid_capstyle="round")
-    ax.plot([p[0]], [p[1]], "o", ms=3.4, color="black", mew=0, zorder=6)
-    ax.plot([q[0]], [q[1]], "o", ms=3.8, mfc="white", mec="black", mew=0.7, zorder=6)
+    ax.plot([p[0]], [p[1]], "o", ms=3.4 * K, color="black", mew=0, zorder=6)
+    ax.plot([q[0]], [q[1]], "o", ms=3.8 * K, mfc="white", mec="black", mew=0.7 * K, zorder=6)
     mx, my = (p[0] + q[0]) / 2, (p[1] + q[1]) / 2
     f = 1.0 + 0.62 / math.hypot(mx, my)
-    ax.annotate(lab, xy=(mx, my), xytext=(mx * f, my * f), fontsize=7.6,
+    ax.annotate(lab, xy=(mx, my), xytext=(mx * f, my * f), fontsize=FS,
                 ha="center", va="center", zorder=7,
                 bbox=dict(boxstyle="round,pad=0.10", fc="white", ec="none"),
-                arrowprops=dict(arrowstyle="-", lw=0.4, color="0.45",
+                arrowprops=dict(arrowstyle="-", lw=0.4 * K, color="0.45",
                                 shrinkA=2, shrinkB=3))
 
-ax.plot([0], [0], "o", ms=2.4, color="black", mew=0, zorder=6)
+ax.plot([0], [0], "o", ms=2.4 * K, color="black", mew=0, zorder=6)
 m = 3.05
 ax.set_xlim(-m, m); ax.set_ylim(-m, m)
 save(fig, "orbits")

@@ -5,17 +5,68 @@
 % Compiles with pdflatex, TeX Live 2023 or 2025.  No BibTeX: the bibliography is
 % a manual thebibliography environment, which is what arXiv prefers for a short
 % paper (no .bbl to mismatch).  No custom style files and no packages outside the
-% TeX Live base.  The seven figures are PDFs in figures/, each regenerated from
-% the lattice itself by the script of the same name; figures/README.md says how.
-\documentclass[10pt,reqno]{amsart}
+% TeX Live base.  Three figures are used -- spindle, law, orbits -- each a PDF in
+% figures/ regenerated from the lattice itself by the script of the same name.
+% figures/ holds five more from the 46-page draft that this version does not
+% include; figures/README.md says which is which and how to rebuild them.
+
+% Geombinatorics sets 11pt Times on a 5.5 x 8.5 inch page, no page numbers.
+% That is a different document from the 10pt amsart above, so paper/geombinatorics.tex
+% is a two-line wrapper that defines \geombinatorics and inputs this file.  There is
+% deliberately no second copy of the manuscript: this project has paid three times
+% for a number kept by hand in two places, and a whole second .tex is that defect
+% with 1400 lines instead of one.
+\ifdefined\geombinatorics
+  \documentclass[11pt,reqno]{amsart}
+\else
+  \documentclass[10pt,reqno]{amsart}
+\fi
 
 \usepackage[T1]{fontenc}
+\ifdefined\geombinatorics
+  % geombina.uccs.edu/index.php/submissions-formatting, read rather than guessed.
+  % "5.5 by 8.5 paper in 'Landscape' orientation" OR "the right side of a regular
+  % 11 by 8.5 paper in landscape".  The second disambiguates the first: the right
+  % half of an 11-wide, 8.5-tall sheet is 5.5 wide and 8.5 tall.  Portrait.
+  % "Landscape" there names the sheet you print on, not the text block.
+  % Margins are theirs verbatim: top, left, right 0.35"; bottom 0.5".
+  \usepackage[paperwidth=5.5in,paperheight=8.5in,
+              top=0.35in,left=0.35in,right=0.35in,bottom=0.5in]{geometry}
+  % "Do NOT insert page numbers -- we will do it for you."
+  \pagestyle{empty}
+\fi
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amssymb}
+\ifdefined\geombinatorics
+  % Times, metrically New Roman.  newtx must come AFTER amssymb: loaded before,
+  % both define \Bbbk and amssymb stops the run.
+  \usepackage{newtxtext}
+  \usepackage{newtxmath}
+\fi
 \usepackage{amsthm}
 \usepackage{graphicx}
-\graphicspath{{figures/}}
+% The Geombinatorics set is the same three figures enlarged so their type is
+% 11pt, as their checklist requires; figures/README.md says how to rebuild it.
+% Same scripts, different output directory -- not a second copy of anything.
+% law.pdf is the one figure included with a width key.  At 10pt that is right:
+% it is drawn 342pt wide and the text block is 360pt, so the key fills the
+% measure.  For Geombinatorics it would be a 1.4%% enlargement of a figure whose
+% type is already exactly 11pt -- small, but it is scaling, and their
+% illustrations are reproduced without reduction.  So: natural size there.
+% NOT \includegraphics[\lawopt]{...}: keyval does not expand a macro in the
+% option list, and \textwidth arrives there unexpandable.  The whole call is
+% switched instead.
+\ifdefined\geombinatorics
+  \newcommand{\lawfig}{\includegraphics{law.pdf}}
+\else
+  \newcommand{\lawfig}{\includegraphics[width=\textwidth]{law.pdf}}
+\fi
+\ifdefined\geombinatorics
+  \graphicspath{{figures/geom/}}
+\else
+  \graphicspath{{figures/}}
+\fi
 \usepackage[hidelinks]{hyperref}
 % Two references are blog comments whose URLs are long and nearly unbreakable;
 % justified without this, a short line stretches until its words stand alone.
@@ -25,6 +76,24 @@
 % lets TeX loosen those lines instead of overflowing them; 2em is the least that
 % clears all five.
 \emergencystretch=2em
+% \quad between the four basis vectors overflows the 4.8in Geombinatorics
+% measure by 8pt.  A thinner separator there fixes it; at 10pt it stays \quad,
+% so the deposited PDF's line breaking is untouched.
+\ifdefined\geombinatorics
+  \newcommand{\dsep}{\;}
+\else
+  \newcommand{\dsep}{\quad}
+\fi
+% A comma inside one $...$ is not a breakpoint, so a long inline list is a single
+% unbreakable box -- 68pt over the 4.8in measure for the list of obstructed primes.
+% \mc closes the maths, sets the comma in text where TeX may break, and reopens;
+% at 10pt it stays an ordinary maths comma, so the deposited PDF is untouched.
+% The list itself is written once either way.
+\ifdefined\geombinatorics
+  \newcommand{\mc}{$, $}
+\else
+  \newcommand{\mc}{,}
+\fi
 \newcommand{\doi}[1]{\href{https://doi.org/#1}{\texttt{#1}}}
 
 \theoremstyle{plain}
@@ -52,6 +121,31 @@
 
 \begin{document}
 
+\ifdefined\geombinatorics
+% "Begin with the title in capital bold 14 pt, followed on the next line by the
+% author(s)' name(s) in Non-Capital Bold 11 pt, followed by the address and
+% e-mail non-bold 11 pt."  amsart's own title block is none of these, so it is
+% replaced here rather than in the body: the 10pt build must not notice.
+\makeatletter
+\renewcommand{\maketitle}{%
+  \thispagestyle{empty}%
+  \begingroup
+    \raggedright
+    \fontsize{14}{17}\selectfont\bfseries
+    A DIVISIBILITY OBSTRUCTION FOR JOINING TWO MOSER LATTICES\par
+    \normalsize\bfseries Andrei-C\u{a}lin Nedelcu\par
+    \normalfont\normalsize Bucharest, Romania\par
+    \texttt{calin.nedelcu08@gmail.com}\par
+  \endgroup
+  \vspace{1.2\baselineskip}%
+  % amsart keeps the abstract in \abstractbox, not in a macro; \@setabstract is
+  % its own way of emptying that box, so the abstract survives the replacement.
+  \@setabstract
+  \vspace{1\baselineskip}%
+}
+\makeatother
+\fi
+
 \title[A divisibility obstruction for joining two Moser lattices]
       {A divisibility obstruction for joining\\ two Moser lattices}
 
@@ -63,7 +157,9 @@
 \keywords{Hadwiger--Nelson problem, unit-distance graph, chromatic number of the
 plane, Moser lattice, real quadratic field}
 
-\date{\today}
+% Fixed, not \today: the PDF deposited at 10.5281/zenodo.22895457 is dated
+% 21 September 2026, and with \today a rebuild could never reproduce it.
+\date{September 21, 2026}
 
 \begin{abstract}
 Write $\Lat$ for the Moser lattice and $\theta_a$ for the rotation with
@@ -125,7 +221,8 @@ the half-angle $\varphi = e^{i\theta_3/2} = \tfrac{\sqrt{33}}{6} +
 \tfrac{\sqrt3}{6}i$ being needed for the twelve with $j$ odd.
 
 \emph{Two groups carry this name, and this paper is about the larger one.} The
-recent literature---\cite{Engel}, \cite{Ruhland}, \cite{Ducz}---writes
+recent literature---\cite{Engel}, \cite{Ruhland}, \cite{Ducz},
+\cite{Matolcsi}, \cite{DuczVarga}---writes
 $M = \Z\langle 1, \omega_1, \omega_3, \omega_1\omega_3 \rangle$, of rank $4$
 with $18$ unit vectors, and calls that the Moser lattice. The group the record
 is built in is the larger $\Lat$ above: it contains $M$ with index $9$ and has
@@ -260,9 +357,10 @@ which is what makes the two factors the reductions modulo the two primes above
 $2$ rather than a coordinate choice; that Theorem~\ref{thm:primes} counts them,
 so that there are \emph{exactly} two and no third; and that occupancy of a shell
 is a relative-norm condition with the closed-form answer of
-Theorem~\ref{prop:shells}. Of the six papers working on this
+Theorem~\ref{prop:shells}. Of the eight papers working on this
 lattice---\cite{Ducz}, \cite{Parts}, \cite{Voronov}, \cite{Haugland},
-\cite{Engel}, \cite{Ruhland}---none contains the words \emph{maximal order},
+\cite{Engel}, \cite{Ruhland}, \cite{Matolcsi},
+\cite{DuczVarga}---none contains the words \emph{maximal order},
 \emph{ring of integers}, \emph{prime ideal} or \emph{number field} anywhere in
 its full text. The classical spectrum here is the triangular lattice's, the
 Loeschian numbers $a^2+ab+b^2$; we have found no statement, in those papers or
@@ -285,7 +383,7 @@ $\cos\theta_4 = 7/8$.}
 \end{figure}
 \begin{figure}[ht]
 \centering
-\includegraphics[width=\textwidth]{law.pdf}
+\lawfig
 \caption{Theorem~\ref{thm:law} as a sieve, over the integer spindles
 $a \le 100$.  Top: the $59$ \emph{positive} squared radii at which $\Lat$ has points,
 decided by the form \eqref{eq:norm} rather than by a ball, and in closed form by
@@ -339,7 +437,7 @@ occurs.
 \end{proposition}
 \begin{proof}
 The chart \eqref{eq:chart} with rational $A,B,C,D$ gives $V$ the $\Q$-basis
-$1, \sqrt{33}, i\sqrt3, i\sqrt{11}$. Since $i\sqrt{11} = (i\sqrt3)\sqrt{33}/3$
+$1\mc \sqrt{33}\mc i\sqrt3\mc i\sqrt{11}$. Since $i\sqrt{11} = (i\sqrt3)\sqrt{33}/3$
 and $(i\sqrt3)^2 = -3$, this is $\Q(\sqrt{33})(i\sqrt3)$, of degree $2$ over
 $\Q(\sqrt{33})$ and $4$ over $\Q$; in particular $V$ is a \emph{field}.
 
@@ -627,9 +725,9 @@ Write coordinates over the $\Q$-basis $(1, \sqrt{33}, i\sqrt3, i\sqrt{11})$ of
 $V$. Reducing the $30$ generators of $\Lat$ to Hermite form and multiplying by
 $3$ gives a $\Z$-basis of $3\Lat$:
 \[
-  b_1 = \tfrac14(1,1,1,-1), \quad
-  b_2 = \tfrac12(0,1,0,-7), \quad
-  b_3 = \tfrac12(0,0,1,1), \quad
+  b_1 = \tfrac14(1,1,1,-1), \dsep
+  b_2 = \tfrac12(0,1,0,-7), \dsep
+  b_3 = \tfrac12(0,0,1,1), \dsep
   b_4 = (0,0,0,1).
 \]
 It contains $1$, because $\tfrac13 \in \Lat$ by \eqref{eq:chart} at $(4,0,0,0)$,
@@ -1225,7 +1323,7 @@ The prime $2$ is obstructed too, straight from the definition---$33 \equiv 1
 \pmod 8$ splits it, $-3 \equiv 5 \pmod 8$ keeps it inert---and it lands in the
 class $2 \pmod{33}$ with the others, so the residue form covers it as well and
 nothing below makes it a separate case. Below $200$ the obstructed primes are
-$2, 17, 29, 41, 83, 101, 107, 131, 149, 167, 173$ and $197$; the residue form is
+$2\mc 17\mc 29\mc 41\mc 83\mc 101\mc 107\mc 131\mc 149\mc 167\mc 173$ and $197$; the residue form is
 checked against the symbols for every odd prime below $20000$.
 
 \begin{remark}[The five classes are a genus]\label{rem:narrow}
@@ -1700,13 +1798,13 @@ Geombinatorics \textbf{28} (2018), 18--31; arXiv:1804.02385.
 arXiv:2606.12325 (2026).
 
 \bibitem{Engel}
-P. Engel, M. Krebs et al.,
+P. Engel, O. Hammond-Lee, Y. Su, D. Varga, P. Zs\'amboki,
 \emph{Diverse beam search to find densest-known planar unit distance graphs},
 arXiv:2406.15317.
 
 \bibitem{Ruhland}
-J. Ruhland,
-\emph{A unit-distance graph in the plane with independence ratio below 1/4},
+H. Ruhland,
+\emph{Families of lattices with an unbounded number of unit vectors},
 arXiv:2410.16172.
 
 \bibitem{Haugland}
@@ -1736,6 +1834,16 @@ J. Parts,
 \emph{Graph minimization, focusing on the example of 5-chromatic unit-distance
 graphs in the plane},
 Geombinatorics \textbf{29} (2020), 137--166; arXiv:2010.12665.
+
+\bibitem{Matolcsi}
+M. Matolcsi, I.~Z. Ruzsa, D. Varga, P. Zs\'amboki,
+\emph{The fractional chromatic number of the plane is at least 4},
+arXiv:2311.10069 (2023).
+
+\bibitem{DuczVarga}
+\'A. D\'ucz, D. Varga,
+\emph{A unit-distance graph in the plane with independence ratio below 1/4},
+arXiv:2606.28157 (2026).
 
 \bibitem{Speyer}
 D. Speyer, comment of 3 May 2018 on \emph{Polymath16, third thread: is
