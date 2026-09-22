@@ -6,7 +6,7 @@ Enclosed:
 
 | | |
 |---|---|
-| `joining-rotations.pdf` | the manuscript |
+| `joining-rotations.pdf` | the manuscript, also deposited on its own at [10.5281/zenodo.22895457](https://doi.org/10.5281/zenodo.22895457) — that DOI is the citable address of this exact 25-page version |
 | `FOR-THE-REVIEWER.md` | what is supplied, what is already known to be open, and the cheapest checks in order |
 | `VERIFICATION.md` | every check we ran, with its raw output, so you can compare a run rather than trust a summary |
 | artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `78b7579a74373cdb9fd1391ffcd1b278a27c26c9`; the commits after it touch documentation and the manuscript only |
@@ -56,7 +56,7 @@ From a clean clone of the archive:
 | `scripts/check_drat.sh` | **8 DRAT certificates**, ~10 min, all `s VERIFIED` |
 | `scripts/check_emptyshell.py` | 9 witnesses, seconds, imports nothing from the project |
 | `scripts/check_periodic.py` | 11 witnesses, seconds, same |
-| `bash scripts/verify_all.sh` | the whole table in parallel, a little over an hour. Our last full run: **35 of 35 PASS**, 0 FAIL, 0 TIMEOUT (the 36th, `check_notes`, was added after that run and passes) |
+| `bash scripts/verify_all.sh` | the whole table in parallel, a little over an hour. Every entry passed on the run at the pinned commit, with no FAIL and no TIMEOUT. The script prints its own tally at the end; read that rather than a count quoted here, which is exactly the sentence that has gone stale before |
 
 Every construction in the paper carries a checked proof. `drat-trim` is
 deliberately not vendored — fetch and build it yourself; the sha256 of the
