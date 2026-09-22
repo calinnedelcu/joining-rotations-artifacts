@@ -9,7 +9,7 @@ Enclosed:
 | `joining-rotations.pdf` | the manuscript, also deposited on its own at [10.5281/zenodo.22898569](https://doi.org/10.5281/zenodo.22898569) — that DOI is the citable address of this exact 25-page version. It is v2; v1 carried two wrong bibliography entries and is superseded |
 | `FOR-THE-REVIEWER.md` | what is supplied, what is already known to be open, and the cheapest checks in order |
 | `VERIFICATION.md` | every check we ran, with its raw output, so you can compare a run rather than trust a summary |
-| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `78b7579a74373cdb9fd1391ffcd1b278a27c26c9`; the commits after it touch documentation and the manuscript only |
+| artifacts | <https://github.com/calinnedelcu/joining-rotations-artifacts>, public; archived at Zenodo, DOI [10.5281/zenodo.22855504](https://doi.org/10.5281/zenodo.22855504), which resolves to the deposit matching this manuscript. The paper's code and data are those of commit `8914d21da22ea8a75132ca60b2428b8c70e674df`; the commits after it touch documentation and the manuscript only |
 
 ## The result, in one paragraph
 
